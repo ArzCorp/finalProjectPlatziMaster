@@ -1,0 +1,68 @@
+{
+  "name": "ourclothes",
+  "version": "1.0.0",
+  "description": "final project platzi master program",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "build:dev": "webpack-dev-server --config webpack.config.dev.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ArzateCompany/finalProjectPlatziMaster.git"
+  },
+  "keywords": [
+    "platzi",
+    "master",
+    "final",
+    "project"
+  ],
+  "author": "RP-CODERS",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ArzateCompany/finalProjectPlatziMaster/issues"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/__test__/setupTest.js"
+    ],
+    "moduleNameMapper": {
+      "\\.(scss|css)$": "<rootDir>/src/__mocks__/styleMock.js"
+    }
+  },
+  "homepage": "https://github.com/ArzateCompany/finalProjectPlatziMaster#readme",
+  "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/plugin-transform-runtime": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
+    "babel-preset-airbnb": "^5.0.0",
+    "css-loader": "^4.2.1",
+    "eslint": "^7.7.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.6",
+    "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^4.3.0",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^9.0.3",
+    "style-loader": "^1.2.1",
+    "url-loader": "^4.1.0",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.11.2",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.3",
+    "jest": "^26.4.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.0.5"
+  }
+}
