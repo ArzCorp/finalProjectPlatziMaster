@@ -1,3 +1,49 @@
+@import './tokens/Colors';
+@import './tokens/Spacing';
+@import './tokens/Typos';
+
+$Border-Radius: 10px;
+$Box-Shadow: 0 1px 4px $Color-Primary;
+$Box-ShadowActive: 0 1px 7px $Color-Primary;
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+html {
+  font-size: $Font-Paragraph;
+  font-family: $Font;
+}
+
 h1 {
-  color: blue;
+  font-size: $Font-H1;
+}
+
+h2 {
+  font-size: $Font-H2;
+}
+
+h3 {
+  font-size: $Font-H3;
+}
+
+small {
+  font-size: $Font-Small;
+}
+
+figure {
+  margin: 0;
+}
+
+input {
+  box-shadow: $Box-Shadow;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+
+input:focus {
+  box-shadow: $Box-ShadowActive;
 }

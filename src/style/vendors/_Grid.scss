@@ -1,0 +1,38 @@
+//             _     _ 
+//   __ _ _ __(_) __| |
+//  / _` | '__| |/ _` |
+// | (_| | |  | | (_| |
+//  \__, |_|  |_|\__,_|
+//  |___/              
+
+@import '../tokens/Spacing';
+
+$grid-columns: 12;
+$breakpoint-small: "only screen and (min-width: 480px)";
+$breakpoint-tablet: "only screen and (min-width: 768px)";
+
+.wrapper {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+[class*='column-'] {
+  float: left;
+  padding: $Spacing-Small;
+  width: 100%;
+  min-height: 1px;
+}
+
+@media #{$breakpoint-small} {
+  
+  @for $i from 1 through $grid-columns {
+    .column-#{$i} {
+      width: 100% / $grid-columns * $i;
+    }
+  }
+}
