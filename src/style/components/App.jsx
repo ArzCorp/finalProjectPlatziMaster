@@ -1,8 +1,8 @@
 import React from 'react';
-import './style/App.scss';
+import '../Global.scss';
 
 const App = () => (
-  <h1>Hola mundo</h1>
+  <h1>Hola mundo c:</h1>
 );
 
 export default App;
