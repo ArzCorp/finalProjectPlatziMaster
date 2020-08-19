@@ -3,13 +3,12 @@
 @import './tokens/Typos';
 
 $Border-Radius: 10px;
-$Box-Shadow: 0 1px 4px $Color-Primary;
-$Box-ShadowActive: 0 1px 7px $Color-Primary;
+$Box-Shadow: 0 1px 3px $Color-Primary;
+$Box-ShadowActive: 0 1px 8px $Color-Primary;
 
 * {
   margin: 0;
   box-sizing: border-box;
-  overflow: hidden;
 }
 
 html {
@@ -35,15 +34,4 @@ small {
 
 figure {
   margin: 0;
-}
-
-input {
-  box-shadow: $Box-Shadow;
-  border-radius: 5px;
-  border: none;
-  outline: none;
-}
-
-input:focus {
-  box-shadow: $Box-ShadowActive;
 }

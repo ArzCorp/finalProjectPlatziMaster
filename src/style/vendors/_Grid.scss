@@ -7,29 +7,29 @@
 
 @import '../tokens/Spacing';
 
-$grid-columns: 12;
-$breakpoint-small: "only screen and (min-width: 480px)";
-$breakpoint-tablet: "only screen and (min-width: 768px)";
+$grid-columns: 6;
+$breakpoint-small: "only screen and (min-width: 375px)";
+$breakpoint-tablet: "screen and (min-width: 768px)";
 
 .wrapper {
   width: 100%;
-  margin: 0 auto;
+  padding: 0 $Spacing-ExtraSmall;
 }
 
 .row {
   display: flex;
-  justify-content: center;
+  justify-content: center;;
 }
 
 [class*='column-'] {
   float: left;
-  padding: $Spacing-Small;
+  padding: $Spacing-ExtraSmall;
   width: 100%;
   min-height: 1px;
 }
 
 @media #{$breakpoint-small} {
-  
+
   @for $i from 1 through $grid-columns {
     .column-#{$i} {
       width: 100% / $grid-columns * $i;
