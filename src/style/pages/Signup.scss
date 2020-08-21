@@ -1,0 +1,23 @@
+@import '../styles.scss';
+
+.loginPage {
+  &__entry {
+    margin-top: $Spacing-Large;
+    text-align: center;
+  }
+}
+
+@media screen and(min-width: 768px) {
+  .loginPage {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+@media screen and(min-width: 1024px) {
+  .loginPage {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+}

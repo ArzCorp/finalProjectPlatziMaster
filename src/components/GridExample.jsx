@@ -34,7 +34,6 @@ const GridExample = () => (
           <p>Column 2</p>
         </div>
       </div>
-
       <div className="row">
         <div className="column-4">
           <small>Hola mundo</small>
@@ -46,7 +45,7 @@ const GridExample = () => (
       </div>
       <div className="row">
         <div className="column-6">
-          <Input 
+          <Input
             type="text"
             label="Name"
             placeholder="Username"
@@ -56,7 +55,7 @@ const GridExample = () => (
       </div>
       <div className="row">
         <div className="column-6">
-          <Input 
+          <Input
             type="number"
             label="Phone"
             id="2"
@@ -65,7 +64,7 @@ const GridExample = () => (
       </div>
       <div className="row">
         <div className="column-6">
-          <Input 
+          <Input
             type="password"
             label="Password"
             id="3"
@@ -74,7 +73,12 @@ const GridExample = () => (
       </div>
       <div className="row">
         <div className="column-6">
-          <Button name="Login"/>
+          <Button name="Login" />
+        </div>
+      </div>
+      <div className="row">
+        <div className="column-6">
+          <input type="file" />
         </div>
       </div>
     </div>
