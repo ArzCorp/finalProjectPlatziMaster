@@ -3,6 +3,8 @@ import '../style/styles.scss';
 
 import Input from './atoms/Input';
 import Button from './atoms/Button';
+import Icon from './atoms/Icon';
+import ImageProfile from './atoms/ImageProfile';
 
 const GridExample = () => (
   <section>
@@ -10,6 +12,9 @@ const GridExample = () => (
       <div className="row">
         <div className="column-3">
           <p>Column 3</p>
+          <Icon />
+          <Icon iconName="star" size="100px" color="red" />
+          <ImageProfile ImageProfile="/" />
         </div>
         <div className="column-3">
           <p>Column 3</p>
