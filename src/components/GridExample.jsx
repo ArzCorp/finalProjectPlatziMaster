@@ -13,7 +13,7 @@ const GridExample = () => (
         <div className="column-3">
           <p>Column 3</p>
           <Icon />
-          <Icon iconName="star" size="100px" color="red" />
+          <Icon iconName="star" size="100px" color="var(--Color-Secondary)" />
           <ImageProfile ImageProfile="/" />
         </div>
         <div className="column-3">

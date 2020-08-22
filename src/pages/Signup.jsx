@@ -1,5 +1,4 @@
 import React from 'react';
-import '../style/pages/Signup.scss';
 
 import SignupForm from '../components/organisms/SignupForm';
 

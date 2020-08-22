@@ -1,11 +1,9 @@
-@import '../../styles.scss';
-
 .form__input {
   margin-top: $Spacing-ExtraSmall;
   label {
     margin-left: $Spacing-ExtraSmall;
     font-size: $Font-Small;
-    color: $Color-PrimaryLight-1;
+    color: var(--Color-PrimaryLight-1);
   }
 
   input {
@@ -15,7 +13,7 @@
     border-radius: $Border-Radius;
     border: none;
     font-size: $Font-ParagraphLarge;
-    color: $Color-PrimaryLight-1;
+    color: var(--Color-PrimaryLight-1);
     outline: none;
   }
 
@@ -24,6 +22,6 @@
   }
 
   ::placeholder {
-    color: $Color-PrimaryLight-2;
+    color: var(--Color-PrimaryLight-2);
   }
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../style/components/atoms/ImageProfile.scss';
 import Icon from './Icon';
 
 const ImageProfile = (props) => {

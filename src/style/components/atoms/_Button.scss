@@ -1,17 +1,17 @@
-@import '../../styles.scss';
 
 .btn {
   padding: $Spacing-ExtraSmall $Spacing-Normal;
   border: none;
   border-radius: $Border-Radius;
   font-size: $Font-ParagraphLarge;
-  color: $Color-Grayscale-1;
-  background-color: $Color-Primary;
+  color: var(--Color-Grayscale-1);
+  background-color: var(--Color-Primary);
   transition: 200ms;
   outline: none;
 
   &:hover {
     box-shadow: $Box-ShadowActive;
+    cursor:pointer;
 
   }
   &:active {

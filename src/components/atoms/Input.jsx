@@ -1,6 +1,4 @@
 import React from 'react';
-import '../../style/components/atoms/Input.scss';
-
 const Input = ({ type, label, placeholder, name, id, onChange }) => (
   <div className="form__input">
     <label>
