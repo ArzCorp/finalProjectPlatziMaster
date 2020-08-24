@@ -1,5 +1,4 @@
 import React from 'react';
-import '../style/pages/Signup.scss';
 
 import Logo from '../../public/assets/logo/logo.svg';
 import SignupForm from '../components/organisms/SignupForm';

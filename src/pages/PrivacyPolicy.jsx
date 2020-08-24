@@ -1,5 +1,4 @@
 import React from 'react';
-import '../style/pages/PrivacyPolicy.scss';
 
 const PrivacyPolicy = () => (
   <div className="privacyPolicy_page">

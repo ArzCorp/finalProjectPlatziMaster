@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../../style/components/organisms/SignupForm.scss';
 
 import Input from '../atoms/Input';
 import Button from '../atoms/Button';

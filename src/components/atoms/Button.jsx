@@ -1,8 +1,8 @@
 import React from 'react';
-import '../../style/components/atoms/Button.scss';
 
 const Button = ({name, id, onClick, type}) => (
   <button
+    type="submit"
     className={`btn__${type}`}
     id={id || null}
     onClick={onClick}

@@ -1,12 +1,10 @@
-@import '../styles.scss';
-
 .signupPage {
   padding-top: $Spacing-Normal;
 
   &__entry-brand {
     font-size: $Font-ParagraphLarge;
     text-align: center;
-    color: $Color-Primary;
+    color: var(--Color-Primary);
   }
 
   &__entry-brand img {

@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../style/components/atoms/ImageProfile.scss';
 import Icon from './Icon';
 
 const ImageProfile = (props) => {
@@ -10,7 +9,7 @@ const ImageProfile = (props) => {
       <img alt="perfil" src={imageProfile} />
       <button
         className="btn"
-        classonClick={onClick}
+        onClick={onClick}
         type="button"
       >
         <Icon color="red" iconName="camera" />

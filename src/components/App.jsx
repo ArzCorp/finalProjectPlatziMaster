@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import '../style/styles.scss';
 
 import GridExample from './GridExample';
 import Signup from '../pages/Signup';

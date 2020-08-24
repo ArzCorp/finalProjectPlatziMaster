@@ -1,5 +1,3 @@
-@import '../../styles.scss';
-
 %btn {
   margin: $Spacing-ExtraSmall 0;
   padding: $Spacing-ExtraSmall $Spacing-Normal;
@@ -13,7 +11,7 @@
 
   &:hover {
     box-shadow: $Box-ShadowActive;
-    cursor: pointer;
+    cursor:pointer;
   }
 
   &:active {
@@ -24,32 +22,32 @@
 
 .btn__normal {
   @extend %btn;
-  color: $Color-Grayscale-1;
-  background-color: $Color-Primary;
+  color: var(--Color-Grayscale-1);
+  background-color: var(--Color-Primary);
 }
 
 .btn__outline {
   @extend %btn;
-  border: 2px solid $Color-Primary;
-  color: $Color-Primary;
+  border: 2px solid var(--Color-Primary);
+  color: var(--Color-Primary);
   background-color: transparent;
 }
 
 .btn__disabled {
   @extend %btn;
-  color: $Color-Grayscale-1;
-  background-color: $Color-Grayscale-3;
+  color: var(--Color-Grayscale-1);
+  background-color: var(--Color-Grayscale-3);
   &:hover {
-    box-shadow: 0 1px 8px $Color-Grayscale-3;
+    box-shadow: 0 1px 8px var(--Color-Grayscale-3);
   }
 }
 
 .btn__danger {
   @extend %btn;
-  border: 2px solid $Color-Negative;
-  color: $Color-Negative;
+  border: 2px solid var(--Color-Negative);
+  color: var(--Color-Negative);
   background-color: transparent;
   &:hover {
-    box-shadow: 0 1px 8px $Color-Negative;
+    box-shadow: 0 1px 8px var(--Color-Negative);
   }
 }
