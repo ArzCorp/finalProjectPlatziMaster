@@ -1,0 +1,11 @@
+@import '../../styles.scss';
+
+.privacyPolicy {
+  padding: $Spacing-Small 0;
+  color: $Color-Grayscale-4;
+  text-decoration: none;
+  &:hover {
+    color: $Color-Primary;
+    text-decoration: underline;
+  }
+}

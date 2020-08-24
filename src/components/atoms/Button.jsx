@@ -1,11 +1,10 @@
 import React from 'react';
 import '../../style/components/atoms/Button.scss';
 
-const Button = ({name, id, onClick}) => (
+const Button = ({name, id, onClick, type}) => (
   <button
-    type="submit"
-    className="btn"
-    id={ id || null }
+    className={`btn__${type}`}
+    id={id || null}
     onClick={onClick}
   >
     { name || 'Aceptar' }

@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../style/components/atoms/Input.scss';
 
-const Input = ({ type, label, placeholder, name, id, onChange }) => (
+const Input = ({ type, label, placeholder, name, id, onChange, onKeyPress }) => (
   <div className="form__input">
     <label>
       *
@@ -13,6 +13,7 @@ const Input = ({ type, label, placeholder, name, id, onChange }) => (
       name={name || label || null}
       id={id || null}
       onChange={onChange}
+      onKeyPress={onKeyPress}
     />
   </div>
 );

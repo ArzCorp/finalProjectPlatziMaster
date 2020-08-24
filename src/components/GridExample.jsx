@@ -78,7 +78,10 @@ const GridExample = () => (
       </div>
       <div className="row">
         <div className="column-6">
-          <Button name="Login" />
+          <Button name="normal" type="normal" />
+          <Button name="outline" type="outline" />
+          <Button name="disabled" type="disabled" />
+          <Button name="danger" type="danger" />
         </div>
       </div>
       <div className="row">

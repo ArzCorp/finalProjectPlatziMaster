@@ -1,46 +1,41 @@
 @import '../styles.scss';
 
-.signupPage {
+.loginPage {
   padding-top: $Spacing-Normal;
-
-  &__entry-brand {
-    font-size: $Font-ParagraphLarge;
+  &__brand-entry {
     text-align: center;
-    color: $Color-Primary;
   }
-
-  &__entry-brand img {
+  &__brand img {
     width: 15rem;
-    // filter: drop-shadow(-20px 10px 4px $Color-Primary);
   }
 }
 
 @media screen and(min-width: 768px) {
-  .signupPage {
+  .loginPage {
     width: 70%;
     margin: 0 auto;
   }
 }
 
 @media screen and(min-width: 1024px) {
-  .signupPage {
+  .loginPage {
     padding-top: $Spacing-Large;
     height: 100%;
     width: 85%;
 
-    &__entry {
+    &__brand {
       display: flex;
       align-items: center;
-      padding: $Spacing-Normal $Spacing-Large;
+      // padding: $Spacing-Normal $Spacing-Large;
       border-radius: $Border-Radius;
       box-shadow: $Box-ShadowActive;
     }
 
-    &__entry-brand {
+    &__brand-entry {
       flex: 3;
     }
 
-    &__entry-signupForm {
+    &__loginForm {
       flex: 2;
     }
   }

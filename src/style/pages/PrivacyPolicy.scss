@@ -1,0 +1,14 @@
+@import '../styles.scss';
+
+.privacyPolicy_page {
+  padding: $Spacing-Large $Spacing-Normal;
+  color: $Color-Primary;
+  & h1 {
+    border-bottom: 1px solid $Color-Primary;
+    margin-bottom: $Spacing-Normal;
+  }
+  & p {
+    font-size: $Font-ParagraphLarge;
+    line-height: $Font-H1;
+  }
+}
