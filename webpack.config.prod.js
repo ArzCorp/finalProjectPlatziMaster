@@ -15,6 +15,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: '[name].[hash].js',
+    publicPath: 'https://arzatecompany.github.io/finalProjectPlatziMaster/',
   },
   mode: 'production',
   devtool: 'eval-source-map',
@@ -38,10 +39,25 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.css$/,
         use: [
-          { loader: 'url-loader' },
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          'css-loader',
+          'sass-loader',
         ],
+      },
+      {
+        test: /\.(png|jpg|gif|ttf|svg)$/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 1000,
+            name: '[hash].[ext]',
+            outputPath: 'assets',
+          },
+        },
       },
     ],
   },
@@ -51,6 +67,7 @@ module.exports = {
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'css/[name].[hash].css',
+      chunkFilename: 'css/[id].[hash].css',
     }),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
@@ -62,6 +79,7 @@ module.exports = {
     }),
     new AddAssetHtmlWebpack({
       filepath: path.resolve(__dirname, './dist/*.dll.js'),
+      publicPath: 'https://arzatecompany.github.io/finalProjectPlatziMaster/',
     }),
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: ['**/app.*'],
@@ -72,10 +90,5 @@ module.exports = {
       new TerserJSPlugin(),
       new OptimizeCSSAssetsPlugin(),
     ],
-    splitChunks: {
-      name: 'commons',
-      minSize: 0,
-      chunks: 'all',
-    },
   },
 };

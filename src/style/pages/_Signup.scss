@@ -1,0 +1,45 @@
+.signupPage {
+  padding-top: $Spacing-Normal;
+
+  &__entry-brand {
+    font-size: $Font-ParagraphLarge;
+    text-align: center;
+    color: var(--Color-Primary);
+  }
+
+  &__entry-brand img {
+    width: 15rem;
+    // filter: drop-shadow(-20px 10px 4px $Color-Primary);
+  }
+}
+
+@media screen and(min-width: 768px) {
+  .signupPage {
+    width: 70%;
+    margin: 0 auto;
+  }
+}
+
+@media screen and(min-width: 1024px) {
+  .signupPage {
+    padding-top: $Spacing-Large;
+    height: 100%;
+    width: 85%;
+
+    &__entry {
+      display: flex;
+      align-items: center;
+      padding: $Spacing-Normal $Spacing-Large;
+      border-radius: $Border-Radius;
+      box-shadow: $Box-ShadowActive;
+    }
+
+    &__entry-brand {
+      flex: 3;
+    }
+
+    &__entry-signupForm {
+      flex: 2;
+    }
+  }
+}

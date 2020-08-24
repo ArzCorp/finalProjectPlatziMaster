@@ -1,5 +1,4 @@
 import React from 'react';
-import '../style/styles.scss';
 
 import Input from './atoms/Input';
 import Button from './atoms/Button';
@@ -13,7 +12,7 @@ const GridExample = () => (
         <div className="column-3">
           <p>Column 3</p>
           <Icon />
-          <Icon iconName="star" size="100px" color="red" />
+          <Icon iconName="star" size="100px" color="var(--Color-Secondary)" />
           <ImageProfile ImageProfile="/" />
         </div>
         <div className="column-3">
@@ -78,7 +77,10 @@ const GridExample = () => (
       </div>
       <div className="row">
         <div className="column-6">
-          <Button name="Login" />
+          <Button name="normal" type="normal" />
+          <Button name="outline" type="outline" />
+          <Button name="disabled" type="disabled" />
+          <Button name="danger" type="danger" />
         </div>
       </div>
       <div className="row">

@@ -1,0 +1,13 @@
+.SignupForm {
+  margin-top: $Spacing-Large;
+  width: 100%;
+
+  &__errorMsg {
+    text-align: right;
+    color: var(--Color-Negative);
+  }
+
+  &__buttons {
+    margin-top: $Spacing-Large;
+  }
+}

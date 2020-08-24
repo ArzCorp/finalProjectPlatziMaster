@@ -1,19 +1,18 @@
 import React from 'react';
-import '../../style/components/atoms/ImageProfile.scss';
 import Icon from './Icon';
 
 const ImageProfile = (props) => {
   const config = props;
   const { imageProfile, onClick } = config;
   return (
-    <div>
-      <img alt="perfil" src={imageProfile} />
+    <div className="profile">
+      <img className="profile__image" alt="perfil" src={imageProfile} />
       <button
         className="btn"
-        classonClick={onClick}
+        onClick={onClick}
         type="button"
       >
-        <Icon color="red" iconName="camera" />
+        <Icon color="$Color-Primary" iconName="camera" />
       </button>
     </div>
   );

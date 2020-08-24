@@ -1,5 +1,20 @@
-@import './Global.scss';
-@import './vendors/Grid';
 @import './tokens/Colors';
 @import './tokens/Spacing';
 @import './tokens/Typos';
+@import './Global.scss';
+
+@import './vendors/Grid';
+
+@import './components/atoms/PrivacyPolicy';
+@import './components/atoms/Button';
+@import './components/atoms/Input';
+@import './components/atoms/ImageProfile';
+
+@import './components/organisms/SignupForm';
+@import './components/organisms/LoginForm';
+
+@import './pages/PrivacyPolicy';
+@import './pages/Signup';
+@import './pages/Login';
+
+// @import '';

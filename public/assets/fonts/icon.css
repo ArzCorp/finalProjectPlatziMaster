@@ -1,4 +1,4 @@
 .default-icon {
   font-size: 20px;
-  color: #19704E;
+  color: var(--Color-Primary);
 }
