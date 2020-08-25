@@ -1,5 +1,6 @@
 import React from 'react';
 import { HashRouter, Route, Switch } from 'react-router-dom';
+
 import '../style/styles.scss';
 
 import GridExample from './GridExample';
@@ -15,7 +16,7 @@ const App = () => (
       <Route exact path="/signup" component={Signup} />
       <Route exact path="/privacy_policy" component={PrivacyPolicy} />
       <Route exact path="/login" component={Login} />
-      <Route exact path="/home" component={UserPerfil} />
+      <Route exact path="/perfil" component={UserPerfil} />
       <Route exact path="/notifications" component={UserPerfil} />
     </Switch>
   </HashRouter>

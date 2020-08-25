@@ -12,9 +12,13 @@
 
 @import './components/organisms/SignupForm';
 @import './components/organisms/LoginForm';
+@import './components/organisms/NavBar';
+@import './components/organisms/Settings';
+@import './components/organisms/EditProfile';
 
 @import './pages/PrivacyPolicy';
 @import './pages/Signup';
 @import './pages/Login';
+@import './pages/UserPerfil';
 
 // @import '';

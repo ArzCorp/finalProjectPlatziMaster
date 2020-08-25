@@ -1,19 +1,21 @@
 import React from 'react';
 import Icon from './Icon';
+import Button from './Button';
 
 const ImageProfile = (props) => {
   const config = props;
-  const { imageProfile, onClick } = config;
+  const { url, onClick } = config;
   return (
     <div className="profile">
-      <img className="profile__image" alt="perfil" src={imageProfile} />
-      <button
+      <img className="profile__image" alt="perfil" src={url} />
+      <Button
         className="btn"
         onClick={onClick}
-        type="button"
-      >
-        <Icon color="$Color-Primary" iconName="camera" />
-      </button>
+        type="outline"
+        name={
+          <Icon color="$Color-Primary" iconName="camera" />
+        }
+      />
     </div>
   );
 };
