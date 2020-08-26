@@ -1,6 +1,11 @@
 $Border-Radius: 10px;
+$Border-Radius-circle: 50%;
 $Box-Shadow: 0 1px 3px var(--Color-Primary);
 $Box-ShadowActive: 0 1px 8px var(--Color-Primary);
+
+:root{
+  --Box-Shadow-no-color: 0 1px 3px;
+}
 
 * {
   margin: 0;

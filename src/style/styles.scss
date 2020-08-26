@@ -7,15 +7,26 @@
 
 @import './components/atoms/PrivacyPolicy';
 @import './components/atoms/Button';
+@import './components/atoms/IconButton';
 @import './components/atoms/Input';
 @import './components/atoms/ImageProfile';
 @import './components/atoms/Loader';
+@import './components/atoms/AddImage';
+@import './components/atoms/AddClothe';
+@import './components/atoms/ClotheCard';
+@import './components/atoms/ButtonsBar';
 
 @import './components/organisms/SignupForm';
 @import './components/organisms/LoginForm';
+@import './components/organisms/NavBar';
+@import './components/organisms/SettingsNav';
+@import './components/organisms/EditProfile';
+@import './components/organisms/Settings';
+@import './components/organisms/Modal';
 
 @import './pages/PrivacyPolicy';
 @import './pages/Signup';
 @import './pages/Login';
+@import './pages/UserPerfil';
 
 // @import '';

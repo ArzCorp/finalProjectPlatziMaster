@@ -1,0 +1,35 @@
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: $Color-PrimaryLight-1;
+  &__container{
+  background-color: $Color-Grayscale-1;
+  justify-content: center;
+  width: 90%;
+  height: 90%;
+    & .addImage__label {
+      margin: $Spacing-Normal auto;
+      width: 80%;
+    }
+  }
+  &__close{
+    display: flex;
+    justify-content: flex-end;
+    & .btn__danger {
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      border-radius: none;
+      width: 5%;
+      margin-top: 0px;
+    }
+  }
+}

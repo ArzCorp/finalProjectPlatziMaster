@@ -1,21 +1,29 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import Icon from './Icon';
+import Button from './Button';
 
-const ImageProfile = (props) => {
-  const config = props;
-  const { imageProfile, onClick } = config;
-  return (
-    <div className="profile">
-      <img className="profile__image" alt="perfil" src={imageProfile} />
-      <button
-        className="btn"
-        onClick={onClick}
-        type="button"
-      >
-        <Icon color="$Color-Primary" iconName="camera" />
-      </button>
-    </div>
-  );
-};
+import AddImageModal from '../organisms/AddImageModal';
+
+class ImageProfile extends PureComponent {
+  render() {
+    const { url, isOpenModal, isOpen, isClose } = this.props;
+    return (
+      <div className="profile">
+        <img className="profile__image" alt="perfil" src={url} />
+        <Button
+          className="btn"
+          onClick={() => {
+            isOpen('isOpenImage');
+          }}
+          type="outline"
+          name={
+            <Icon color="$Color-Primary" iconName="camera" />
+          }
+        />
+        <AddImageModal isOpenModal={isOpenModal} isOpen={isOpen} isClose={isClose} />
+      </div>
+    );
+  }
+}
 
 export default ImageProfile;

@@ -1,0 +1,26 @@
+.settings__navbar {
+  display: flex ;
+  width: 200px;
+  margin: 0 auto;
+}
+
+.settings__navbar .btn__normal:nth-of-type(1) {
+  border-radius: 50px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  padding-right: 0px;
+  padding-left: 0px;
+  margin-right: 5px;
+}
+
+.settings__navbar .btn__normal:nth-of-type(2) {
+  border-radius: 50px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.white {
+  background-color: white;
+}
