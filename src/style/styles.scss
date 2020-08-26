@@ -9,12 +9,17 @@
 @import './components/atoms/Button';
 @import './components/atoms/Input';
 @import './components/atoms/ImageProfile';
+@import './components/atoms/AddImage';
+@import './components/atoms/AddClothe';
+@import './components/atoms/ClotheCard';
 
 @import './components/organisms/SignupForm';
 @import './components/organisms/LoginForm';
 @import './components/organisms/NavBar';
-@import './components/organisms/Settings';
+@import './components/organisms/SettingsNav';
 @import './components/organisms/EditProfile';
+@import './components/organisms/Settings';
+@import './components/organisms/Modal';
 
 @import './pages/PrivacyPolicy';
 @import './pages/Signup';

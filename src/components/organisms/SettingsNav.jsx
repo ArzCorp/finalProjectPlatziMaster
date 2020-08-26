@@ -5,6 +5,7 @@ import Button from '../atoms/Button';
 
 class Settings extends PureComponent {
   render() {
+    const { pullActive, pullDisable } = this.props;
     return (
       <div className="settings">
         <div className="settings__navbar">
@@ -13,7 +14,7 @@ class Settings extends PureComponent {
             name={<Icon iconName="tshirt" color="white" size="35px" />}
             id="button-tshirt"
             onClick={() => {
-              console.log(window);
+              pullActive();
             }}
           />
           <Button
@@ -21,7 +22,7 @@ class Settings extends PureComponent {
             name={<Icon iconName="settings" color="white" size="35px" />}
             id="button-settings"
             onClick={() => {
-              console.log(window);
+              pullDisable();
             }}
           />
         </div>

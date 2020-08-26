@@ -1,17 +1,20 @@
 const INITIAL_STATE = {
-  user: [],
   isActive: true,
-  loading: undefined,
-  error: undefined,
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case 'getDataUser':
+    case 'pullActive':
       return {
         ...state,
-        user: action.payload,
+        isActive: action.payload,
       };
+    case 'pullDisable': {
+      return {
+        ...state,
+        isActive: action.payload,
+      };
+    }
     default: return state;
   }
 };
