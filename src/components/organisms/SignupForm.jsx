@@ -15,13 +15,34 @@ const SignupForm = () => {
     });
   };
 
+  const fetchSignup = async (data) => {
+    const URL_API_SIGNUP = 'http://68.183.108.146:8000/users/signup/';
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: { 'Content-Type': 'application/json' },
+    };
+
+    try {
+      const response = await fetch(URL_API_SIGNUP, options);
+      const status = await response.status;
+      const res = await response.json();
+      console.log('status', status);
+      console.log('respuesta', res);
+      if (status === 201) {
+        alert('La cuenta se ha creado con éxito!')
+      }
+    } catch(error) {
+      console.log('que feo error', error);
+    }
+  };
+
   const submituserRegistrationForm = (ev) => {
     ev.preventDefault();
     if (validateForm()) {
       setErrorsFields({});
-      console.log('fields', fields);
-      alert('Form submitted');
-      // envio a la api
+      fetchSignup(fields);
+      console.log('Form submitted');
     }
   };
 
@@ -111,7 +132,7 @@ const SignupForm = () => {
   };
 
   return (
-    <form className="SignupForm" method="post" name="userRegistrationForm" onSubmit={submituserRegistrationForm}>
+    <form className="SignupForm" id="SignupForm" method="post" name="userRegistrationForm" onSubmit={submituserRegistrationForm}>
       <Input
         type="text"
         label="Nombre"
