@@ -1,0 +1,59 @@
+.icon-button {
+  margin: $Spacing-ExtraSmall 0;
+  padding: $Spacing-ExtraSmall;
+  border-radius: $Border-Radius-circle;
+  border: none;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size: $Font-ParagraphLarge;
+  font-weight: bold;
+  transition: 200ms;
+  outline: none;
+  &:hover {
+    opacity: .7;
+    cursor:pointer;
+  }
+
+  &:active {
+    transition: 200ms;
+    transform: scale(.8);
+  }
+}
+
+.icon-button.icon-button--normal {
+  & .default-icon{
+    color: var(--Color-Grayscale-1);
+  }
+  background-color: var(--Color-Primary);
+}
+
+.icon-button.icon-button--outline {
+  & .default-icon{
+    color: var(--Color-Primary);
+  }
+  box-sizing: border-box;
+  border: 2px solid var(--Color-Primary);
+  background-color: var(--Color-Grayscale-1);
+}
+
+.icon-button.icon-button--disabled {
+  & .default-icon{
+    color: var(--Color-Grayscale-1);
+  } 
+  background-color: var(--Color-Grayscale-3);
+  &:hover {
+    box-shadow: 0 1px 8px var(--Color-Grayscale-3);
+  }
+}
+
+.icon-button.icon-button--danger {
+  & .default-icon{
+    color: var(--Color-Negative);
+  }
+  border: 2px solid var(--Color-Negative);
+  background-color: transparent;
+  &:hover {
+    box-shadow: 0 1px 8px var(--Color-Negative);
+  }
+}
