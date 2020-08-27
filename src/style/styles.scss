@@ -14,6 +14,7 @@
 @import './components/atoms/AddClothe';
 @import './components/atoms/ClotheCard';
 @import './components/atoms/ButtonsBar';
+@import './components/atoms/Accordion';
 
 @import './components/organisms/SignupForm';
 @import './components/organisms/LoginForm';
@@ -22,10 +23,14 @@
 @import './components/organisms/EditProfile';
 @import './components/organisms/Settings';
 @import './components/organisms/Modal';
+@import './components/organisms/Slider';
 
 @import './pages/PrivacyPolicy';
 @import './pages/Signup';
 @import './pages/Login';
 @import './pages/UserPerfil';
+@import './pages/Feed';
+
+@import "react-alice-carousel/lib/scss/alice-carousel.scss";
 
 // @import '';

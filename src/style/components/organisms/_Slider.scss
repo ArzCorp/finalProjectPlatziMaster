@@ -1,0 +1,38 @@
+.sliderimg{
+    width: 100%;
+    height: 500px;
+    object-fit: cover
+  }
+
+.alice-carousel {
+     display: flex;
+    flex-direction: column-reverse;
+    box-sizing: border-box;
+    width: 100% !important;
+    max-width:30%;
+     margin: auto !important;
+     direction: initial !important;
+}
+.alice-carousel__prev-btn,
+.alice-carousel__next-btn{
+    display:none !important
+}
+.alice-carousel__dots-item.__active{
+    background-color: var(--Color-Primary) !important;
+    opacity:1
+}
+.alice-carousel__dots-item:hover{
+    background-color: var(--Color-Primary) !important;
+    opacity:1
+}
+.alice-carousel__dots-item{
+    background-color: var(--Color-Primary) !important;
+    opacity:.5
+}
+
+@media screen and(max-width: 768px) {
+    .alice-carousel {
+       max-width:100%;
+   }
+}
+  

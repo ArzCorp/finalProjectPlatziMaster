@@ -8,6 +8,7 @@ import Signup from '../pages/Signup';
 import PrivacyPolicy from '../pages/PrivacyPolicy';
 import Login from '../pages/Login';
 import UserPerfil from '../pages/UserPerfil';
+import Feed from '../pages/Feed';
 
 const App = () => (
   <HashRouter basename={process.env.PUBLIC_URL}>
@@ -18,6 +19,7 @@ const App = () => (
       <Route exact path="/login" component={Login} />
       <Route exact path="/perfil" component={UserPerfil} />
       <Route exact path="/notifications" component={UserPerfil} />
+      <Route exact path="/feed" component={Feed} />
     </Switch>
   </HashRouter>
 );

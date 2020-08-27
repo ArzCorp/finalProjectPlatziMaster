@@ -1,0 +1,53 @@
+.accordion{
+  width: 100%; 
+  color: white !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: sticky;
+  bottom: 95px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #007840 80%);
+  & .top-info{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 50%;
+    justify-items: center;
+    margin-top: 50px;
+    letter-spacing: 1px;
+  }
+  & .bottom-info{
+    width: 70%;
+    height:0;
+    overflow:hidden;
+    transition: all .3s;
+    margin-bottom:20px;
+    letter-spacing: 0.8px;
+  }
+  & .bottom-info-collapse{
+    height:100px;
+    transition: all .3s  
+  }
+
+  & .accordion-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    & .default-icon.our-iconlocation{
+      margin-right: 10px;
+    }
+  }
+
+  & .general_gradient{
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #007840 100%);
+    width: 100%;
+    z-index: -1;
+  }
+  & .genre-state{
+    width:50%
+  }
+
+}
+
+.icon-rotate{
+  transform: rotate(180deg);
+}
