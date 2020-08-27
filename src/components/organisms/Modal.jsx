@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Button from '../atoms/Button';
 import Icon from '../atoms/Icon';
+import IconButton from '../atoms/IconButton';
 
 const Modal = ({ isOpenModal, type, isClose, children }) => {
   if (!isOpenModal) {
@@ -11,15 +12,9 @@ const Modal = ({ isOpenModal, type, isClose, children }) => {
     <div className="modal">
       <div className="modal__container">
         <div className="modal__close">
-          <Button
-            type="danger"
-            name={(
-              <Icon
-                iconName="Cross"
-                color="red"
-              />
-            )}
-            onClick={() => {
+          <IconButton 
+            iconName="Cross"
+            handleClick={() => {
               isClose(type);
             }}
           />
