@@ -1,0 +1,26 @@
+.feed{
+    position:relative;
+    width: 100vw;
+    height:100vh;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+
+.feed .buttons-bar{
+    position: fixed;
+    bottom: 20px;
+    z-index: 1
+}
+
+.feed .navbar{
+    margin: initial
+}
+.feed .search-button{
+    position:absolute;
+    right: 20px;
+    top: 58px;
+    z-index:1
+}
+
+

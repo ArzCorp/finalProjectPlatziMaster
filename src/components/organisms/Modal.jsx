@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Button from '../atoms/Button';
-import Icon from '../atoms/Icon';
+import IconButton from '../atoms/IconButton';
 
 const Modal = ({ modalState, onCloseModal, children }) => {
   if (!modalState) {
@@ -11,16 +10,9 @@ const Modal = ({ modalState, onCloseModal, children }) => {
     <div className="modal">
       <div className="modal__container">
         <div className="modal__close">
-          <Button
-            type="danger"
-            name={(
-              <Icon
-                iconName="Cross"
-                color="red"
-              />
-            )}
-            onClick={onCloseModal}
-
+          <IconButton
+            iconName="Cross"
+            handleClick={onCloseModal}
           />
         </div>
         {children}

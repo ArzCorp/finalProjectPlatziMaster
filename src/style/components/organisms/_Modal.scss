@@ -9,12 +9,14 @@
   right: 0;
   width: 100vw;
   height: 100vh;
-  background-color: $Color-PrimaryLight-1;
+  background-color: var(--Color-PrimaryLight-1-translucent);
+  color: var(--Color-Grayscale-1);
   &__container{
-  background-color: $Color-Grayscale-1;
-  justify-content: center;
-  width: 90%;
-  height: 90%;
+    display: flex;
+    align-items: center;
+    flex-direction:column;
+    width: 90%;
+    height: 90%;
     & .addImage__label {
       margin: $Spacing-Normal auto;
       width: 80%;
@@ -23,6 +25,7 @@
   &__close{
     display: flex;
     justify-content: flex-end;
+    width:100%;
     & .btn__danger {
       display: flex;
       justify-content: center;
