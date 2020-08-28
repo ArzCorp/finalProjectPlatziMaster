@@ -2,10 +2,24 @@ const INITIAL_STATE = {
   isOpenModalImage: false,
   isOpenModalAdd: false,
   isOpenModalEdit: false,
+  SignupModalState: false,
+  LoginModalState: false,
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case 'SignupModal':
+      return {
+        ...state,
+        SignupModalState: action.payload,
+      };
+    case 'LoginModal':
+      return {
+        ...state,
+        LoginModalState: action.payload,
+      };
+
+
     case 'isOpenImage':
       return {
         ...state,

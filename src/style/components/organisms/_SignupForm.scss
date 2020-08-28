@@ -7,6 +7,16 @@
     color: var(--Color-Negative);
   }
 
+  &__feedback {
+    border-radius: $Border-Radius;
+    padding: $Spacing-ExtraSmall;
+    margin-top: $Spacing-Small;
+    text-align: center;
+    font-weight: $Bold;
+    color: var(--Color-Negative);
+    background-color: var(--Color-Alert);
+  }
+
   &__buttons {
     margin-top: $Spacing-Large;
   }

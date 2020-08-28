@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import Button from '../atoms/Button';
 import Icon from '../atoms/Icon';
 
-const Modal = ({ isOpenModal, type, isClose, children }) => {
-  if (!isOpenModal) {
+const Modal = ({ modalState, onCloseModal, children }) => {
+  if (!modalState) {
     return null;
   }
   return ReactDOM.createPortal(
@@ -19,9 +19,8 @@ const Modal = ({ isOpenModal, type, isClose, children }) => {
                 color="red"
               />
             )}
-            onClick={() => {
-              isClose(type);
-            }}
+            onClick={onCloseModal}
+
           />
         </div>
         {children}

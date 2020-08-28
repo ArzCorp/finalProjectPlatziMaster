@@ -14,7 +14,7 @@ const App = () => (
     <Switch>
       <Route exact path="/" component={GridExample} />
       <Route exact path="/signup" component={Signup} />
-      <Route exact path="/privacy_policy" component={PrivacyPolicy} />
+      <Route exact path="/privacy-policy" component={PrivacyPolicy} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/perfil" component={UserPerfil} />
       <Route exact path="/notifications" component={UserPerfil} />
