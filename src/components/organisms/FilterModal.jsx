@@ -4,21 +4,20 @@ import Modal from './Modal';
 import Button from '../atoms/Button';
 import Select from '../atoms/Select';
 
-const FilterModal = ({ isClose, isOpenModal, buttonName }) => (
+const FilterModal = ({ modalState, onCloseModal }) => (
   <Modal
-    isOpenModal={isOpenModal}
-    isClose={isClose}
-    type="isCloseEdit"
+    modalState={modalState}
+    onCloseModal={onCloseModal}
   >
 
-  <div className="filter-modal">
+    <div className="filter-modal">
 
     <div>
 
       <h1>¿Qué estás buscando?</h1>
-      <br /> 
+      <br />
       <p>Elige las opciones para encontrar tu próxima prenda</p>
-      <br /> 
+      <br />
 
       <Select label="Categoría" opt1="Camisas" opt2="Jeans" opt3="Zapatos" />
       <Select label="Género" />
@@ -28,14 +27,14 @@ const FilterModal = ({ isClose, isOpenModal, buttonName }) => (
       <Select label="Color" />
 
     </div>
- 
-    <Button
-      type="normal"
-      name="filtrar"
-    />
 
-  </div>
-  
+      <Button
+        type="normal"
+        name="filtrar"
+      />
+
+    </div>
+
   </Modal>
 );
 
