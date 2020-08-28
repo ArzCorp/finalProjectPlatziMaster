@@ -1,0 +1,45 @@
+.clothe {
+  padding: $Spacing-ExtraSmall;
+}
+
+.clothe h2, h4 {
+  color: $Color-PrimaryLight-1;
+  margin-bottom: $Spacing-ExtraSmall;
+}
+
+
+.clothe__description {
+  margin: $Spacing-Normal 0px;
+  & .description__clothe {
+    width: 100%;
+    padding: $Spacing-ExtraSmall;
+    border: none;
+    box-shadow: $Box-ShadowActive;
+    height: 150px;
+    outline: none;
+    margin-top: $Spacing-ExtraSmall;
+    resize: none;
+    overflow: auto;
+  }
+}
+
+
+.clothe__images {
+  margin-top: $Spacing-Normal;
+  & .addImage__label {
+    margin: $Spacing-ExtraSmall auto;
+    width: 200px;
+    height: 200px;
+  }
+  & div {
+    display: flex;
+    & .addImage__label {
+      width: 115px;
+      text-align: center;
+    }
+  }
+}
+
+.clothe__details {
+  margin-top: $Spacing-Normal;
+}

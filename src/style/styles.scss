@@ -6,6 +6,7 @@
 @import './vendors/Grid';
 
 @import './components/atoms/PrivacyPolicy';
+@import './components/atoms/inputSelect';
 @import './components/atoms/Button';
 @import './components/atoms/IconButton';
 @import './components/atoms/Input';
@@ -22,6 +23,7 @@
 @import './components/organisms/EditProfile';
 @import './components/organisms/Settings';
 @import './components/organisms/Modal';
+@import './components/organisms/AddClotheModal';
 
 @import './pages/PrivacyPolicy';
 @import './pages/Signup';
