@@ -2,7 +2,7 @@ import React from 'react';
 
 import Icon from './Icon';
 
-const AddClothe = ({ name }) => (
+const AddImage = ({ name }) => (
   <>
     <label
       htmlFor="addImage"
@@ -23,4 +23,4 @@ const AddClothe = ({ name }) => (
   </>
 );
 
-export default AddClothe;
+export default AddImage;

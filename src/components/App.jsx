@@ -8,16 +8,18 @@ import Signup from '../pages/Signup';
 import PrivacyPolicy from '../pages/PrivacyPolicy';
 import Login from '../pages/Login';
 import UserPerfil from '../pages/UserPerfil';
+import Feed from '../pages/Feed';
 
 const App = () => (
   <HashRouter basename={process.env.PUBLIC_URL}>
     <Switch>
       <Route exact path="/" component={GridExample} />
       <Route exact path="/signup" component={Signup} />
-      <Route exact path="/privacy_policy" component={PrivacyPolicy} />
+      <Route exact path="/privacy-policy" component={PrivacyPolicy} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/perfil" component={UserPerfil} />
       <Route exact path="/notifications" component={UserPerfil} />
+      <Route exact path="/feed" component={Feed} />
     </Switch>
   </HashRouter>
 );

@@ -1,13 +1,6 @@
-export const isOpen = (type) => (dispatch) => {
+export const turnModalState = (type, newModalState) => (dispatch) => {
   dispatch({
     type,
-    payload: true,
-  });
-};
-
-export const isClose = (type) => (dispatch) => {
-  dispatch({
-    type,
-    payload: false,
+    payload: newModalState,
   });
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Input = ({ type, label, placeholder, name, id, onChange, onKeyPress }) => (
+const Input = ({ value, type, label, placeholder, name, id, onChange, onKeyPress }) => (
   <div className="form__input">
     <label>
       *
@@ -13,6 +13,7 @@ const Input = ({ type, label, placeholder, name, id, onChange, onKeyPress }) => 
       id={id || null}
       onChange={onChange}
       onKeyPress={onKeyPress}
+      defaultValue={value || ''}
     />
   </div>
 );

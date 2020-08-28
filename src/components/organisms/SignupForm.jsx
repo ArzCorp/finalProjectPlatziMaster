@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import * as userActions from '../../actions/userActions';
+import * as modalActions from '../../actions/ModalActions';
 
 import Input from '../atoms/Input';
 import Button from '../atoms/Button';
+import SignupModal from './SignupModal';
 
-const SignupForm = () => {
+const SignupForm = (props) => {
   const [fields, setFields] = useState(0);
-  const [errorsFields, setErrorsFields] = useState(0);
 
   const handleChange = (ev) => {
     setFields({
@@ -15,103 +19,51 @@ const SignupForm = () => {
     });
   };
 
-  const submituserRegistrationForm = (ev) => {
+  const submituserRegistrationForm = async (ev) => {
     ev.preventDefault();
-    if (validateForm()) {
-      setErrorsFields({});
-      console.log('fields', fields);
-      alert('Form submitted');
-      // envio a la api
-    }
-  };
+    if (props.validateForm(fields, 'SignupForm')) {
+      const valid = await props.fetchSignupUser(fields);
 
-  const validateForm = () => {
-    const errors = {};
-    let formIsValid = true;
-
-    if (!fields.first_name) {
-      formIsValid = false;
-      errors.first_name = '*Ingresa tu(s) nombre(s).';
-    }
-
-    if (typeof fields.first_name !== 'undefined') {
-      if (!fields.first_name.match(/^[a-zA-Z ]*$/)) {
-        formIsValid = false;
-        errors.first_name = '*Solo usa caracteres del alfabeto.';
+      if (valid) {
+        props.turnModalState('SignupModal', true);
+        setTimeout(() => {
+          props.turnModalState('SignupModal', false);
+          window.location.href = '/#/login';
+        }, 2000);
       }
     }
-
-    if (!fields.last_name) {
-      formIsValid = false;
-      errors.last_name = '*Ingresa tu(s) apellido(s).';
-    }
-
-    if (typeof fields.last_name !== 'undefined') {
-      if (!fields.last_name.match(/^[a-zA-Z]*$/)) {
-        formIsValid = false;
-        errors.last_name = '*Solo usa caracteres del alfabeto.';
-      }
-    }
-
-    if (!fields.username) {
-      formIsValid = false;
-      errors.username = '*Ingresa tu número de teléfono.';
-    }
-
-    if (typeof fields.username !== 'undefined') {
-      if (!fields.username.match(/^[0-9]{10}$/)) {
-        formIsValid = false;
-        errors.username = '*Ingresa un numero valido de 10 digitos.';
-      }
-    }
-
-    if (!fields.password) {
-      formIsValid = false;
-      errors.password = '*Ingresa tu contraseña.';
-    }
-
-    if (typeof fields.password !== 'undefined') {
-      if (!fields.password.match(/^.*(?=.{8,}).*$/)) {
-        formIsValid = false;
-        errors.password = '*La contraseña debe tener al menos 8 digitos.';
-      }
-    }
-
-    if (!fields.password_confirmation) {
-      formIsValid = false;
-      errors.password_confirmation = '*Debes confirmar tu contraseña.';
-    }
-
-    if (typeof fields.password_confirmation !== 'undefined') {
-      if (!fields.password_confirmation.match(fields.password)) {
-        formIsValid = false;
-        errors.password_confirmation = '*Las contraseñas no coinciden.';
-      }
-    }
-
-    setErrorsFields({ errors });
-    return formIsValid;
   };
 
   const validateField = (field) => {
-    if (errorsFields.errors) {
-      if (errorsFields.errors[field]) {
-        return (
-          <div className="SignupForm__errorMsg">
-            <p>
-              <small>
-                {errorsFields.errors[field]}
-              </small>
-            </p>
-          </div>
-        );
-      }
+    const errorsCout = props.userReducer.errorsFields;
+    if (errorsCout[`${field}`]) {
+      return (
+        <div className="SignupForm__errorMsg">
+          <p>
+            <small>{errorsCout[`${field}`]}</small>
+          </p>
+        </div>
+      );
+    }
+    return null;
+  };
+
+  const getFeedbackBackend = () => {
+    const feedbackBackend = props.userReducer.userSignup;
+
+    if (feedbackBackend.username || feedbackBackend.non_field_errors) {
+      return (
+        <div className="SignupForm__feedback">
+          <p>{feedbackBackend.username}</p>
+          <p>{feedbackBackend.non_field_errors}</p>
+        </div>
+      );
     }
     return null;
   };
 
   return (
-    <form className="SignupForm" method="post" name="userRegistrationForm" onSubmit={submituserRegistrationForm}>
+    <form className="SignupForm" id="SignupForm" method="post" name="userRegistrationForm" onSubmit={submituserRegistrationForm}>
       <Input
         type="text"
         label="Nombre"
@@ -152,14 +104,29 @@ const SignupForm = () => {
         onChange={handleChange}
       />
       {validateField('password_confirmation')}
+      {getFeedbackBackend()}
       <div className="SignupForm__buttons">
         <Button name="Registrarse" type="normal" />
         <Link to="/login">
           <Button name="Ya tengo una cuenta" type="outline" />
         </Link>
       </div>
+      <SignupModal
+        modalState={props.modalReducers.SignupModalState}
+        onCloseModal={() => props.turnModalState('SignupModal', false)}
+      />
     </form>
   );
 };
 
-export default SignupForm;
+const mapStateToProps = ({ userReducer, modalReducers }) => ({
+  userReducer,
+  modalReducers,
+});
+
+const mapDipatchToProps = {
+  ...userActions,
+  ...modalActions,
+};
+
+export default connect(mapStateToProps, mapDipatchToProps)(SignupForm);

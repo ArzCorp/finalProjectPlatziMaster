@@ -1,13 +1,6 @@
-export const pullActive = () => (dispatch) => {
+export const changeButtonState = (type, state) => (dispatch) => {
   dispatch({
-    type: 'pullActive',
-    payload: true,
-  });
-};
-
-export const pullDisable = () => (dispatch) => {
-  dispatch({
-    type: 'pullDisable',
-    payload: false,
+    type,
+    payload: state,
   });
 };

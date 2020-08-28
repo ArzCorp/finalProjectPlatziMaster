@@ -1,15 +1,16 @@
 import React from 'react';
-import Modal from './Modal';
+import { connect } from 'react-redux';
 
+import * as modalActions from '../../actions/ModalActions';
+
+import Modal from './Modal';
 import AddImage from '../atoms/AddImage';
 import Button from '../atoms/Button';
 
-const AddClotheModal = ({ isOpenModal, isOpen, isClose }) => (
+const AddClotheModal = ({ modalReducers: { AddImageModalState }, turnModalState }) => (
   <Modal
-    isOpenModal={isOpenModal}
-    isOpen={isOpen}
-    isClose={isClose}
-    type="isCloseImage"
+    modalState={AddImageModalState}
+    onCloseModal={() => { turnModalState('AddImageModal', false); }}
   >
     <AddImage />
     <Button
@@ -19,4 +20,8 @@ const AddClotheModal = ({ isOpenModal, isOpen, isClose }) => (
   </Modal>
 );
 
-export default AddClotheModal;
+const mapStateToProps = ({ modalReducers }) => ({
+  modalReducers,
+});
+
+export default connect(mapStateToProps, modalActions)(AddClotheModal);

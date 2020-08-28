@@ -1,15 +1,17 @@
 import React from 'react';
-import Modal from './Modal';
+import { connect } from 'react-redux';
 
+import * as modalActions from '../../actions/ModalActions';
+
+import Modal from './Modal';
 import AddImage from '../atoms/AddImage';
 import Button from '../atoms/Button';
 import InputSelect from '../atoms/InputSelect';
 
-const EditClotheModal = ({ isClose, isOpenModal, buttonName }) => (
+const EditClotheModal = ({ turnModalState, modalReducers: { EditClotheModalState } }) => (
   <Modal
-    isOpenModal={isOpenModal}
-    isClose={isClose}
-    type="isCloseEdit"
+    modalState={EditClotheModalState}
+    onCloseModal={() => { turnModalState('EditClotheModal', false); }}
   >
     <form className="clothe">
       <h2>Editar prenda</h2>
@@ -94,10 +96,14 @@ const EditClotheModal = ({ isClose, isOpenModal, buttonName }) => (
       </div>
       <Button
         type="normal"
-        name={buttonName}
+        name="Editar"
       />
     </form>
   </Modal>
 );
 
-export default EditClotheModal;
+const mapStateToProps = ({ modalReducers }) => ({
+  modalReducers,
+});
+
+export default connect(mapStateToProps, modalActions)(EditClotheModal);

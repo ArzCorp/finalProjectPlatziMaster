@@ -1,18 +1,18 @@
 const INITIAL_STATE = {
-  isActive: true,
+  isButtonActive: true,
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case 'pullActive':
+    case 'isActive':
       return {
         ...state,
-        isActive: action.payload,
+        isButtonActive: action.payload,
       };
-    case 'pullDisable': {
+    case 'isDisabled': {
       return {
         ...state,
-        isActive: action.payload,
+        isButtonActive: action.payload,
       };
     }
     default: return state;

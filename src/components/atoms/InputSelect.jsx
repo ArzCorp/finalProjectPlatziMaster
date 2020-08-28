@@ -1,6 +1,6 @@
 import React from 'react';
 
-const InputSelect = ({ value, disabled, required, label, children, name }) => (
+const InputSelect = ({ value, onChange, disabled, required, label, children, name }) => (
   <div className="select">
     <label>{label}</label>
     <select
@@ -9,6 +9,7 @@ const InputSelect = ({ value, disabled, required, label, children, name }) => (
       disabled={disabled || false}
       required={required || false}
       defaultValue={value || ''}
+      onChange={onChange}
     >
       {children}
     </select>

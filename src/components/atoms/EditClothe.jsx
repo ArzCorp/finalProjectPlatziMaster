@@ -1,36 +1,37 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 
-import Button from './Button';
+import * as modalActions from '../../actions/ModalActions';
 import EditClotheModal from '../organisms/EditClotheModal';
+import Button from './Button';
 
-class EditClothe extends PureComponent {
-  render() {
-    const { src, type, isOpenModal, isOpen, isClose } = this.props;
-    return (
-      <>
-        <Button
-          name={(
-            <>
-              <img
-                src={src}
-                alt={`imagen de ${type}`}
-                className="clothe__image"
-              />
-              ,
-              <h3>
-                tipo
-              </h3>
-            </>
-          )}
-          onClick={() => {
-            isOpen('isOpenEdit');
-          }}
-          id="btn-editclothe"
-        />
-        <EditClotheModal isOpenModal={isOpenModal} isClose={isClose} buttonName="Editar" />
-      </>
-    );
-  }
-}
+const EditClothe = ({ src, type, turnModalState }) => (
+  <>
+    <Button
+      id="btn-editclothe"
+      name={(
+        <>
+          <img
+            src={src}
+            alt={`imagen de ${type}`}
+            className="clothe__image"
+          />
+          ,
+          <h3>
+            tipo
+          </h3>
+        </>
+      )}
+      onClick={() => {
+        turnModalState('EditClotheModal', true);
+      }}
+    />
+    <EditClotheModal />
+  </>
+);
 
-export default EditClothe;
+const mapStateToProps = ({ modalReducers }) => ({
+  modalReducers,
+});
+
+export default connect(mapStateToProps, modalActions)(EditClothe);

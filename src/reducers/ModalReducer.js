@@ -1,44 +1,38 @@
 const INITIAL_STATE = {
-  isOpenModalImage: false,
-  isOpenModalAdd: false,
-  isOpenModalEdit: false,
+  AddImageModalState: false,
+  AddClotheModalState: false,
+  EditClotheModalState: false,
+  SignupModalState: false,
+  LoginModalState: false,
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case 'isOpenImage':
+    case 'SignupModal':
       return {
         ...state,
-        isOpenModalImage: action.payload,
+        SignupModalState: action.payload,
       };
-    case 'isCloseImage': {
+    case 'LoginModal':
       return {
         ...state,
-        isOpenModalImage: action.payload,
+        LoginModalState: action.payload,
       };
-    }
-    case 'isOpenAdd':
+    case 'AddImageModal':
       return {
         ...state,
-        isOpenModalAdd: action.payload,
+        AddImageModalState: action.payload,
       };
-    case 'isCloseAdd': {
+    case 'AddClotheModal':
       return {
         ...state,
-        isOpenModalAdd: action.payload,
+        AddClotheModalState: action.payload,
       };
-    }
-    case 'isOpenEdit':
+    case 'EditClotheModal':
       return {
         ...state,
-        isOpenModalEdit: action.payload,
+        EditClotheModalState: action.payload,
       };
-    case 'isCloseEdit': {
-      return {
-        ...state,
-        isOpenModalEdit: action.payload,
-      };
-    }
     default: return state;
   }
 };
