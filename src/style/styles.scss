@@ -9,6 +9,7 @@
 @import './components/atoms/Button';
 @import './components/atoms/IconButton';
 @import './components/atoms/Input';
+@import './components/atoms/Select';
 @import './components/atoms/ImageProfile';
 @import './components/atoms/Loader';
 @import './components/atoms/AddImage';
@@ -28,6 +29,7 @@
 @import './components/organisms/Settings';
 @import './components/organisms/Modal';
 @import './components/organisms/Slider';
+@import './components/organisms/FilterModal';
 
 @import './pages/PrivacyPolicy';
 @import './pages/Signup';
