@@ -1,0 +1,47 @@
+.notification {
+  position: relative;
+  width: 100%;
+  min-height: 100px;
+  margin-bottom: $Spacing-Normal;
+  padding: $Spacing-ExtraSmall;
+  box-shadow: $Box-Shadow;
+  border-radius: $Border-Radius;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    box-shadow: $Box-ShadowActive;
+  }
+
+  &__picture {
+    flex: 1;
+    height: 100px;
+    padding-right: $Spacing-ExtraSmall;
+
+    & img {
+      max-height: 100%;
+    }
+  }
+
+  &__body {
+    flex: 4;
+    align-self: flex-start;
+
+    & h2 {
+      color: var(--Color-Primary);
+      margin-bottom: $Spacing-ExtraSmall;
+    }
+  }
+
+  &__iconType {
+    width: 3rem;
+    text-align: center;
+  }
+
+  &__deletNotification {
+    position: absolute;
+    height: fit-content;
+    top: -5px;
+    right: 5px;
+  }
+}

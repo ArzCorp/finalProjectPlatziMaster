@@ -10,29 +10,29 @@ const GridExample = () => (
   <section>
     <div className="feed">
 
-        <NavBar />
+      <NavBar />
 
-        <div className="search-button">
-            <IconButton iconName="search" space="40px" type="disabled" handleClick={() => alert('Filtro')}  />
-        </div>
+      <div className="search-button">
+        <IconButton iconName="search" space="40px" type="disabled" handleClick={() => alert('Filtro')}  />
+      </div>
 
-        <Slider/>
+      <Slider/>
 
-        <Accordion 
-          location="Mexico D.F." 
-          clothesName="Chamarra" 
-          NameOwner="Alberto" 
-          clothesGenre="Masculino" 
-          clothesState="Usado" 
-          clothesInfo=" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat commodo consequats" 
-        />
+      <Accordion 
+        location="Mexico D.F." 
+        clothesName="Chamarra" 
+        NameOwner="Alberto" 
+        clothesGenre="Masculino" 
+        clothesState="Usado" 
+        clothesInfo=" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat commodo consequats" 
+      />
 
-        <ButtonsBar
-          handleDislike={() => alert('dislike')}
-          handleSuperlike={() => alert('superlike')}
-          handlelike={() => alert('like')}
-        />
-      
+      <ButtonsBar
+        handleDislike={() => alert('dislike')}
+        handleSuperlike={() => alert('superlike')}
+        handlelike={() => alert('like')}
+      />
+
     </div>
   </section>
 );
