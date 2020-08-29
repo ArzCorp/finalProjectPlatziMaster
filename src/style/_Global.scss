@@ -3,6 +3,9 @@ $Border-Radius-circle: 50%;
 $Box-Shadow: 0 1px 3px var(--Color-Primary);
 $Box-ShadowActive: 0 1px 8px var(--Color-Primary);
 
+$z-index-Modal: 6;
+$z-index-ButtonsBar: 5;
+
 :root{
   --Box-Shadow-no-color: 0 1px 3px;
 }

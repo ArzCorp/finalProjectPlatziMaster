@@ -3,6 +3,7 @@ import React from 'react';
 import Icon from './Icon';
 
 const IconButton = (props) => {
+  console.log(props);
   const {
     iconName, size, colorIcon, handleClick, bgColor, space, type,
   } = props;

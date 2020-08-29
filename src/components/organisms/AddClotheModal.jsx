@@ -9,7 +9,7 @@ import AddImage from '../atoms/AddImage';
 import Button from '../atoms/Button';
 import InputSelect from '../atoms/InputSelect';
 
-const AddClotheModal = ({ turnModalState, modalReducers: { AddClotheModalState } }) => {
+const AddClotheModal = ({ turnModalState, addClothe, modalReducers: { AddClotheModalState }, userReducer: { userLoged: { token } } }) => {
   const [fields, setField] = useState(0);
 
   const handleChange = (ev) => {
@@ -17,15 +17,19 @@ const AddClotheModal = ({ turnModalState, modalReducers: { AddClotheModalState }
       ...fields,
       [ev.target.name]: ev.target.value,
     });
-    console.log(fields);
   };
-
+  console.log(fields);
   return (
     <Modal
       modalState={AddClotheModalState}
       onCloseModal={() => turnModalState('AddClotheModal', false)}
     >
-      <form className="clothe">
+      <form
+        className="clothe"
+        method="post"
+        name="addClothe"
+        onSubmit={() => { addClothe(fields, token); }}
+      >
         <h2>Agrega prenda</h2>
         <div className="clothe__description">
           <h4>Descripcion:</h4>
@@ -93,7 +97,7 @@ const AddClotheModal = ({ turnModalState, modalReducers: { AddClotheModalState }
           </InputSelect>
           <InputSelect
             label="Genero:"
-            name="gener"
+            name="gender"
             onChange={handleChange}
           >
             <option>Masculino</option>

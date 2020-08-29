@@ -4,13 +4,15 @@ import { connect } from 'react-redux';
 import * as userActions from '../../actions/userActions';
 import * as modalActions from '../../actions/ModalActions';
 
+import ProfileImage from '../../../public/assets/images/imageProfile.png';
+
 import Icon from './Icon';
 import Button from './Button';
 import AddImageModal from '../organisms/AddImageModal';
 
 const ImageProfile = ({ url, turnModalState }) => (
   <div className="profile">
-    <img className="profile__image" alt="perfil" src={url} />
+    <img className="profile__image" alt="perfil" src={url || ProfileImage} />
     <Button
       className="btn"
       onClick={() => {

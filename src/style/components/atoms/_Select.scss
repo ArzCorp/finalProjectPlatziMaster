@@ -1,0 +1,75 @@
+.form__Select {
+  margin-top: $Spacing-ExtraSmall;
+  width: 100%;
+ 
+
+  & .container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding:3px 4px 3px 20px;
+    box-shadow: $Box-Shadow;
+    border-radius: $Border-Radius;
+    border: none;
+    color: var(--Color-PrimaryLight-1);
+    background-color:var(--Color-Grayscale-1);
+    outline: none;
+    &  label {
+        flex:.5;
+        color: var(--Color-PrimaryLight-1);
+        font-size: 1rem;
+    }
+    & .select {
+      flex:1;
+      padding: 10px;
+      appearance: none;
+      outline: 0;
+      box-shadow: none;
+      border: 0 !important;
+      width: 100%;
+      color:var(--Color-Grayscale-4);
+      background-image: none;
+      font-size: 1rem;
+    }
+    & .default-icon.our-icondown-arrow{
+      position: absolute;
+      right: 20px;
+
+    }
+  }
+  
+  .select:hover::after {
+    color: #f39c12;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  input {
+    width: 100%;
+    padding: $Spacing-ExtraSmall;
+    box-shadow: $Box-Shadow;
+    border-radius: $Border-Radius;
+    border: none;
+    font-size: $Font-ParagraphLarge;
+    color: var(--Color-PrimaryLight-1);
+    outline: none;
+  }
+
+  input:focus {
+    box-shadow: $Box-ShadowActive;
+  }
+
+  ::placeholder {
+    color: var(--Color-PrimaryLight-2);
+  }
+}

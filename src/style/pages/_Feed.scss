@@ -10,7 +10,7 @@
 .feed .buttons-bar{
     position: fixed;
     bottom: 20px;
-    z-index: 1
+    z-index: $z-index-ButtonsBar;
 }
 
 .feed .navbar{
@@ -20,7 +20,6 @@
     position:absolute;
     right: 20px;
     top: 58px;
-    z-index:1
 }
 
 

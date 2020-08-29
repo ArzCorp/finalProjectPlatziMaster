@@ -4,7 +4,7 @@ import EditProfile from './EditProfile';
 import AddClothe from '../atoms/AddClothe';
 import EditeClothe from '../atoms/EditClothe';
 
-const Settings = ({ isButtonActive }) => {
+const Settings = ({ userReducer, isButtonActive }) => {
   if (isButtonActive) {
     return (
       <div className="clothes">

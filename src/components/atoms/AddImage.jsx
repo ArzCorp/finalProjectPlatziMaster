@@ -2,7 +2,7 @@ import React from 'react';
 
 import Icon from './Icon';
 
-const AddImage = ({ name }) => (
+const AddImage = ({ onChange, name }) => (
   <>
     <label
       htmlFor="addImage"
@@ -19,6 +19,7 @@ const AddImage = ({ name }) => (
       id="addImage"
       className="addImage"
       name={name}
+      onChange={onChange}
     />
   </>
 );

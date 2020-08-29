@@ -1,0 +1,30 @@
+.logo {
+  width: 15rem;
+}
+
+.logo--animated {
+  animation: DropShadow 2.5s infinite;
+  position: absolute;
+}
+
+@keyframes DropShadow {
+  0% {top: -100%}
+  15% { top: 30%}
+  25% {top: 15%}
+  35% {top: 30%}
+  40% {top: 25%}
+  45% {
+    top: 30%;
+    filter: drop-shadow(1rem 1rem 1rem var(--Color-Primary));
+  }
+  50% {
+    top: 30%;
+    width: 16rem;
+    filter: drop-shadow(1rem 1rem 4rem var(--Color-Primary));
+  }
+  100% {
+    top: 15%;
+    width: 25rem;
+    filter: drop-shadow(1rem 1rem 10rem var(--Color-Primary));
+  }
+}

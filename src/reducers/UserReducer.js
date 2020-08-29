@@ -1,6 +1,7 @@
 const INITIAL_STATE = {
   userSignup: [],
   userLoged: [],
+  userClothes: [],
   errorsFields: [],
   formIsValid: false,
   stateLoginResponse: false,
@@ -26,7 +27,19 @@ export default (state = INITIAL_STATE, action) => {
     case 'EditProfile':
       return {
         ...state,
-        userLoged: action.payload.updateDataUser,
+        userLoged: action.payload,
+        errorsFields: action.payload.errors,
+      };
+    case 'addClotheData':
+      return {
+        ...state,
+        userClothes: action.payload,
+        errorsFields: action.payload.errors,
+      };
+    case 'getClotheData':
+      return {
+        ...state,
+        userClothes: action.payload,
         errorsFields: action.payload.errors,
       };
     case 'validateForm':

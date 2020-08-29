@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   EditClotheModalState: false,
   SignupModalState: false,
   LoginModalState: false,
+  FilterModalState: false,
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -22,6 +23,11 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         AddImageModalState: action.payload,
+      };
+    case 'FilterModal':
+      return {
+        ...state,
+        FilterModalState: action.payload,
       };
     case 'AddClotheModal':
       return {

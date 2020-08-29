@@ -42,25 +42,76 @@ export const fetchLoginUser = (data) => async (dispatch) => {
   return status;
 };
 
-export const EditProfile = (data, telephone) => async (dispatch) => {
-  const URL_API_LOGIN = `http://68.183.108.146:8000/users/${telephone}/`;
+export const editProfile = (data, telephone, token) => async (dispatch) => {
+  const URL_API_UPDATE = `http://68.183.108.146:8000/users/${telephone}/`;
   const OPTIONS = {
     method: 'PATCH',
     body: JSON.stringify(data),
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Token ${token}`,
+    },
   };
-
-  const response = await fetch(URL_API_LOGIN, OPTIONS);
+  const response = await fetch(URL_API_UPDATE, OPTIONS);
   const updateDataUser = await response.json();
-
-  const statusResponse = await response.status;
-  const status = (statusResponse === 200);
-
   dispatch({
     type: 'EditProfile',
-    payload: { updateDataUser, status },
+    payload: updateDataUser,
   });
-  return status;
+};
+
+export const editProfileImage = (data, telephone, token) => async (dispatch) => {
+  const URL_API_UPDATE = `http://68.183.108.146:8000/users/${telephone}/profile/`;
+  const OPTIONS = {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+      'content-type': 'application/x-www-form-urlencoded',
+      Authorization: `Token ${token}`,
+    },
+  };
+  const response = await fetch(URL_API_UPDATE, OPTIONS);
+  const updateDataUser = await response.json();
+  dispatch({
+    type: 'EditProfile',
+    payload: updateDataUser,
+  });
+};
+
+export const getUserClothes = (token) => async (dispatch) => {
+  const URL_API_UPDATE = 'http://68.183.108.146:8000/clothes/myclothes/';
+  const OPTIONS = {
+    method: 'GET',
+    body: JSON.stringify(),
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Token ${token}`,
+    },
+  };
+  const response = await fetch(URL_API_UPDATE, OPTIONS);
+  const getClothesData = await response.json();
+  dispatch({
+    type: 'getClotheData',
+    payload: getClothesData,
+  });
+};
+
+export const addClothe = (data, token) => async (dispatch) => {
+  const URL_API_UPDATE = 'http://68.183.108.146:8000/clothes/myclothes/';
+  const OPTIONS = {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Token ${token}`,
+    },
+  };
+  const response = await fetch(URL_API_UPDATE, OPTIONS);
+  const addClotheData = await response.json();
+  dispatch({
+    type: 'addClotheData',
+    payload: addClotheData,
+  });
 };
 
 export const validateForm = (fields, form) => (dispatch) => {
