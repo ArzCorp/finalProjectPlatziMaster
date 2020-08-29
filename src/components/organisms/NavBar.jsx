@@ -5,7 +5,7 @@ import Icon from '../atoms/Icon';
 
 const NavBar = () => (
   <nav className="navbar">
-    <Link to="/perfil">
+    <Link to="/profile">
       <Icon
         iconName="profile"
         size="25px"
