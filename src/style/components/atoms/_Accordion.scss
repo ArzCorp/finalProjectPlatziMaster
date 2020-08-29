@@ -1,31 +1,49 @@
 .accordion{
   width: 100%; 
-  color: white !important;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   position: sticky;
-  bottom: 95px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #007840 80%);
+  display: flex;
+  justify-content: center;
+  color: var(--Color-Grayscale-1) !important;
+  bottom: 0px;
+  background: linear-gradient(180deg, var(--Color-transparent) 0%, var(--Color-Primary) 80%);
+  text-shadow:$Box-Shadow;
+  &__content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom:96px;
+    background: linear-gradient(180deg, var(--Color-Primary) -10%, var(--Color-transparent) 40%);
+    border-radius: 90px;
+    border-radius: 50%;
+    padding: 10px;
+    width: 70%;
+    & .icon-button{
+       transform: rotate(180deg);
+       transition: all .5s;
+       box-shadow:$Box-Shadow !important; 
+       margin:initial ;
+    }
+  }
   & .top-info{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    width: 50%;
+    grid-gap:10px;
+    width: 70%;
     justify-items: center;
-    margin-top: 50px;
+    margin-top: 10px;
     letter-spacing: 1px;
+   
   }
   & .bottom-info{
-    width: 70%;
     height:0;
-    overflow:hidden;
+    overflow:auto;
     transition: all .3s;
-    margin-bottom:20px;
     letter-spacing: 0.8px;
+    margin-top:5px
   }
   & .bottom-info-collapse{
     height:100px;
-    transition: all .3s  
+    transition: all .3s;
   }
 
   & .accordion-row{
@@ -49,5 +67,21 @@
 }
 
 .icon-rotate{
-  transform: rotate(180deg);
+  transform: rotate(0deg)!important;
+}
+
+@media screen and(max-width: 1000px) {
+  .accordion .accordion__content{
+    width:80%
+  }
+}
+@media screen and(max-width: 700px) {
+  .accordion .accordion__content{
+    width:90%
+  }
+}
+@media screen and(max-width: 500px) {
+  .accordion .accordion__content{
+    width:100%
+  }
 }

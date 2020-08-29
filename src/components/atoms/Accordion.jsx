@@ -8,7 +8,7 @@ const Accordion = (props) => {
 
   const collapseAccordion = () => {
     var infoToggle = document.querySelector('.bottom-info');
-    var iconArrow = document.querySelector('span.default-icon.our-icondown-arrow');
+    var iconArrow = document.querySelector('.accordion__content .icon-button');
     infoToggle.classList.toggle("bottom-info-collapse");
     iconArrow.classList.toggle("icon-rotate");
 
@@ -17,34 +17,37 @@ const Accordion = (props) => {
   return (
     <div className="accordion">
 
-      <div className="top-info">
-        <h2>{NameOwner}</h2>
-        <h2>{clothesName}</h2>
+      <div className="accordion__content">
 
-        <div className="accordion-row">
-          <Icon color="white" iconName="location" />
-          <div>{location}</div>
-          </div>
-    
-        <div className="genre-state">
-          <div  className="accordion-row">
-            <div><b> Genero: </b></div>
-            <div>{clothesGenre}</div>
-          </div>
-          <div  className="accordion-row">
-            <div><b>Estado:</b></div>
-            <div>{clothesState}</div>
-          </div>
-          </div>
+        <div className="top-info">
+          <h2>{NameOwner}</h2>
+          <h2>{clothesName}</h2>
+
+          <div className="accordion-row">
+            <Icon color="white" iconName="location" />
+            <div>{location}</div>
+            </div>
       
+          <div className="genre-state">
+            <div  className="accordion-row">
+              <div><b> Genero: </b></div>
+              <div>{clothesGenre}</div>
+            </div>
+            <div  className="accordion-row">
+              <div><b>Estado:</b></div>
+              <div>{clothesState}</div>
+            </div>
+            </div>
         
-      </div>
-
-        <IconButton colorIcon="white" iconName="down-arrow" size="8px" space="25px"  bgColor="rgba(255,255,255,.5)" handleClick={collapseAccordion}/>
-
-        <div className="bottom-info">
-          {clothesInfo}
+          
         </div>
+
+          <IconButton colorIcon="var(--Color-Primary)" iconName="down-arrow" size="8px" space="25px"  bgColor="var(--Color-Grayscale-1) " handleClick={collapseAccordion}/>
+
+          <div className="bottom-info">
+            {clothesInfo}
+          </div>
+      </div>
     </div>
   );
 };
