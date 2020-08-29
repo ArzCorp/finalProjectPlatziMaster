@@ -5,27 +5,27 @@
     display: flex;
     flex-direction: column;
     align-items:center;
-    margin-top:40px
-}
-
-.feed .buttons-bar{
+    margin-top:40px;
+    & .buttons-bar{
     position: fixed;
-    bottom: 20px;
+    bottom: 10px;
     z-index: $z-index-ButtonsBar;
-}
-
-.feed .navbar{
+    transform: scale(0.7);
+    }
+    & .navbar{
     margin: initial;
     position: fixed;
     top: 0;
     left: 0;
-    z-index:$z-index-navbar
-}
-.feed .search-button{
+    z-index:$z-index-navbar;
+    }
+    & .search-button{
     position:absolute;
     right: 20px;
     top: 20px;
     z-index: $z-index-ButtonsBar;
+    }
+    & .accordion__content{
+        margin-bottom: 66px;
+    }
 }
-
-

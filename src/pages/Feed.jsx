@@ -10,6 +10,7 @@ import Accordion from '../components/atoms/Accordion';
 import Slider from '../components/organisms/Slider';
 import NavBar from '../components/organisms/NavBar';
 import FilterModal from '../components/organisms/FilterModal';
+// import MatchModal from '../components/organisms/MatchModal';
 
 const Feed = (props) => {
   const handleOpenModal = () => {
@@ -44,10 +45,18 @@ const Feed = (props) => {
         />
 
       </div>
+      {/* <FilterModal
+        modalState={props.modalReducers.FilterModalState}
+        onCloseModal={() => props.turnModalState('FilterModal', false)}
+      /> */}
+
       <FilterModal
         modalState={props.modalReducers.FilterModalState}
         onCloseModal={() => props.turnModalState('FilterModal', false)}
+        nameUserMatch="Vicente Fernández"
       />
+
+    
     </section>
   );
 }
