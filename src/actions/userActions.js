@@ -1,12 +1,15 @@
+const URL_API = 'http://68.183.108.146:8000/';
+// const URL_API_RESPALDO = 'http://68.183.108.146:8000/';
+
 export const fetchSignupUser = (data) => async (dispatch) => {
-  const URL_API_SIGNUP = 'http://68.183.108.146:8000/users/signup/';
+  const SIGNUP = `${URL_API}users/signup/`;
   const OPTIONS = {
     method: 'POST',
     body: JSON.stringify(data),
     headers: { 'Content-Type': 'application/json' },
   };
 
-  const response = await fetch(URL_API_SIGNUP, OPTIONS);
+  const response = await fetch(SIGNUP, OPTIONS);
   const newUser = await response.json();
 
   const statusResponse = await response.status;
@@ -21,18 +24,20 @@ export const fetchSignupUser = (data) => async (dispatch) => {
 };
 
 export const fetchLoginUser = (data) => async (dispatch) => {
-  const URL_API_LOGIN = 'http://68.183.108.146:8000/users/login/';
+  const LOGIN = `${URL_API}users/login/`;
   const OPTIONS = {
     method: 'POST',
     body: JSON.stringify(data),
     headers: { 'Content-Type': 'application/json' },
   };
 
-  const response = await fetch(URL_API_LOGIN, OPTIONS);
+  const response = await fetch(LOGIN, OPTIONS);
   const logedUser = await response.json();
 
   const statusResponse = await response.status;
   const status = (statusResponse === 201);
+
+  localStorage.setItem('token', logedUser.token);
 
   dispatch({
     type: 'fetchLoginUser',
@@ -42,8 +47,9 @@ export const fetchLoginUser = (data) => async (dispatch) => {
   return status;
 };
 
-export const editProfile = (data, telephone, token) => async (dispatch) => {
-  const URL_API_UPDATE = `http://68.183.108.146:8000/users/${telephone}/`;
+export const editProfile = (data, telephone, token) => async (dispatch, getState) => {
+  const { user } = getState().userReducer;
+  const URL_API_UPDATE = `${URL_API}users/${telephone}/`;
   const OPTIONS = {
     method: 'PATCH',
     body: JSON.stringify(data),
@@ -53,33 +59,68 @@ export const editProfile = (data, telephone, token) => async (dispatch) => {
     },
   };
   const response = await fetch(URL_API_UPDATE, OPTIONS);
-  const updateDataUser = await response.json();
+  const dataUser = await response.json();
+  const userDataEdit = {
+    ...user,
+    token,
+    user: dataUser,
+  };
   dispatch({
     type: 'EditProfile',
-    payload: updateDataUser,
+    payload: userDataEdit,
   });
 };
 
-export const editProfileImage = (data, telephone, token) => async (dispatch) => {
-  const URL_API_UPDATE = `http://68.183.108.146:8000/users/${telephone}/profile/`;
+export const getDataUser = (telephone, token) => async (dispatch) => {
+  const URL_API_UPDATE = `${URL_API}users/${telephone}/`;
   const OPTIONS = {
-    method: 'POST',
+    method: 'GET',
+    body: JSON.stringify(),
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Token ${token}`,
+    },
+  };
+  const response = await fetch(URL_API_UPDATE, OPTIONS);
+  const updateDataUser = await response.json();
+
+  const statusResponse = await response.status;
+  const status = (statusResponse === 201);
+
+  dispatch({
+    type: 'fetchLoginUser',
+    payload: { updateDataUser, status },
+  });
+};
+
+export const editProfileImage = (data, telephone, token) => async (dispatch, getState) => {
+  const { user } = getState().userReducer;
+  const URL_API_ADDIMAGE = `${URL_API}users/${telephone}/profile/`;
+  const OPTIONS = {
+    method: 'PATCH',
     body: JSON.stringify(data),
     headers: {
       'content-type': 'application/x-www-form-urlencoded',
       Authorization: `Token ${token}`,
     },
   };
-  const response = await fetch(URL_API_UPDATE, OPTIONS);
-  const updateDataUser = await response.json();
+  const response = await fetch(URL_API_ADDIMAGE, OPTIONS);
+  const imageUser = await response.json();
+  const updateUser = {
+    ...user,
+    token,
+    user: imageUser,
+  };
+  console.log(updateUser);
+  debugger;
   dispatch({
     type: 'EditProfile',
-    payload: updateDataUser,
+    payload: updateUser,
   });
 };
 
 export const getUserClothes = (token) => async (dispatch) => {
-  const URL_API_UPDATE = 'http://68.183.108.146:8000/clothes/myclothes/';
+  const URL_API_UPDATE = `${URL_API}clothes/myclothes/`;
   const OPTIONS = {
     method: 'GET',
     body: JSON.stringify(),
@@ -97,7 +138,7 @@ export const getUserClothes = (token) => async (dispatch) => {
 };
 
 export const addClothe = (data, token) => async (dispatch) => {
-  const URL_API_UPDATE = 'http://68.183.108.146:8000/clothes/myclothes/';
+  const URL_API_UPDATE = `${URL_API}clothes/myclothes/`;
   const OPTIONS = {
     method: 'POST',
     body: JSON.stringify(data),
@@ -211,4 +252,45 @@ export const validateForm = (fields, form) => (dispatch) => {
     payload: { formIsValid, errors },
   });
   return formIsValid;
+};
+
+export const fetchNotificationsUser = (data) => async (dispatch) => {
+  const NOTIFICATIONS = `${URL_API}clothes/notifications/`;
+  const OPTIONS = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Token ${data}`,
+    },
+  };
+
+  let notifications;
+  let notificationsError;
+  // const notificationsError = null;
+
+  try {
+    const response = await fetch(NOTIFICATIONS, OPTIONS);
+    notifications = await response.json();
+  } catch (error) {
+    notificationsError = error;
+  }
+
+  const notificationss = [
+    {
+      clothe: 1,
+      user: '6459783474',
+      value: 'SUPERLIKE',
+    }, {
+      clothe: 2,
+      user: '6459254769',
+      value: 'LIKE',
+    },
+  ];
+
+  console.log('notifications server response', notifications);
+
+  dispatch({
+    type: 'fetchNotificationsUser',
+    payload: { notificationss, notificationsError },
+  });
 };

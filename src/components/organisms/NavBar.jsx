@@ -19,7 +19,7 @@ const NavBar = () => (
         color="$Color-PrimaryLight-3"
       />
     </Link>
-    <Link to="/notificatons">
+    <Link to="/notifications">
       <Icon
         iconName="message"
         size="25px"

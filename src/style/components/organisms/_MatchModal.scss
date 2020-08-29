@@ -1,0 +1,21 @@
+.match-modal{
+  height:100%;
+  display: flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-between;
+  text-align:center;
+  text-shadow:$Box-ShadowActive;
+  & .default-icon.our-iconwhatsapp{
+    position: absolute;
+    bottom: 20px;
+    right: 15px;
+  }
+  & .match-modal__button{
+    position:relative;
+    width:100%
+  }
+}
+
+
+ 

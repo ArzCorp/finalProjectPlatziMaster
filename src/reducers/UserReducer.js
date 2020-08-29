@@ -3,6 +3,7 @@ const INITIAL_STATE = {
   userLoged: [],
   userClothes: [],
   errorsFields: [],
+  userNotifications: [],
   formIsValid: false,
   stateLoginResponse: false,
   stateSignupResponse: false,
@@ -28,7 +29,6 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         userLoged: action.payload,
-        errorsFields: action.payload.errors,
       };
     case 'addClotheData':
       return {
@@ -47,6 +47,11 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         formIsValid: action.payload.formIsValid,
         errorsFields: action.payload.errors,
+      };
+    case 'fetchNotificationsUser':
+      return {
+        ...state,
+        userNotifications: action.payload.notificationss,
       };
     default: return state;
   }

@@ -4,6 +4,7 @@ $Box-Shadow: 0 1px 3px var(--Color-Primary);
 $Box-ShadowActive: 0 1px 8px var(--Color-Primary);
 
 $z-index-Modal: 6;
+$z-index-navbar: 6;
 $z-index-ButtonsBar: 5;
 
 :root{
@@ -39,4 +40,8 @@ small {
 
 figure {
   margin: 0;
+}
+
+.title {
+  text-shadow: -2px 1px 2px var(--Color-Grayscale-4);
 }

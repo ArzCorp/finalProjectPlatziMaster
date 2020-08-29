@@ -10,7 +10,9 @@ import NavBar from '../components/organisms/NavBar';
 import SettingsNav from '../components/organisms/SettingsNav';
 import SettingsClothes from '../components/organisms/SettingsClothes';
 
-const UserPerfil = ({ userReducer, getUserClothes, buttonsReducers: { isButtonActive }, userReducer: { userClothes, userLoged: { token } } }) => {
+const UserPerfil = (props) => {
+  console.log(props)
+  const { userReducer, getUserClothes, buttonsReducers: { isButtonActive }, userReducer: { userClothes, userLoged: { token } } } = props;
   if (userClothes.length === 0) {
     getUserClothes(token);
   }

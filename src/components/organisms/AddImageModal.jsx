@@ -9,7 +9,6 @@ import AddImage from '../atoms/AddImage';
 import Button from '../atoms/Button';
 
 const AddClotheModal = (props) => {
-  console.log(props);
   const { turnModalState, modalReducers: { AddImageModalState } } = props;
   const { editProfileImage, userReducer: { userLoged: { user: { username }, token } } } = props;
   const [fields, setField] = useState(0);
@@ -19,7 +18,13 @@ const AddClotheModal = (props) => {
       [ev.target.name]: ev.target.value,
     });
   };
-  console.log(fields);
+  const handleSubmit = async (ev) => {
+    ev.preventDefault();
+    console.log(props);
+    await editProfileImage(fields, username, token);
+    console.log(props);
+    window.location.href = '/#/perfil';
+  };
   return (
     <Modal
       modalState={AddImageModalState}
@@ -27,9 +32,9 @@ const AddClotheModal = (props) => {
     >
       <form
         className="addImageForm"
-        method="post"
+        method="patch"
         name="addImageForm"
-        onSubmit={() => { editProfileImage(fields, username, token); }}
+        onSubmit={handleSubmit}
       >
         <AddImage
           onChange={handleChange}

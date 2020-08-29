@@ -1,25 +1,31 @@
 .feed{
     position:relative;
-    width: 100vw;
-    height:100vh;
+    height: calc(100vh - 40px);
+    overflow:hidden;
     display: flex;
     flex-direction: column;
     align-items:center;
-}
-
-.feed .buttons-bar{
+    margin-top:40px;
+    & .buttons-bar{
     position: fixed;
-    bottom: 20px;
+    bottom: 10px;
     z-index: $z-index-ButtonsBar;
-}
-
-.feed .navbar{
-    margin: initial
-}
-.feed .search-button{
+    transform: scale(0.7);
+    }
+    & .navbar{
+    margin: initial;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index:$z-index-navbar;
+    }
+    & .search-button{
     position:absolute;
     right: 20px;
-    top: 58px;
+    top: 20px;
+    z-index: $z-index-ButtonsBar;
+    }
+    & .accordion__content{
+        margin-bottom: 66px;
+    }
 }
-
-

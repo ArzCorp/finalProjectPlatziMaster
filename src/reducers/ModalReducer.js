@@ -5,6 +5,7 @@ const INITIAL_STATE = {
   SignupModalState: false,
   LoginModalState: false,
   FilterModalState: false,
+  MatchModalState: false,
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -39,6 +40,12 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         EditClotheModalState: action.payload,
       };
+    case 'MatchModal':
+      return {
+        ...state,
+        MatchModalState: action.payload,
+      };
+
     default: return state;
   }
 };

@@ -16,6 +16,8 @@ $Color-Grayscale-2: #F9FAFA;
 $Color-Grayscale-3: #838F8C;
 $Color-Grayscale-4: #747A78;
 
+$Color-transparent: rgba(255,255,255,0);
+
 :root{
 --Color-Negative: #D81C1C;
 --Color-Alert: #F39C11;
@@ -32,4 +34,6 @@ $Color-Grayscale-4: #747A78;
 --Color-Grayscale-4: #747A78;
 
 --Color-Negative: #D81C1C;
+
+--Color-transparent: rgba(255,255,255,0);
 }
