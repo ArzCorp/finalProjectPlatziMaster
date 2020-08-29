@@ -12,7 +12,7 @@ const NavBar = () => (
         color="$Color-Grayscale-2"
       />
     </Link>
-    <Link to="/home">
+    <Link to="/feed">
       <Icon
         iconName="hanger"
         size="25px"
