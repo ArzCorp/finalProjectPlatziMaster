@@ -1,47 +1,64 @@
-.notification {
+.notification-container {
   position: relative;
-  width: 100%;
-  min-height: 100px;
-  margin-bottom: $Spacing-Normal;
-  padding: $Spacing-ExtraSmall;
-  box-shadow: $Box-Shadow;
-  border-radius: $Border-Radius;
-  display: flex;
-  align-items: center;
+  .notification {
+    width: 100%;
+    min-height: 100px;
+    margin-bottom: $Spacing-Normal;
+    padding: $Spacing-ExtraSmall;
+    box-shadow: $Box-Shadow;
+    border-radius: $Border-Radius;
+    display: flex;
+    align-items: center;
+    &:hover {
+      box-shadow: $Box-ShadowActive;
+    }
+    &:hover .notification__iconType {
+      transform: scale(1.3);
+    }
 
-  &:hover {
-    box-shadow: $Box-ShadowActive;
-  }
+    &__picture {
+      width: 50px;
+      height: 50px;
+      padding-right: $Spacing-ExtraSmall;
+      & img {
+        max-height: 100%;
+      }
+    }
 
-  &__picture {
-    flex: 1;
-    height: 100px;
-    padding-right: $Spacing-ExtraSmall;
+    &__body {
+      flex: 1;
+      align-self: flex-start;
+      padding-right: $Spacing-ExtraSmall;
+      & h2 {
+        color: var(--Color-Primary);
+        margin-bottom: $Spacing-ExtraSmall;
+      }
+    }
 
-    & img {
-      max-height: 100%;
+    &__iconType {
+      width: 2.5rem;
+      text-align: center;
+    }
+
+    &__deletNotification {
+      position: absolute;
+      height: fit-content;
+      top: -5px;
+      right: 5px;
+      &:hover {
+        transform: scale(1.5);
+      }
     }
   }
+}
 
-  &__body {
-    flex: 4;
-    align-self: flex-start;
-
-    & h2 {
-      color: var(--Color-Primary);
-      margin-bottom: $Spacing-ExtraSmall;
+@media screen and(min-width: 768px) {
+  .notification-container {
+    .notification {
+      &__picture {
+        width: 100px;
+        height: 100px;
+      }
     }
-  }
-
-  &__iconType {
-    width: 3rem;
-    text-align: center;
-  }
-
-  &__deletNotification {
-    position: absolute;
-    height: fit-content;
-    top: -5px;
-    right: 5px;
   }
 }

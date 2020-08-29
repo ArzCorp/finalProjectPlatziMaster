@@ -27,8 +27,8 @@ const LoginForm = (props) => {
       if (valid) {
         props.turnModalState('LoginModal', true);
         setTimeout(() => {
-          props.turnModalState('LoginModal', false);
           window.location.href = '/#/feed';
+          props.turnModalState('LoginModal', false);
         }, 2500);
       }
     }
@@ -56,7 +56,7 @@ const LoginForm = (props) => {
         <h2>
           Hola {userSignup.first_name}
           <br />
-          Tu cuena ha sido creada con éxito! Por favor inicia sesion.
+          Tu cuenta ha sido creada con éxito! Por favor inicia sesión.
         </h2>
       );
     }

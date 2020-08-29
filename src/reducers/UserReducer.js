@@ -2,6 +2,7 @@ const INITIAL_STATE = {
   userSignup: [],
   userLoged: [],
   errorsFields: [],
+  userNotifications: [],
   formIsValid: false,
   stateLoginResponse: false,
   stateSignupResponse: false,
@@ -28,6 +29,11 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         formIsValid: action.payload.formIsValid,
         errorsFields: action.payload.errors,
+      };
+    case 'fetchNotificationsUser':
+      return {
+        ...state,
+        userNotifications: action.payload.notificationss,
       };
     default: return state;
   }

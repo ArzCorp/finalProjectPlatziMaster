@@ -1,12 +1,15 @@
+const URL_API = 'http://165.232.59.182:8000/';
+const URL_API_RESPALDO = 'http://68.183.108.146:8000/';
+
 export const fetchSignupUser = (data) => async (dispatch) => {
-  const URL_API_SIGNUP = 'http://68.183.108.146:8000/users/signup/';
+  const SIGNUP = `${URL_API}users/signup/`;
   const OPTIONS = {
     method: 'POST',
     body: JSON.stringify(data),
     headers: { 'Content-Type': 'application/json' },
   };
 
-  const response = await fetch(URL_API_SIGNUP, OPTIONS);
+  const response = await fetch(SIGNUP, OPTIONS);
   const newUser = await response.json();
 
   const statusResponse = await response.status;
@@ -21,18 +24,21 @@ export const fetchSignupUser = (data) => async (dispatch) => {
 };
 
 export const fetchLoginUser = (data) => async (dispatch) => {
-  const URL_API_LOGIN = 'http://68.183.108.146:8000/users/login/';
+  const LOGIN = `${URL_API}users/login/`;
   const OPTIONS = {
     method: 'POST',
     body: JSON.stringify(data),
     headers: { 'Content-Type': 'application/json' },
   };
 
-  const response = await fetch(URL_API_LOGIN, OPTIONS);
+  const response = await fetch(LOGIN, OPTIONS);
   const logedUser = await response.json();
 
   const statusResponse = await response.status;
   const status = (statusResponse === 201);
+
+  console.log(logedUser.token);
+  localStorage.setItem('token', logedUser.token);
 
   dispatch({
     type: 'fetchLoginUser',
@@ -139,4 +145,45 @@ export const validateForm = (fields, form) => (dispatch) => {
     payload: { formIsValid, errors },
   });
   return formIsValid;
+};
+
+export const fetchNotificationsUser = (data) => async (dispatch) => {
+  const NOTIFICATIONS = `${URL_API}clothes/notifications/`;
+  const OPTIONS = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Token ${data}`,
+    },
+  };
+
+  let notifications;
+  let notificationsError;
+  // const notificationsError = null;
+
+  try {
+    const response = await fetch(NOTIFICATIONS, OPTIONS);
+    notifications = await response.json();
+  } catch (error) {
+    notificationsError = error;
+  }
+
+  const notificationss = [
+    {
+      clothe: 1,
+      user: '6459783474',
+      value: 'SUPERLIKE',
+    }, {
+      clothe: 2,
+      user: '6459254769',
+      value: 'LIKE',
+    }
+  ];
+
+  console.log('notifications server response', notifications);
+
+  dispatch({
+    type: 'fetchNotificationsUser',
+    payload: { notificationss, notificationsError },
+  });
 };
