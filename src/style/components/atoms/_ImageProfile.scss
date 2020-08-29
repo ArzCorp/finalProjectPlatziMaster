@@ -3,12 +3,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 60%;
   margin: 0 auto;
   margin-top: $Spacing-Normal;
   &__image {
     border-radius: 50%;
-    width: 80%;
   }
 }
 

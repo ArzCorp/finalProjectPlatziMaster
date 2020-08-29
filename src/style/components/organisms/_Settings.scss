@@ -1,6 +1,8 @@
 .clothes {
-  display: flex;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 1rem;
+  padding:1rem;
   width: 100%;
   margin-top: $Spacing-Normal;
   padding-bottom: $Spacing-Normal;
