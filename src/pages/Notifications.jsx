@@ -16,18 +16,7 @@ const Notifications = (props) => {
       if (count === 0) {
         setCount(count + 1);
         props.fetchNotificationsUser(localStorage.getItem('token'));
-        return (
-          <div className="row">
-            <Loader />
-          </div>
-        );
       }
-
-      return (
-        <div className="row">
-          <p>No tienes Notificaciones nuevas</p>
-        </div>
-      );
     }
 
     return (
@@ -58,6 +47,16 @@ const Notifications = (props) => {
             <h1>Notificaciones</h1>
           </div>
         </div>
+        {props.userReducer.loading && (
+          <div className="row">
+            <Loader />
+          </div>
+        )}
+        {((!props.userReducer.loading) && (!props.userReducer.userNotifications.length)) && (
+            <div className="row">
+              <p>No tienes Notificaciones nuevas</p>
+            </div>
+        )}
         {validateNotifications()}
       </div>
     </section>

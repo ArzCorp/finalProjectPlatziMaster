@@ -13,17 +13,29 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case 'LOADING':
+      return {
+        ...state,
+        loading: true,
+      };
+    case 'ERROR':
+      return {
+        error: action.payload,
+        loading: false,
+      };
     case 'fetchSignupUser':
       return {
         ...state,
         userSignup: action.payload.newUser,
         stateSignupResponse: action.payload.status,
+        loading: false,
       };
     case 'fetchLoginUser':
       return {
         ...state,
         userLoged: action.payload.logedUser,
         stateLoginResponse: action.payload.status,
+        loading: false,
       };
     case 'EditProfile':
       return {
@@ -51,7 +63,8 @@ export default (state = INITIAL_STATE, action) => {
     case 'fetchNotificationsUser':
       return {
         ...state,
-        userNotifications: action.payload.notificationss,
+        userNotifications: action.payload,
+        loading: false,
       };
     default: return state;
   }

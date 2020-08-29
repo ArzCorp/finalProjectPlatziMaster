@@ -8,19 +8,27 @@ export const fetchSignupUser = (data) => async (dispatch) => {
     body: JSON.stringify(data),
     headers: { 'Content-Type': 'application/json' },
   };
-
-  const response = await fetch(SIGNUP, OPTIONS);
-  const newUser = await response.json();
-
-  const statusResponse = await response.status;
-  const status = (statusResponse === 201);
-
   dispatch({
-    type: 'fetchSignupUser',
-    payload: { newUser, status },
+    type: 'LOADING',
   });
+  try {
+    const response = await fetch(SIGNUP, OPTIONS);
+    const newUser = await response.json();
 
-  return status;
+    const statusResponse = await response.status;
+    const status = (statusResponse === 201);
+
+    dispatch({
+      type: 'fetchSignupUser',
+      payload: { newUser, status },
+    });
+    return status;
+  } catch (error) {
+    dispatch({
+      type: 'ERROR',
+      payload: error.message,
+    });
+  }
 };
 
 export const fetchLoginUser = (data) => async (dispatch) => {
@@ -31,20 +39,29 @@ export const fetchLoginUser = (data) => async (dispatch) => {
     headers: { 'Content-Type': 'application/json' },
   };
 
-  const response = await fetch(LOGIN, OPTIONS);
-  const logedUser = await response.json();
-
-  const statusResponse = await response.status;
-  const status = (statusResponse === 201);
-
-  localStorage.setItem('token', logedUser.token);
-
   dispatch({
-    type: 'fetchLoginUser',
-    payload: { logedUser, status },
+    type: 'LOADING',
   });
+  try {
+    const response = await fetch(LOGIN, OPTIONS);
+    const logedUser = await response.json();
 
-  return status;
+    const statusResponse = await response.status;
+    const status = (statusResponse === 201);
+
+    localStorage.setItem('token', logedUser.token);
+
+    dispatch({
+      type: 'fetchLoginUser',
+      payload: { logedUser, status },
+    });
+    return status;
+  } catch (error) {
+    dispatch({
+      type: 'ERROR',
+      dispatch: error.message,
+    });
+  }
 };
 
 export const editProfile = (data, telephone, token) => async (dispatch, getState) => {
@@ -263,34 +280,32 @@ export const fetchNotificationsUser = (data) => async (dispatch) => {
       Authorization: `Token ${data}`,
     },
   };
-
-  let notifications;
-  let notificationsError;
-  // const notificationsError = null;
-
+  dispatch({
+    type: 'LOADING',
+  });
   try {
     const response = await fetch(NOTIFICATIONS, OPTIONS);
-    notifications = await response.json();
+    const notifications = await response.json();
+    const notificationsfake = [
+      {
+        clothe: 1,
+        user: '6459783474',
+        value: 'SUPERLIKE',
+      }, {
+        clothe: 2,
+        user: '6459254769',
+        value: 'LIKE',
+      },
+    ];
+    console.log('notifications server response', notifications);
+    dispatch({
+      type: 'fetchNotificationsUser',
+      payload: notificationsfake,
+    });
   } catch (error) {
-    notificationsError = error;
+    dispatch({
+      type: 'ERROR',
+      dispatch: error.message,
+    });
   }
-
-  const notificationss = [
-    {
-      clothe: 1,
-      user: '6459783474',
-      value: 'SUPERLIKE',
-    }, {
-      clothe: 2,
-      user: '6459254769',
-      value: 'LIKE',
-    },
-  ];
-
-  console.log('notifications server response', notifications);
-
-  dispatch({
-    type: 'fetchNotificationsUser',
-    payload: { notificationss, notificationsError },
-  });
 };
