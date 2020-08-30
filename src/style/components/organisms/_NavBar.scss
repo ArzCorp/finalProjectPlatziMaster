@@ -5,7 +5,7 @@
   justify-content: space-between;
   align-content: center;
   padding: $Spacing-ExtraSmall $Spacing-Normal;
-  background-color: $Color-PrimaryLight-1;
+  background-color: var(--Color-PrimaryLight-1);
   width: 100%;
   box-shadow:$Box-ShadowActive;
   z-index: $z-index-Navbar;
@@ -27,12 +27,13 @@
   }
   &__menu-logout {
     display: none;
-  }
-  &__menu {
-    .active {
-      opacity: 1;
+    &-button {
+      display: none;
     }
   }
+  &__menu .active {
+      opacity: 1;
+    }
 }
 
 @media screen and(min-width: 768px) {
@@ -45,7 +46,30 @@
       width: 20rem;
     }
     &__menu-logout {
+      position: relative;
       display: block;
+      border-left: 1px solid var(--Color-Grayscale-1);
+      padding-left: 2rem;
+      opacity: .5;
+      cursor: pointer;
+      &-button {
+        display: none;
+        position: absolute;
+        top: 5px;
+        right: 0;
+        padding: $Spacing-Small;
+        border-radius: $Border-Radius;
+        background: var(--Color-PrimaryLight-1);
+        color: var(--Color-Grayscale-1);
+        transition: 5s;
+        font-size: $Font-ParagraphLarge;
+      }
+      &-button:hover {
+        display: block;
+      }
+      &:hover ~ .navbar__menu-logout-button {
+        display: block;
+      }
     }
   }
 }

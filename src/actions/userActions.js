@@ -50,6 +50,7 @@ export const fetchLoginUser = (data) => async (dispatch) => {
     const status = (statusResponse === 201);
 
     localStorage.setItem('token', logedUser.token);
+    localStorage.setItem('user', JSON.stringify(logedUser));
 
     dispatch({
       type: 'fetchLoginUser',
