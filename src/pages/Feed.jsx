@@ -8,7 +8,6 @@ import ButtonsBar from '../components/atoms/ButtonsBar';
 import IconButton from '../components/atoms/IconButton';
 import Accordion from '../components/atoms/Accordion';
 import Slider from '../components/organisms/Slider';
-import NavBar from '../components/organisms/NavBar';
 import FilterModal from '../components/organisms/FilterModal';
 import MatchModal from '../components/organisms/MatchModal';
 
@@ -23,8 +22,6 @@ const Feed = (props) => {
   return (
     <section>
       <div className="feed">
-
-        <NavBar />
 
         <div className="search-button">
           <IconButton iconName="search" space="40px" type="disabled" handleClick={() => handleOpenModal()} />

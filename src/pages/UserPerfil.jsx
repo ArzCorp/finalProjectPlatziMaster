@@ -6,7 +6,6 @@ import * as buttonsActions from '../actions/ButtonsActions';
 import * as modalActions from '../actions/ModalActions';
 
 import ImageProfile from '../components/atoms/ImageProfile';
-import NavBar from '../components/organisms/NavBar';
 import SettingsNav from '../components/organisms/SettingsNav';
 import SettingsClothes from '../components/organisms/SettingsClothes';
 
@@ -18,7 +17,6 @@ const UserPerfil = (props) => {
   }
   return (
     <section className="userprofile__entry">
-      <NavBar />
       <ImageProfile
         url=""
       />

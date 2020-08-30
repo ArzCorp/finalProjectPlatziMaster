@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 import * as userActions from '../actions/userActions';
 
-import Navbar from '../components/organisms/NavBar';
 import Notification from '../components/molecules/Notification';
 import Loader from '../components/atoms/Loader';
 import Prenda from '../../public/assets/images/image1.png';
@@ -40,10 +39,9 @@ const Notifications = (props) => {
 
   return (
     <section className="notifications">
-      <Navbar />
       <div className="wrapper">
         <div className="row">
-          <div className="column-6 title">
+          <div className="column-6">
             <h1>Notificaciones</h1>
           </div>
         </div>
@@ -52,7 +50,7 @@ const Notifications = (props) => {
             <Loader />
           </div>
         )}
-        {((!props.userReducer.loading) && (!props.userReducer.userNotifications.length)) && (
+        {(!(props.userReducer.loading) && !(props.userReducer.userNotifications.length)) && (
             <div className="row">
               <p>No tienes Notificaciones nuevas</p>
             </div>

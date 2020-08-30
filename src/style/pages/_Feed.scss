@@ -12,18 +12,11 @@
     z-index: $z-index-ButtonsBar;
     transform: scale(0.7);
     }
-    & .navbar{
-    margin: initial;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index:$z-index-navbar;
-    }
     & .search-button{
     position:absolute;
     right: 20px;
     top: 20px;
-    z-index: $z-index-ButtonsBar;
+    z-index: $z-index-FilterButton;
     }
     & .accordion__content{
         margin-bottom: 66px;

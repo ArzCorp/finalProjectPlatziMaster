@@ -1,31 +1,44 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import Icon from '../atoms/Icon';
+import Logo from '../../../public/assets/logo/logo-negative.svg';
 
 const NavBar = () => (
   <nav className="navbar">
-    <Link to="/profile">
-      <Icon
-        iconName="profile"
-        size="25px"
-        color="$Color-Grayscale-2"
-      />
-    </Link>
-    <Link to="/feed">
-      <Icon
-        iconName="hanger"
-        size="25px"
-        color="$Color-PrimaryLight-3"
-      />
-    </Link>
-    <Link to="/notifications">
-      <Icon
-        iconName="message"
-        size="25px"
-        color="$Color-PrimaryLight-3"
-      />
-    </Link>
+    <div className="navbar__logo">
+      <img src={Logo} alt="Logotipo Ourclothe" />
+    </div>
+    <div className="navbar__menu">
+      <NavLink to="/profile" activeClassName="active">
+        <Icon
+          iconName="profile"
+          size="25px"
+          color="#fff"
+        />
+      </NavLink>
+      <NavLink to="/feed" activeClassName="active">
+        <Icon
+          iconName="hanger"
+          size="25px"
+          color="#fff"
+        />
+      </NavLink>
+      <NavLink to="/notifications" activeClassName="active">
+        <Icon
+          iconName="message"
+          size="25px"
+          color="#fff"
+        />
+      </NavLink>
+      <div className="navbar__menu-logout">
+        <Icon
+          iconName="settings"
+          size="25px"
+          color="#F9FAFA"
+        />
+      </div>
+    </div>
   </nav>
 );
 

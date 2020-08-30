@@ -271,13 +271,13 @@ export const validateForm = (fields, form) => (dispatch) => {
   return formIsValid;
 };
 
-export const fetchNotificationsUser = (data) => async (dispatch) => {
+export const fetchNotificationsUser = (token) => async (dispatch) => {
   const NOTIFICATIONS = `${URL_API}clothes/notifications/`;
   const OPTIONS = {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Token ${data}`,
+      Authorization: `Token ${token}`,
     },
   };
   dispatch({

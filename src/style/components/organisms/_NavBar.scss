@@ -1,15 +1,51 @@
 .navbar {
+  position: sticky;
+  top: 0;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-content: center;
-  padding: $Spacing-ExtraSmall 0px;
-  margin-bottom: $Spacing-ExtraSmall;
-  background-color: $Color-PrimaryLight-3;
+  padding: $Spacing-ExtraSmall $Spacing-Normal;
+  background-color: $Color-PrimaryLight-1;
   width: 100%;
-  box-shadow:$Box-ShadowActive
+  box-shadow:$Box-ShadowActive;
+  z-index: $z-index-Navbar;
+  &__menu {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+  }
+  & a {
+    text-decoration: none;
+    opacity: .5;
+  }
+  &__logo {
+    display: none;
+  }
+  &__logo img {
+    width: 3rem;
+  }
+  &__menu-logout {
+    display: none;
+  }
+  &__menu {
+    .active {
+      opacity: 1;
+    }
+  }
 }
 
-.navbar a {
-  text-decoration: none;
-  align-self: center;
+@media screen and(min-width: 768px) {
+  .navbar {
+    &__logo {
+      display: block;
+    }
+    &__menu {
+      justify-content: space-between;
+      width: 20rem;
+    }
+    &__menu-logout {
+      display: block;
+    }
+  }
 }
