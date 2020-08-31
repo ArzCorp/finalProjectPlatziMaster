@@ -1,0 +1,27 @@
+.form__input {
+  margin-top: $Spacing-ExtraSmall;
+  label {
+    margin-left: $Spacing-ExtraSmall;
+    font-size: $Font-Small;
+    color: var(--Color-PrimaryLight-1);
+  }
+
+  input {
+    width: 100%;
+    padding: $Spacing-ExtraSmall;
+    box-shadow: $Box-Shadow;
+    border-radius: $Border-Radius;
+    border: none;
+    font-size: $Font-ParagraphLarge;
+    color: var(--Color-PrimaryLight-1);
+    outline: none;
+  }
+
+  input:focus {
+    box-shadow: $Box-ShadowActive;
+  }
+
+  ::placeholder {
+    color: var(--Color-PrimaryLight-2);
+  }
+}

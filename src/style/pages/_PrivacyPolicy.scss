@@ -1,0 +1,12 @@
+.privacyPolicy_page {
+  padding: $Spacing-Large $Spacing-Normal;
+  color: var(--Color-Primary);
+  & h1 {
+    border-bottom: 1px solid var(--Color-Primary);
+    margin-bottom: $Spacing-Normal;
+  }
+  & p {
+    font-size: $Font-ParagraphLarge;
+    line-height: $Font-H1;
+  }
+}

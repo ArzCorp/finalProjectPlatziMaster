@@ -10,6 +10,8 @@ module.exports = {
   },
   mode: 'development',
   devServer: {
+    historyApiFallback: true,
+    contentBase: path.resolve(__dirname, './src'),
     hot: true,
     port: 8080,
     open: true,
@@ -33,7 +35,14 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+        ],
+      },
+      {
+        test: /\.(png|jpg|gif|ttf|svg)$/,
         use: [
           { loader: 'url-loader' },
         ],

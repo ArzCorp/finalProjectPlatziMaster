@@ -1,0 +1,44 @@
+$Border-Radius: 10px;
+$Border-Radius-circle: 50%;
+$Box-Shadow: 0 1px 3px var(--Color-Primary);
+$Box-ShadowActive: 0 1px 8px var(--Color-Primary);
+
+$z-index-Modal: 8;
+$z-index-Navbar: 7;
+$z-index-ButtonsBar: 6;
+$z-index-FilterButton: 5;
+
+:root{
+  --Box-Shadow-no-color: 0 1px 3px;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: $Font-Paragraph;
+  font-family: $Font;
+  color: var(--Color-Grayscale-3);
+}
+
+h1 {
+  font-size: $Font-H1;
+}
+
+h2 {
+  font-size: $Font-H2;
+}
+
+h3 {
+  font-size: $Font-H3;
+}
+
+small {
+  font-size: $Font-Small;
+}
+
+figure {
+  margin: 0;
+}

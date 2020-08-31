@@ -1,10 +1,15 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
+import ProviderMock from '../__mocks__/ProviderMock';
 import App from '../components/App';
 
-describe('App component testing', () => {
+describe('App, component testing', () => {
   test('Component rendering', () => {
-    const header = mount(<App />);
+    const header = shallow(
+      <ProviderMock>
+        <App />
+      </ProviderMock>,
+    );
     expect(header.length).toEqual(1);
   });
 });

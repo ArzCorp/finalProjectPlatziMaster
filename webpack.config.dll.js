@@ -1,5 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
+const TerserJSPlugin = require('terser-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -23,4 +25,10 @@ module.exports = {
       path: path.join(__dirname, '[name]-manifest.json'),
     }),
   ],
+  optimization: {
+    minimizer: [
+      new TerserJSPlugin(),
+      new OptimizeCSSAssetsPlugin(),
+    ],
+  },
 };

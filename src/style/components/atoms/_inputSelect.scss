@@ -1,0 +1,12 @@
+.select {
+  display: flex;
+  justify-content: space-between;
+  padding: $Spacing-ExtraSmall $Spacing-Normal;
+  margin-top: $Spacing-ExtraSmall;
+  box-shadow: $Box-ShadowActive;
+  border: 1px solid $Color-Grayscale-4;
+  border-radius: 25px;
+  &__input {
+    border: none;
+  }
+}

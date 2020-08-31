@@ -1,0 +1,40 @@
+.loginPage {
+  padding-top: $Spacing-Normal;
+  &__brand-entry {
+    text-align: center;
+  }
+  &__brand img {
+    width: 15rem;
+  }
+}
+
+@media screen and(min-width: 768px) {
+  .loginPage {
+    width: 70%;
+    margin: 0 auto;
+  }
+}
+
+@media screen and(min-width: 1024px) {
+  .loginPage {
+    padding-top: $Spacing-Large;
+    height: 100%;
+    width: 85%;
+
+    &__brand {
+      display: flex;
+      align-items: center;
+      // padding: $Spacing-Normal $Spacing-Large;
+      border-radius: $Border-Radius;
+      box-shadow: $Box-ShadowActive;
+    }
+
+    &__brand-entry {
+      flex: 3;
+    }
+
+    &__loginForm {
+      flex: 2;
+    }
+  }
+}

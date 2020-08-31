@@ -1,0 +1,14 @@
+#btn-editclothe {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: $Box-ShadowActive;
+  color: $Color-Grayscale-3;
+  padding: $Spacing-ExtraSmall;
+}
+
+.clothe__image {
+  width: 100%;
+  height:auto;
+}
