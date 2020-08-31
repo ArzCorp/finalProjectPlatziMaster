@@ -1,7 +1,7 @@
-# Ourclothes
+# Ourclothe
 
 <div align="center">
-<img src="https://raw.githubusercontent.com/ArzateCompany/finalProjectPlatziMaster/54ad2ebe1f41d61610594c013d9e0f4747dff3c7/public/assets/logo/logo.svg" width="100" alt="logotipo ourclothe">
+<img src="https://raw.githubusercontent.com/ArzateCompany/finalProjectPlatziMaster/54ad2ebe1f41d61610594c013d9e0f4747dff3c7/public/assets/logo/logo.svg" width="150" alt="logotipo ourclothe">
 </div>
 
 ## 🧾 1. Generalities
@@ -28,31 +28,33 @@ Then you see documentation about of this web services and all components of this
 
 The application flow have the next displays:
 
-* **Signup: **
+* **Signup:**
 This display is conformed by the next fields: *phone number, first name, last name password and password confirmation*
 
 * **Loging:**
 This display allows users sign in the aplication with *phone number and password* once the users logged are redirected to feed page.
 
-* **feed: **
+* **feed:**
 It's page which enables to the users see other clothes and interact with the clothes photos via reaction buttons.
 
 * **Profile:**
 In this page user can settings his personal data and profile as username, location, gender, phone number, among others. also the user can add his profile picture, and see their clouthes posts. In this display user can select *add clothes* option for create new posts.
 
 * **add clothes:**
-In this display the user can create new clothes with the attributes clothe as *description, color, category and size* 
+In this display the user can create new clothes with the attributes clothe as *description, color, category and size*
 
 * **Notification:**
 This section permite to the user see notifications about of his matchs, an contacting information of other users match.
 
 > You can try Ourclothes App here:
+<br />
 [gh-pages](https://arzatecompany.github.io/finalProjectPlatziMaster/#/login "gh-pages")
+<br />
 [ourclothe.com](http://www.ourclothe.com/ "ourclothe.com")
 
 <div align="center">
-<img src="https://raw.githubusercontent.com/ArzateCompany/finalProjectPlatziMaster/54ad2ebe1f41d61610594c013d9e0f4747dff3c7/public/assets/images/mobileApp.png" height="100" alt="mobileApp">
-<img src="https://raw.githubusercontent.com/ArzateCompany/finalProjectPlatziMaster/54ad2ebe1f41d61610594c013d9e0f4747dff3c7/public/assets/images/webApp.png" height="100" alt="webApp">
+<img src="https://raw.githubusercontent.com/ArzateCompany/finalProjectPlatziMaster/develop/public/assets/images/mobileApp.png" height="100" alt="mobileApp">
+<img src="https://raw.githubusercontent.com/ArzateCompany/finalProjectPlatziMaster/develop/public/assets/images/webApp.png" height="100" alt="webApp">
 </div>
 
 ## 👨‍💻 3. Guide for Developer
@@ -75,23 +77,17 @@ This web service is thinking an designedbased in Athomic design methodology, thi
 
 ### If you want to run this proyect in your localhost.
 
-1. Clone repo.<br /> `git clone git@github.com:ArzateCompany/finalProjectPlatziMaster.git`
-2. Install dependencies<br /> `npm install`
-3. Execute the developer enviroment.<br /> `npm run build:dev`
+* Clone repo.<br /> `git clone git@github.com:ArzateCompany/finalProjectPlatziMaster.git`
+* Install dependencies<br /> `npm install`
+* Execute the developer enviroment.<br /> `npm run build:dev`
 
 ## 🗃 API
 
 * [tclothes](https://github.com/marttcode/tclothes "tclothes")
 
-> This API was build by
-*  [Martin Mendoza](https://github.com/marttcode/tclothes "Martin Mendoza")
-* [Esteban Monguí](https://github.com/EstebanMongui "Esteban Monguí")
-
-
 ## 🔑 License
 
-- [MIT](https://es.wikipedia.org/wiki/Licencia_MIT "MIT")
-
+* [MIT](https://es.wikipedia.org/wiki/Licencia_MIT "MIT")
 
 ## 🛠 Authors
 
