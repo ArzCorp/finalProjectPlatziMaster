@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Context from '../Context';
 
 import * as userActions from '../../actions/userActions';
 import * as modalActions from '../../actions/ModalActions';
@@ -10,6 +11,7 @@ import Button from '../atoms/Button';
 import LoginModal from './LoginModal';
 
 const LoginForm = (props) => {
+  console.log(props)
   const [fields, setFields] = useState(0);
 
   const handleChange = (ev) => {
@@ -19,12 +21,13 @@ const LoginForm = (props) => {
     });
   };
 
-  const submitLoginForm = async (ev) => {
+  const submitLoginForm = async (ev, userLogedState) => {
     ev.preventDefault();
     if (props.validateForm(fields, 'LoginForm')) {
       const valid = await props.fetchLoginUser(fields);
 
       if (valid) {
+        props.activateAuth();
         props.turnModalState('LoginModal', true);
         setTimeout(() => {
           window.location.href = '/#/feed';
@@ -76,8 +79,8 @@ const LoginForm = (props) => {
     return null;
   };
 
-  return (
-    <form className="loginForm" method="post" name="loginForm" onSubmit={submitLoginForm}>
+  const getForm = (userLogedState) => (
+    <form className="loginForm" method="post" name="loginForm" onSubmit={(userLogedState) => submitLoginForm(userLogedState)}>
       {validateSignup()}
       <Input
         type="number"
@@ -107,6 +110,14 @@ const LoginForm = (props) => {
         />
       </div>
     </form>
+  );
+
+  return (
+    <Context.Consumer>
+      {
+        ({ activateAuth, userLogedState }) => getForm(activateAuth, userLogedState)
+      }
+    </Context.Consumer>
   );
 };
 

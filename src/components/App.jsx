@@ -1,5 +1,6 @@
 import React from 'react';
 import { HashRouter, Route, Switch } from 'react-router-dom';
+import Context from './Context';
 
 import '../style/styles.scss';
 
@@ -20,7 +21,7 @@ const App = () => (
       <Route exact path="/login" component={Login} />
       <Route exact path="/signup" component={Signup} />
       <Route exact path="/privacy-policy" component={PrivacyPolicy} />
-      <UserLoged>
+      <Context.Consumer>
         {
           ({isAuth}) =>
           isAuth
@@ -37,7 +38,7 @@ const App = () => (
             <Route exact path="/notifications" component={Login} />
           </Route>
         }
-      </UserLoged>
+      </Context.Consumer>
     </Switch>
   </HashRouter>
 );

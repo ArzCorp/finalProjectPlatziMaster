@@ -4,6 +4,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import reduxThunk from 'redux-thunk';
 import Reducers from './reducers/index';
+import Context from './components/Context';
 
 import App from './components/App';
 
@@ -14,8 +15,10 @@ if (module.hot) {
 }
 
 render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <Context.Provider>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </Context.Provider>,
   document.getElementById('app'),
 );

@@ -1,4 +1,5 @@
-const URL_API = 'http://68.183.108.146:8000/';
+const URL_API = 'https://marttcode.com/';
+// const URL_API = 'http://68.183.108.146:8000/';
 // const URL_API_RESPALDO = 'http://68.183.108.146:8000/';
 
 export const fetchSignupUser = (data) => async (dispatch) => {
