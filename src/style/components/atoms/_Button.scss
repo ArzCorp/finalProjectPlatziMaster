@@ -1,0 +1,53 @@
+%btn {
+  margin: $Spacing-ExtraSmall 0;
+  padding: $Spacing-ExtraSmall $Spacing-Normal;
+  width: 100%;
+  border: none;
+  border-radius: $Border-Radius;
+  font-size: $Font-ParagraphLarge;
+  font-weight: bold;
+  transition: 200ms;
+  outline: none;
+
+  &:hover {
+    box-shadow: $Box-ShadowActive;
+    cursor:pointer;
+  }
+
+  &:active {
+    transition: 200ms;
+    transform: scale(.8);
+  }
+}
+
+.btn__normal {
+  @extend %btn;
+  color: var(--Color-Grayscale-1);
+  background-color: var(--Color-Primary);
+}
+
+.btn__outline {
+  @extend %btn;
+  border: 2px solid var(--Color-Primary);
+  color: var(--Color-Primary);
+  background-color: transparent;
+}
+
+.btn__disabled {
+  @extend %btn;
+  color: var(--Color-Grayscale-1);
+  background-color: var(--Color-Grayscale-3);
+  &:hover {
+    box-shadow: 0 1px 8px var(--Color-Grayscale-3);
+  }
+}
+
+.btn__danger {
+  @extend %btn;
+  border: 2px solid var(--Color-Negative);
+  color: var(--Color-Negative);
+  background-color: transparent;
+  &:hover {
+    box-shadow: 0 1px 8px var(--Color-Negative);
+  }
+}

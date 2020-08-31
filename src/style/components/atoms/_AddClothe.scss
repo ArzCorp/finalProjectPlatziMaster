@@ -1,0 +1,20 @@
+#btn-addclothe {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: transparent;
+  background-color: $Color-Grayscale-1;
+  box-shadow: $Box-ShadowActive;
+  color: $Color-Grayscale-3;
+  padding: $Spacing-ExtraLarge $Spacing-ExtraSmall;
+}
+
+#btn-addclothe p {
+  display: flex;
+  flex-direction: column;
+}
+
+#btn-addclothe span {
+  margin-bottom: $Spacing-ExtraSmall;
+}

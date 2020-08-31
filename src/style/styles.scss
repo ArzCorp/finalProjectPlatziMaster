@@ -1,5 +1,44 @@
-@import './Global.scss';
-@import './vendors/Grid';
 @import './tokens/Colors';
 @import './tokens/Spacing';
 @import './tokens/Typos';
+@import './Global.scss';
+
+@import './vendors/Grid';
+
+@import './components/atoms/PrivacyPolicy';
+@import './components/atoms/inputSelect';
+@import './components/atoms/Button';
+@import './components/atoms/IconButton';
+@import './components/atoms/Input';
+@import './components/atoms/Select';
+@import './components/atoms/ImageProfile';
+@import './components/atoms/Loader';
+@import './components/atoms/AddImage';
+@import './components/atoms/AddClothe';
+@import './components/atoms/ClotheCard';
+@import './components/atoms/ButtonsBar';
+@import './components/atoms/Accordion';
+@import './components/atoms/LogoAnimated';
+
+@import './components/molecules/Notification';
+
+@import './components/organisms/SignupForm';
+@import './components/organisms/LoginForm';
+@import './components/organisms/NavBar';
+@import './components/organisms/SettingsNav';
+@import './components/organisms/EditProfile';
+@import './components/organisms/Settings';
+@import './components/organisms/Modal';
+@import './components/organisms/Slider';
+@import './components/organisms/FilterModal';
+@import './components/organisms/MatchModal';
+
+@import './pages/Layout';
+@import './pages/PrivacyPolicy';
+@import './pages/Signup';
+@import './pages/Login';
+@import './pages/UserPerfil';
+@import './pages/Feed';
+@import './pages/Notifications';
+
+@import "react-alice-carousel/lib/scss/alice-carousel.scss";

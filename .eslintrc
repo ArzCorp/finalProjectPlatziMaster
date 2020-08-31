@@ -11,4 +11,13 @@
   "plugins": [
     "jest"
   ],
+  "rules": {
+    "react/prop-types": 0,
+    "import/prefer-default-export": 0,
+    "jsx-a11y/label-has-associated-control": 0,
+    "object-curly-newline": 0,
+    "camelcase": 0,
+    "max-len": 0,
+    "no-shadow-restricted-names": 0
+  }
 }

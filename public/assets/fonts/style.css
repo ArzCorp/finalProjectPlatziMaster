@@ -1,0 +1,76 @@
+@font-face {
+  font-family: 'ourclothe';
+  src:url('./ourclothe.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="our-icon"], [class*=" our-icon"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'ourclothe' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.default-icon:before {
+  content: "\e902";
+}
+
+.our-iconlocation:before {
+  content: "\e900";
+}
+.our-iconstar:before {
+  content: "\e901";
+}
+.our-iconheart:before {
+  content: "\e902";
+}
+.our-iconadmiration:before {
+  content: "\e903";
+}
+.our-iconcamera:before {
+  content: "\e904";
+}
+.our-iconCross:before {
+  content: "\e905";
+}
+.our-icondown-arrow:before {
+  content: "\e906";
+}
+.our-iconhanger:before {
+  content: "\e907";
+}
+.our-iconmessage:before {
+  content: "\e908";
+}
+.our-iconparty:before {
+  content: "\e909";
+}
+.our-iconplus:before {
+  content: "\e90a";
+}
+.our-iconprofile:before {
+  content: "\e90b";
+}
+.our-iconsearch:before {
+  content: "\e90c";
+}
+.our-iconsettings:before {
+  content: "\e90d";
+}
+.our-icontshirt:before {
+  content: "\e90e";
+}
+.our-iconwhatsapp:before {
+  content: "\e90f";
+}

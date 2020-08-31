@@ -1,0 +1,13 @@
+.notifications {
+  & h1 {
+    text-align: center;
+  }
+
+}
+
+@media screen and(min-width: 768px) {
+  .notifications__list {
+    width: 70%;
+    margin-bottom: $Spacing-Normal auto;
+  }
+}
