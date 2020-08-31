@@ -1,18 +1,19 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import * as userActions from '../../actions/userActions';
+import * as buttonsActions from '../../actions/ButtonsActions';
 
 import EditProfile from './EditProfile';
 import AddClothe from '../atoms/AddClothe';
 import EditeClothe from '../atoms/EditClothe';
 
-const Settings = ({ userReducer, isButtonActive }) => {
+const SettingsClothes = ({ buttonsReducers: { isButtonActive } }) => {
   if (isButtonActive) {
     return (
       <div className="clothes">
         <AddClothe />
-        <EditeClothe
-          src="https://i.ibb.co/c2TQmVz/chamarra.jpg"
-          type=""
-        />
+        <EditeClothe />
       </div>
     );
   }
@@ -21,4 +22,14 @@ const Settings = ({ userReducer, isButtonActive }) => {
   );
 };
 
-export default Settings;
+const mapStateToProps = ({ userReducer, buttonsReducers }) => ({
+  userReducer,
+  buttonsReducers,
+});
+
+const mapDipatchToProps = {
+  ...userActions,
+  ...buttonsActions,
+};
+
+export default connect(mapStateToProps, mapDipatchToProps)(SettingsClothes);

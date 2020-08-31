@@ -1,5 +1,4 @@
 const URL_API = 'https://marttcode.com/';
-// const URL_API = 'http://68.183.108.146:8000/';
 // const URL_API_RESPALDO = 'http://68.183.108.146:8000/';
 
 export const fetchSignupUser = (data) => async (dispatch) => {
@@ -77,17 +76,34 @@ export const editProfile = (data, telephone, token) => async (dispatch, getState
       Authorization: `Token ${token}`,
     },
   };
-  const response = await fetch(URL_API_UPDATE, OPTIONS);
-  const dataUser = await response.json();
-  const userDataEdit = {
-    ...user,
-    token,
-    user: dataUser,
-  };
   dispatch({
-    type: 'EditProfile',
-    payload: userDataEdit,
+    type: 'LOADING',
   });
+  try {
+    const response = await fetch(URL_API_UPDATE, OPTIONS);
+    const dataUser = await response.json();
+    const statusResponse = await response.status;
+    const status = (statusResponse === 201);
+
+    const userDataEdit = {
+      ...user,
+      token,
+      user: dataUser,
+    };
+
+    localStorage.setItem('token', userDataEdit.token);
+    localStorage.setItem('user', JSON.stringify(userDataEdit));
+
+    dispatch({
+      type: 'EditProfile',
+      payload: { userDataEdit, status },
+    });
+  } catch (error) {
+    dispatch({
+      type: 'ERROR',
+      payload: error.message,
+    });
+  }
 };
 
 export const getDataUser = (telephone, token) => async (dispatch) => {
@@ -112,16 +128,18 @@ export const getDataUser = (telephone, token) => async (dispatch) => {
   });
 };
 
-export const editProfileImage = (data, telephone, token) => async (dispatch, getState) => {
+export const editProfileImage = (telephone, token, image) => async (dispatch, getState) => {
   const { user } = getState().userReducer;
+  const headers = new Headers();
+  const formImage = new FormData();
+  formImage.append('picture', image.files[0], 'userImage.jpeg');
+  headers.append('Authorization', `Token ${token}`);
   const URL_API_ADDIMAGE = `${URL_API}users/${telephone}/profile/`;
   const OPTIONS = {
     method: 'PATCH',
-    body: JSON.stringify(data),
-    headers: {
-      'content-type': 'application/x-www-form-urlencoded',
-      Authorization: `Token ${token}`,
-    },
+    body: formImage,
+    headers,
+    redirect: 'follow',
   };
   const response = await fetch(URL_API_ADDIMAGE, OPTIONS);
   const imageUser = await response.json();
@@ -131,7 +149,6 @@ export const editProfileImage = (data, telephone, token) => async (dispatch, get
     user: imageUser,
   };
   console.log(updateUser);
-  debugger;
   dispatch({
     type: 'EditProfile',
     payload: updateUser,
@@ -156,15 +173,25 @@ export const getUserClothes = (token) => async (dispatch) => {
   });
 };
 
-export const addClothe = (data, token) => async (dispatch) => {
+export const addClothe = (fields, token, image01, image02, image03) => async (dispatch) => {
+  const headers = new Headers();
+  const clotheData = new FormData();
+  const { category, color, size, gender, state } = fields;
+  clotheData.append('picture', image01.files[0], 'image02.jpeg');
+  clotheData.append('picture2', image02.files[0], 'image03.jpeg');
+  clotheData.append('picture3', image03.files[0], 'image01.jpeg');
+  clotheData.append('category', category);
+  clotheData.append('color', color);
+  clotheData.append('size', size);
+  clotheData.append('gender', gender);
+  clotheData.append('state', state);
+  headers.append('Authorization', `Token ${token}`);
+
   const URL_API_UPDATE = `${URL_API}clothes/myclothes/`;
   const OPTIONS = {
     method: 'POST',
-    body: JSON.stringify(data),
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Token ${token}`,
-    },
+    body: clotheData,
+    headers,
   };
   const response = await fetch(URL_API_UPDATE, OPTIONS);
   const addClotheData = await response.json();

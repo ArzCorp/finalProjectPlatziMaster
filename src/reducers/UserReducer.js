@@ -40,7 +40,7 @@ export default (state = INITIAL_STATE, action) => {
     case 'EditProfile':
       return {
         ...state,
-        userLoged: action.payload,
+        userLoged: action.payload.userDataEdit,
       };
     case 'addClotheData':
       return {

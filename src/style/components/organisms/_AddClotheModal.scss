@@ -3,7 +3,7 @@
 }
 
 .clothe h2, h4 {
-  color: $Color-PrimaryLight-1;
+  color: white;
   margin-bottom: $Spacing-ExtraSmall;
 }
 
@@ -23,7 +23,6 @@
   }
 }
 
-
 .clothe__images {
   margin-top: $Spacing-Normal;
   & .addImage__label {
@@ -32,14 +31,20 @@
     height: 200px;
   }
   & div {
-    display: flex;
     & .addImage__label {
-      width: 115px;
       text-align: center;
+      margin: $Spacing-Normal auto;
     }
   }
 }
 
 .clothe__details {
   margin-top: $Spacing-Normal;
+}
+
+.select {
+  background-color: white;
+  & label {
+    color: $Color-Grayscale-4
+  }
 }

@@ -2,10 +2,10 @@ import React from 'react';
 
 import Icon from './Icon';
 
-const AddImage = ({ onChange, name }) => (
+const AddImage = ({ id, onChange, name }) => (
   <>
     <label
-      htmlFor="addImage"
+      htmlFor={id || 'addImage'}
       className="addImage__label"
     >
       <Icon
@@ -16,7 +16,7 @@ const AddImage = ({ onChange, name }) => (
     </label>
     <input
       type="file"
-      id="addImage"
+      id={id || 'addImage'}
       className="addImage"
       name={name}
       onChange={onChange}

@@ -9,26 +9,38 @@ import AddImage from '../atoms/AddImage';
 import Button from '../atoms/Button';
 import InputSelect from '../atoms/InputSelect';
 
-const AddClotheModal = ({ turnModalState, addClothe, modalReducers: { AddClotheModalState }, userReducer: { userLoged: { token } } }) => {
-  const [fields, setField] = useState(0);
+const AddClotheModal = ({ turnModalState, addClothe, modalReducers: { AddClotheModalState } }) => {
+  const data = localStorage.getItem('user');
+  const jsonData = JSON.parse(data);
+  const { token } = jsonData;
 
+  const image01 = document.getElementById('image01');
+  const image02 = document.getElementById('image02');
+  const image03 = document.getElementById('image03');
+
+  const [fields, setField] = useState(0);
   const handleChange = (ev) => {
     setField({
       ...fields,
       [ev.target.name]: ev.target.value,
     });
   };
-  console.log(fields);
+  const handleSubmit = async (ev) => {
+    ev.preventDefault();
+    await addClothe(fields, token, image01, image02, image03);
+  };
+
   return (
     <Modal
       modalState={AddClotheModalState}
       onCloseModal={() => turnModalState('AddClotheModal', false)}
+      closeButton
     >
       <form
-        className="clothe"
+        className="clothe modal__scroll"
         method="post"
         name="addClothe"
-        onSubmit={() => { addClothe(fields, token); }}
+        onSubmit={handleSubmit}
       >
         <h2>Agrega prenda</h2>
         <div className="clothe__description">
@@ -37,18 +49,25 @@ const AddClotheModal = ({ turnModalState, addClothe, modalReducers: { AddClotheM
             className="description__clothe"
             name="description"
             placeholder="Descripcion"
+            onChange={handleChange}
           />
         </div>
         <div className="clothe__images">
           <h4>Imagen principal</h4>
           <AddImage
+            id="image01"
+            onChange={handleChange}
             name="clotheImage"
           />
           <div>
             <AddImage
+              id="image02"
+              onChange={handleChange}
               name="clotheImage"
             />
             <AddImage
+              id="image03"
+              onChange={handleChange}
               name="clotheImage"
             />
           </div>
@@ -60,7 +79,7 @@ const AddClotheModal = ({ turnModalState, addClothe, modalReducers: { AddClotheM
             name="category"
             onChange={handleChange}
           >
-            <option>calcetines</option>
+            <option>Calcetines</option>
             <option>Zapatos</option>
             <option>Pantalon</option>
             <option>Camisa</option>
@@ -94,6 +113,7 @@ const AddClotheModal = ({ turnModalState, addClothe, modalReducers: { AddClotheM
             <option>L</option>
             <option>XL</option>
             <option>XXL</option>
+            <option>NS</option>
           </InputSelect>
           <InputSelect
             label="Genero:"
@@ -112,6 +132,7 @@ const AddClotheModal = ({ turnModalState, addClothe, modalReducers: { AddClotheM
             <option>Bueno</option>
             <option>Regular</option>
             <option>Nuevo</option>
+            <option>Malo</option>
           </InputSelect>
         </div>
         <Button

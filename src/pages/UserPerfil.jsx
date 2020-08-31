@@ -9,17 +9,17 @@ import ImageProfile from '../components/atoms/ImageProfile';
 import SettingsNav from '../components/organisms/SettingsNav';
 import SettingsClothes from '../components/organisms/SettingsClothes';
 
-const UserPerfil = (props) => {
-  console.log(props)
-  const { userReducer, getUserClothes, buttonsReducers: { isButtonActive }, userReducer: { userClothes, userLoged: { token } } } = props;
+const UserPerfil = ({ userReducer, getUserClothes, buttonsReducers: { isButtonActive }, userReducer: { userClothes } }) => {
+  const data = localStorage.getItem('user');
+  const jsonData = JSON.parse(data);
+  const { token } = jsonData;
+
   if (userClothes.length === 0) {
     getUserClothes(token);
   }
   return (
     <section className="userprofile__entry">
-      <ImageProfile
-        url=""
-      />
+      <ImageProfile />
       <SettingsNav />
       <SettingsClothes
         userReducer={userReducer}

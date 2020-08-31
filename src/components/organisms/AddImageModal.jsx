@@ -8,10 +8,14 @@ import Modal from './Modal';
 import AddImage from '../atoms/AddImage';
 import Button from '../atoms/Button';
 
-const AddClotheModal = (props) => {
-  const { turnModalState, modalReducers: { AddImageModalState } } = props;
-  const { editProfileImage, userReducer: { userLoged: { user: { username }, token } } } = props;
+const AddClotheModal = ({ turnModalState, editProfileImage, modalReducers: { AddImageModalState } }) => {
+  const data = localStorage.getItem('user');
+  const jsonData = JSON.parse(data);
+  const { token, user: { username } } = jsonData;
+
   const [fields, setField] = useState(0);
+  const image = document.getElementById('image');
+
   const handleChange = (ev) => {
     setField({
       ...fields,
@@ -20,23 +24,23 @@ const AddClotheModal = (props) => {
   };
   const handleSubmit = async (ev) => {
     ev.preventDefault();
-    console.log(props);
-    await editProfileImage(fields, username, token);
-    console.log(props);
-    window.location.href = '/#/perfil';
+    await editProfileImage(fields, username, token, image);
   };
+
   return (
     <Modal
       modalState={AddImageModalState}
       onCloseModal={() => { turnModalState('AddImageModal', false); }}
+      closeButton
     >
       <form
-        className="addImageForm"
+        className="modal__scroll"
         method="patch"
         name="addImageForm"
         onSubmit={handleSubmit}
       >
         <AddImage
+          id="image"
           onChange={handleChange}
           name="picture"
         />
