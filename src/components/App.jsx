@@ -12,8 +12,6 @@ import UserPerfil from '../pages/UserPerfil';
 import PrivacyPolicy from '../pages/PrivacyPolicy';
 import Notifications from '../pages/Notifications';
 
-const UserLoged = ({ children }) => children({ isAuth: true });
-
 const App = () => (
   <HashRouter basename={process.env.PUBLIC_URL}>
     <Switch>

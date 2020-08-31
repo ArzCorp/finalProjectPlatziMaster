@@ -11,7 +11,6 @@ import Button from '../atoms/Button';
 import LoginModal from './LoginModal';
 
 const LoginForm = (props) => {
-  console.log(props)
   const [fields, setFields] = useState(0);
 
   const handleChange = (ev) => {
