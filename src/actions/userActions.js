@@ -1,5 +1,15 @@
-const URL_API = 'https://marttcode.com/';
+const URL_API = 'http://165.232.59.182:8000/';
 // const URL_API_RESPALDO = 'http://68.183.108.146:8000/';
+
+export const activateAuth = () => (dispatch) => {
+  const isAuth = localStorage.getItem('isAuth');
+  let userIsLoged = false;
+  if (isAuth !== null) userIsLoged = true;
+  dispatch({
+    type: 'activateAuth',
+    payload: userIsLoged,
+  })
+}
 
 export const fetchSignupUser = (data) => async (dispatch) => {
   const SIGNUP = `${URL_API}users/signup/`;
@@ -49,6 +59,7 @@ export const fetchLoginUser = (data) => async (dispatch) => {
     const statusResponse = await response.status;
     const status = (statusResponse === 201);
 
+    console.log('RESULTS: ', logedUser);
     localStorage.setItem('token', logedUser.token);
     localStorage.setItem('user', JSON.stringify(logedUser));
 

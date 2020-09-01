@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Context from '../Context';
 
 import * as userActions from '../../actions/userActions';
 import * as modalActions from '../../actions/ModalActions';
@@ -12,6 +11,8 @@ import LoginModal from './LoginModal';
 
 const LoginForm = (props) => {
   const [fields, setFields] = useState(0);
+  console.log('PROPS', props);
+
 
   const handleChange = (ev) => {
     setFields({
@@ -20,13 +21,14 @@ const LoginForm = (props) => {
     });
   };
 
-  const submitLoginForm = async (ev, userLogedState) => {
+  const submitLoginForm = async (ev) => {
     ev.preventDefault();
     if (props.validateForm(fields, 'LoginForm')) {
       const valid = await props.fetchLoginUser(fields);
 
       if (valid) {
-        props.activateAuth();
+        // console.log('PROPS', props)
+        // props.activateAuth();
         props.turnModalState('LoginModal', true);
         setTimeout(() => {
           window.location.href = '/#/feed';
@@ -37,7 +39,9 @@ const LoginForm = (props) => {
   };
 
   const validateField = (field) => {
+    console.log(field);
     const errorsCout = props.userReducer.errorsFields;
+    console.log('errorsCout', errorsCout);
     if (errorsCout[`${field}`]) {
       return (
         <div className="loginForm__errorMsg">
@@ -78,8 +82,8 @@ const LoginForm = (props) => {
     return null;
   };
 
-  const getForm = (userLogedState) => (
-    <form className="loginForm" method="post" name="loginForm" onSubmit={(userLogedState) => submitLoginForm(userLogedState)}>
+  return (
+    <form className="loginForm" method="post" name="loginForm" onSubmit={(ev) => submitLoginForm(ev)}>
       {validateSignup()}
       <Input
         type="number"
@@ -109,14 +113,6 @@ const LoginForm = (props) => {
         />
       </div>
     </form>
-  );
-
-  return (
-    <Context.Consumer>
-      {
-        ({ activateAuth, userLogedState }) => getForm(activateAuth, userLogedState)
-      }
-    </Context.Consumer>
   );
 };
 

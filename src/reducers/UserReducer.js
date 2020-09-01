@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   userClothes: [],
   errorsFields: [],
   userNotifications: [],
+  isAuth: true,
   formIsValid: false,
   stateLoginResponse: false,
   stateSignupResponse: false,
@@ -13,6 +14,11 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case 'activateAuth':
+      return {
+        ...state,
+        isAuth: action.payload,
+      };
     case 'LOADING':
       return {
         ...state,
