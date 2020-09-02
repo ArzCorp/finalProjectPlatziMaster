@@ -20,25 +20,24 @@ const totalActions = {
 
 const RenderFeedComponents = ({ clothes }) => {
   if (!clothes) {
-    return (
-      <div>
-        akii
-      </div>
-    );
+    return null;
   }
 
   return (
     <>
-      <Slider />
+      <Slider
+        picture={clothes.picture3}
+        picture2={clothes.picture2}
+        picture3={clothes.picture}
+      />
       <Accordion
         location={clothes.owner_is.profile.city}
-
-        // NameOwner={dataClothes.results[positionClothe].owner_is.first_name}
-        // clothesName={dataClothes.results[positionClothe].category}
-        // clothesGenre={dataClothes.results[positionClothe].gender}
-        // clothesState={dataClothes.results[positionClothe].state}
-        // clothesInfo={dataClothes.results[positionClothe].description}
-        // clothesSize={dataClothes.results[positionClothe].size}
+        NameOwner={clothes.owner_is.first_name}
+        clothesName={clothes.category}
+        clothesGenre={clothes.gender}
+        clothesState={clothes.state}
+        clothesInfo={clothes.description}
+        clothesSize={clothes.size}
       />
 
     </>
@@ -58,7 +57,7 @@ const Feed = () => {
   }, []);
 
   const nextClothe = () => {
-    if (positionClothe === 2) {
+    if (positionClothe === 15) {
       actions.fetchClothesFeed(clothesFeed.next);
       return;
     }
@@ -75,16 +74,18 @@ const Feed = () => {
   };
 
   const handleDislike = () => {
-    alert('dislike');
+    // alert('dislike');
     nextClothe();
   };
 
   const handleSuperlike = () => {
-    alert('superlike');
+    // alert('superlike');
     nextClothe();
   };
 
   const clothes = (!clothesFeed) ? null : clothesFeed.results[positionClothe];
+
+  console.log('clothes', clothes);
 
   return (
     <section>
@@ -119,13 +120,11 @@ const Feed = () => {
         modalState={MatchModalState}
         onCloseModal={() => actions.turnModalState('MatchModal', false)}
         nameUserMatch="Vicente Fernández"
-        closeButton
       />
 
       <FilterModal
         modalState={FilterModalState}
         onCloseModal={() => actions.turnModalState('FilterModal', false)}
-        closeButton
       />
     </section>
   );

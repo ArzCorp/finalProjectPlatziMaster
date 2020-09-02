@@ -8,6 +8,7 @@ const FilterModal = ({ modalState, onCloseModal }) => (
   <Modal
     modalState={modalState}
     onCloseModal={onCloseModal}
+    closeButton
   >
 
     <div className="filter-modal">

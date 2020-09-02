@@ -15,30 +15,33 @@ const imagesObj = {
 };
 
 const Slider = (props) => {
-  const { mainImg } = props;
+  const { picture, picture2, picture3 } = props;
 
   // console.log('ALLIMAGES', allImages)
 
   // const mapImages = (imagesObj) => (
   //   imagesObj.map((item) => (
-  //           console.log('ITEM IMG', item),
-  //     <div className="slider__img-container" >
-  //       <img src={item} className="slider__img" />
-  //     </div>
-
+  //     console.log('ITEM IMG', item),
+  //       <div className="slider__img-container">
+  //         <img src={item} className="slider__img" />
+  //       </div>
   //   ))
-  // )
+  // );
 
   return (
 
     <AliceCarousel>
 
       <div className="slider__img-container">
-        <img src={mainImg} className="slider__img" />
+        <img src={picture} className="slider__img" />
       </div>
       <div className="slider__img-container">
-        <img src={mainImg} className="slider__img" />
+        <img src={picture2} className="slider__img" />
       </div>
+      <div className="slider__img-container">
+        <img src={picture3} className="slider__img" />
+      </div>
+     
 
       {/* {
        allImages && mapImages()
