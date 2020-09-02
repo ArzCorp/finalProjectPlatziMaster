@@ -6,19 +6,18 @@ import * as buttonsActions from '../actions/ButtonsActions';
 import * as modalActions from '../actions/ModalActions';
 
 import ImageProfile from '../components/atoms/ImageProfile';
-import SettingsNav from '../components/organisms/SettingsNav';
 import SettingsClothes from '../components/organisms/SettingsClothes';
+import SettingsNav from '../components/organisms/SettingsNav';
 
-const UserPerfil = (props) => {
-  console.log(props)
-  const { userReducer, getUserClothes, buttonsReducers: { isButtonActive }, userReducer: { userClothes, userLoged: { token } } } = props;
-  if (userClothes.length === 0) {
-    getUserClothes(token);
-  }
+const UserPerfil = ({ userReducer, getUserClothes, buttonsReducers: { isButtonActive }, userReducer: { userClothes } }) => {
+  const data = localStorage.getItem('user');
+  const jsonData = JSON.parse(data);
+  const { user: { profile: { picture } } } = jsonData;
+
   return (
     <section className="userprofile__entry">
       <ImageProfile
-        url=""
+        src={picture}
       />
       <SettingsNav />
       <SettingsClothes

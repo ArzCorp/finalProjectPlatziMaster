@@ -4,11 +4,15 @@ const INITIAL_STATE = {
   userClothes: [],
   errorsFields: [],
   userNotifications: [],
+  isAuthenticated: localStorage.getItem('token'),
   formIsValid: false,
   stateLoginResponse: false,
   stateSignupResponse: false,
+  clothesObtained: false,
   loading: false,
   error: null,
+  clothesFeed: null,
+  positionClothe: 0,
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -23,6 +27,13 @@ export default (state = INITIAL_STATE, action) => {
         error: action.payload,
         loading: false,
       };
+    case 'CLEAR':
+      return {
+        ...state,
+        errorsFields: [],
+        formIsValid: false,
+        isAuthenticated: false,
+      }
     case 'fetchSignupUser':
       return {
         ...state,
@@ -34,25 +45,36 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         userLoged: action.payload.logedUser,
+        isAuthenticated: true,
         stateLoginResponse: action.payload.status,
         loading: false,
       };
     case 'EditProfile':
       return {
         ...state,
-        userLoged: action.payload,
+        userLoged: action.payload.userDataEdit,
+        loading: false,
+      };
+    case 'EditImageProfile':
+      return {
+        ...state,
+        userLoged: action.payload.updateUserImage,
+        loading: false,
       };
     case 'addClotheData':
       return {
         ...state,
         userClothes: action.payload,
         errorsFields: action.payload.errors,
+        loading: false,
       };
     case 'getClotheData':
       return {
         ...state,
         userClothes: action.payload,
         errorsFields: action.payload.errors,
+        loading: false,
+        clothesObtained: true,
       };
     case 'validateForm':
       return {
@@ -64,6 +86,23 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         userNotifications: action.payload,
+        loading: false,
+      };
+    case 'fetchClothesFeed':
+      return {
+        ...state,
+        clothesFeed: action.payload,
+        loading: false,
+        positionClothe: 0,
+      };
+    case 'nextClothe':
+      return {
+        ...state,
+        positionClothe: state.positionClothe + 1,
+      };
+    case 'userReaction':
+      return {
+        ...state,
         loading: false,
       };
     default: return state;

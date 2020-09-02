@@ -3,9 +3,11 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  margin: $Spacing-ExtraSmall;
   box-shadow: $Box-ShadowActive;
   color: $Color-Grayscale-3;
   padding: $Spacing-ExtraSmall;
+  width: 200px
 }
 
 .clothe__image {
