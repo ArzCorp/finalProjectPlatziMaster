@@ -7,6 +7,9 @@
   margin-top: $Spacing-Normal;
   &__image {
     border-radius: 50%;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
   }
 }
 
@@ -23,4 +26,5 @@
   border: transparent;
   border-radius: 50%;
   box-shadow: 0 1px 8px var(--Color-Primary);
+  background-color: $Color-Grayscale-1;
 }

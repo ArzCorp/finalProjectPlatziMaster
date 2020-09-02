@@ -10,9 +10,9 @@ import Icon from './Icon';
 import Button from './Button';
 import AddImageModal from '../organisms/AddImageModal';
 
-const ImageProfile = ({ url, turnModalState }) => (
+const ImageProfile = ({ src, turnModalState }) => (
   <div className="profile">
-    <img className="profile__image" alt="perfil" src={url || ProfileImage} />
+    <img className="profile__image" alt="perfil" src={src || ProfileImage} />
     <Button
       className="btn"
       onClick={() => {

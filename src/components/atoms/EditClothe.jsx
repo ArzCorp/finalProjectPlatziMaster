@@ -5,7 +5,7 @@ import * as modalActions from '../../actions/ModalActions';
 import EditClotheModal from '../organisms/EditClotheModal';
 import Button from './Button';
 
-const EditClothe = ({ src, type, turnModalState }) => (
+const EditClothe = ({ category, src, turnModalState, }) => (
   <>
     <Button
       id="btn-editclothe"
@@ -13,12 +13,12 @@ const EditClothe = ({ src, type, turnModalState }) => (
         <>
           <img
             src={src}
-            alt={`imagen de ${type}`}
+            alt={`imagen de ${category}`}
             className="clothe__image"
           />
           ,
           <h3>
-            tipo
+            {category}
           </h3>
         </>
       )}

@@ -5,11 +5,12 @@ import * as modalActions from '../../actions/ModalActions';
 import * as userActions from '../../actions/userActions';
 
 import Modal from './Modal';
+import Input from '../atoms/Input';
 import AddImage from '../atoms/AddImage';
 import Button from '../atoms/Button';
 import InputSelect from '../atoms/InputSelect';
 
-const AddClotheModal = ({ turnModalState, addClothe, modalReducers: { AddClotheModalState } }) => {
+const AddClotheModal = ({ getUserClothes, turnModalState, addClothe, modalReducers: { AddClotheModalState } }) => {
   const data = localStorage.getItem('user');
   const jsonData = JSON.parse(data);
   const { token } = jsonData;
@@ -27,7 +28,10 @@ const AddClotheModal = ({ turnModalState, addClothe, modalReducers: { AddClotheM
   };
   const handleSubmit = async (ev) => {
     ev.preventDefault();
+    console.log(fields)
     await addClothe(fields, token, image01, image02, image03);
+    await turnModalState('AddClotheModal', false);
+    await getUserClothes(token);
   };
 
   return (
@@ -79,6 +83,7 @@ const AddClotheModal = ({ turnModalState, addClothe, modalReducers: { AddClotheM
             name="category"
             onChange={handleChange}
           >
+            <option selected defalutValue="Seleccione una opción">Seleccione una opción</option>
             <option>Calcetines</option>
             <option>Zapatos</option>
             <option>Pantalon</option>
@@ -94,6 +99,7 @@ const AddClotheModal = ({ turnModalState, addClothe, modalReducers: { AddClotheM
             name="color"
             onChange={handleChange}
           >
+            <option selected defalutValue="Seleccione una opción">Seleccione una opción</option>
             <option>Negro</option>
             <option>Rojo</option>
             <option>Azul</option>
@@ -107,6 +113,7 @@ const AddClotheModal = ({ turnModalState, addClothe, modalReducers: { AddClotheM
             name="size"
             onChange={handleChange}
           >
+            <option selected defalutValue="Seleccione una opción">Seleccione una opción</option>
             <option>XS</option>
             <option>S</option>
             <option>M</option>
@@ -119,7 +126,9 @@ const AddClotheModal = ({ turnModalState, addClothe, modalReducers: { AddClotheM
             label="Genero:"
             name="gender"
             onChange={handleChange}
+            defalutValue={true}
           >
+            <option selected defalutValue="Seleccione una opción">Seleccione una opción</option>
             <option>Masculino</option>
             <option>Femenino</option>
             <option>Otro</option>
@@ -129,12 +138,23 @@ const AddClotheModal = ({ turnModalState, addClothe, modalReducers: { AddClotheM
             name="state"
             onChange={handleChange}
           >
+            <option selected defalutValue="Seleccione una opción">Seleccione una opción</option>
             <option>Bueno</option>
             <option>Regular</option>
             <option>Nuevo</option>
             <option>Malo</option>
           </InputSelect>
         </div>
+        <Input
+          className="public"
+          id="public"
+          type="checkbox"
+          label="Publicar"
+          name="publicClothe"
+          placeholder="si"
+          onChange={handleChange}
+          value="true"
+        />
         <Button
           type="normal"
           name="Publicar"

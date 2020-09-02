@@ -8,6 +8,7 @@ const INITIAL_STATE = {
   formIsValid: false,
   stateLoginResponse: false,
   stateSignupResponse: false,
+  clothesObtained: false,
   loading: false,
   error: null,
   clothesFeed: null,
@@ -52,18 +53,28 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         userLoged: action.payload.userDataEdit,
+        loading: false,
+      };
+    case 'EditImageProfile':
+      return {
+        ...state,
+        userLoged: action.payload.updateUserImage,
+        loading: false,
       };
     case 'addClotheData':
       return {
         ...state,
         userClothes: action.payload,
         errorsFields: action.payload.errors,
+        loading: false,
       };
     case 'getClotheData':
       return {
         ...state,
         userClothes: action.payload,
         errorsFields: action.payload.errors,
+        loading: false,
+        clothesObtained: true,
       };
     case 'validateForm':
       return {
