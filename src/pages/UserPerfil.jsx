@@ -6,20 +6,19 @@ import * as buttonsActions from '../actions/ButtonsActions';
 import * as modalActions from '../actions/ModalActions';
 
 import ImageProfile from '../components/atoms/ImageProfile';
-import SettingsNav from '../components/organisms/SettingsNav';
 import SettingsClothes from '../components/organisms/SettingsClothes';
+import SettingsNav from '../components/organisms/SettingsNav';
 
 const UserPerfil = ({ userReducer, getUserClothes, buttonsReducers: { isButtonActive }, userReducer: { userClothes } }) => {
   const data = localStorage.getItem('user');
   const jsonData = JSON.parse(data);
-  const { token } = jsonData;
+  const { user: { profile: { picture } } } = jsonData;
 
-  if (userClothes.length === 0) {
-    getUserClothes(token);
-  }
   return (
     <section className="userprofile__entry">
-      <ImageProfile />
+      <ImageProfile
+        src={picture}
+      />
       <SettingsNav />
       <SettingsClothes
         userReducer={userReducer}

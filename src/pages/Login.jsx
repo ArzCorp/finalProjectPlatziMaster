@@ -1,5 +1,4 @@
 import React from 'react';
-import Context from '../components/Context';
 
 import Logo from '../../public/assets/logo/logo.svg';
 import LoginForm from '../components/organisms/LoginForm';
@@ -15,11 +14,7 @@ const Login = () => (
       </div>
       <div className="row loginPage__loginForm">
         <div className="column-6">
-        <Context.Consumer>
-          {
-            ({ activateAuth, userLogedState }) => <LoginForm activateAuth={activateAuth} userLogedState={userLogedState} />
-          }
-        </Context.Consumer>
+          <LoginForm />
         </div>
       </div>
     </section>

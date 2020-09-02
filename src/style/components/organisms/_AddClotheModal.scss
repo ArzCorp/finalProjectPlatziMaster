@@ -1,12 +1,15 @@
 .clothe {
   padding: $Spacing-ExtraSmall;
+  & label {
+    color: $Color-Grayscale-1;
+    border: none;
+  }
 }
 
 .clothe h2, h4 {
   color: white;
   margin-bottom: $Spacing-ExtraSmall;
 }
-
 
 .clothe__description {
   margin: $Spacing-Normal 0px;
@@ -48,3 +51,4 @@
     color: $Color-Grayscale-4
   }
 }
+

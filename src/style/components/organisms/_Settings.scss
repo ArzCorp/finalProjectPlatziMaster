@@ -7,3 +7,10 @@
   margin-top: $Spacing-Normal;
   padding-bottom: $Spacing-Normal;
 }
+
+.clotheList {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: $Spacing-Normal 0px;
+}

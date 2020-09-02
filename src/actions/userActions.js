@@ -1,5 +1,11 @@
-const URL_API = 'https://marttcode.com/';
-// const URL_API_RESPALDO = 'http://68.183.108.146:8000/';
+import { setToken } from '../lib/http';
+import { URL_API } from '../config';
+
+export const logout = () => (dispatch) => {
+  dispatch({
+    type: 'CLEAR',
+  });
+};
 
 export const fetchSignupUser = (data) => async (dispatch) => {
   const SIGNUP = `${URL_API}users/signup/`;
@@ -49,7 +55,8 @@ export const fetchLoginUser = (data) => async (dispatch) => {
     const statusResponse = await response.status;
     const status = (statusResponse === 201);
 
-    localStorage.setItem('token', logedUser.token);
+    console.log('RESULTS: ', logedUser);
+    setToken(logedUser.token);
     localStorage.setItem('user', JSON.stringify(logedUser));
 
     dispatch({
@@ -91,7 +98,7 @@ export const editProfile = (data, telephone, token) => async (dispatch, getState
       user: dataUser,
     };
 
-    localStorage.setItem('token', userDataEdit.token);
+    setToken(userDataEdit.token);
     localStorage.setItem('user', JSON.stringify(userDataEdit));
 
     dispatch({
@@ -128,31 +135,52 @@ export const getDataUser = (telephone, token) => async (dispatch) => {
   });
 };
 
-export const editProfileImage = (telephone, token, image) => async (dispatch, getState) => {
+export const editProfileImage = (username, token, image) => async (dispatch, getState) => {
   const { user } = getState().userReducer;
   const headers = new Headers();
   const formImage = new FormData();
-  formImage.append('picture', image.files[0], 'userImage.jpeg');
-  headers.append('Authorization', `Token ${token}`);
-  const URL_API_ADDIMAGE = `${URL_API}users/${telephone}/profile/`;
+  const URL_API_ADDIMAGE = `${URL_API}users/${username}/profile/`;
   const OPTIONS = {
     method: 'PATCH',
     body: formImage,
     headers,
     redirect: 'follow',
   };
-  const response = await fetch(URL_API_ADDIMAGE, OPTIONS);
-  const imageUser = await response.json();
-  const updateUser = {
-    ...user,
-    token,
-    user: imageUser,
-  };
-  console.log(updateUser);
+
+  formImage.append('picture', image.files[0], image.files[0].name);
+  console.log(image.files[0].name);
+  headers.append('Authorization', `Token ${token}`);
+
   dispatch({
-    type: 'EditProfile',
-    payload: updateUser,
-  });
+    type: 'LOADING',
+  })
+
+  try {
+    const response = await fetch(URL_API_ADDIMAGE, OPTIONS);
+    const imageUser = await response.json();
+    console.log(imageUser.profile.picture);
+    const updateUserImage = {
+      ...user,
+      token,
+      user: imageUser,
+    };
+
+    const statusResponse = await response.status;
+    const status = (statusResponse === 200);
+
+    localStorage.setItem('token', updateUserImage.token);
+    localStorage.setItem('user', JSON.stringify(updateUserImage));
+
+    dispatch({
+      type: 'EditImageProfile',
+      payload: { updateUserImage, status },
+    });
+  } catch (error) {
+    dispatch({
+      type: 'ERROR',
+      payload: error.message,
+    })
+  }
 };
 
 export const getUserClothes = (token) => async (dispatch) => {
@@ -165,8 +193,14 @@ export const getUserClothes = (token) => async (dispatch) => {
       Authorization: `Token ${token}`,
     },
   };
+
+
+
   const response = await fetch(URL_API_UPDATE, OPTIONS);
   const getClothesData = await response.json();
+
+  localStorage.setItem('clothes', JSON.stringify(getClothesData));
+
   dispatch({
     type: 'getClotheData',
     payload: getClothesData,
@@ -176,25 +210,32 @@ export const getUserClothes = (token) => async (dispatch) => {
 export const addClothe = (fields, token, image01, image02, image03) => async (dispatch) => {
   const headers = new Headers();
   const clotheData = new FormData();
-  const { category, color, size, gender, state } = fields;
-  clotheData.append('picture', image01.files[0], 'image02.jpeg');
-  clotheData.append('picture2', image02.files[0], 'image03.jpeg');
-  clotheData.append('picture3', image03.files[0], 'image01.jpeg');
-  clotheData.append('category', category);
-  clotheData.append('color', color);
-  clotheData.append('size', size);
-  clotheData.append('gender', gender);
-  clotheData.append('state', state);
-  headers.append('Authorization', `Token ${token}`);
-
+  const { publicClothe, category, color, size, gender, state } = fields;
   const URL_API_UPDATE = `${URL_API}clothes/myclothes/`;
   const OPTIONS = {
     method: 'POST',
     body: clotheData,
     headers,
   };
+
+  headers.append('Authorization', `Token ${token}`);
+  clotheData.append('picture', image01.files[0], image01.files[0].name);
+  clotheData.append('picture2', image02.files[0], image02.files[0].name);
+  clotheData.append('picture3', image03.files[0], image03.files[0].name);
+  clotheData.append('category', category);
+  clotheData.append('public', publicClothe);
+  clotheData.append('color', color);
+  clotheData.append('size', size);
+  clotheData.append('gender', gender);
+  clotheData.append('state', state);
+
+  dispatch({
+    type: 'LOADING',
+  })
+
   const response = await fetch(URL_API_UPDATE, OPTIONS);
   const addClotheData = await response.json();
+  console.log(addClotheData)
   dispatch({
     type: 'addClotheData',
     payload: addClotheData,
@@ -315,21 +356,10 @@ export const fetchNotificationsUser = (token) => async (dispatch) => {
   try {
     const response = await fetch(NOTIFICATIONS, OPTIONS);
     const notifications = await response.json();
-    const notificationsfake = [
-      {
-        clothe: 1,
-        user: '6459783474',
-        value: 'SUPERLIKE',
-      }, {
-        clothe: 2,
-        user: '6459254769',
-        value: 'LIKE',
-      },
-    ];
-    console.log('notifications server response', notifications);
+
     dispatch({
       type: 'fetchNotificationsUser',
-      payload: notificationsfake,
+      payload: notifications,
     });
   } catch (error) {
     dispatch({
