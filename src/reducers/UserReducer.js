@@ -4,7 +4,7 @@ const INITIAL_STATE = {
   userClothes: [],
   errorsFields: [],
   userNotifications: [],
-  isAuth: true,
+  isAuthenticated: localStorage.getItem('token'),
   formIsValid: false,
   stateLoginResponse: false,
   stateSignupResponse: false,
@@ -14,11 +14,6 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case 'activateAuth':
-      return {
-        ...state,
-        isAuth: action.payload,
-      };
     case 'LOADING':
       return {
         ...state,
@@ -29,6 +24,13 @@ export default (state = INITIAL_STATE, action) => {
         error: action.payload,
         loading: false,
       };
+    case 'CLEAR':
+      return {
+        ...state,
+        errorsFields: [],
+        formIsValid: false,
+        isAuthenticated: false,
+      }
     case 'fetchSignupUser':
       return {
         ...state,
@@ -40,6 +42,7 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         userLoged: action.payload.logedUser,
+        isAuthenticated: true,
         stateLoginResponse: action.payload.status,
         loading: false,
       };

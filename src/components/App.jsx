@@ -1,7 +1,10 @@
 import React from 'react';
-import { HashRouter, Route, Switch } from 'react-router-dom';
+import { HashRouter, Switch } from 'react-router-dom';
 
 import '../style/styles.scss';
+
+import PublicRoute from './routes/PublicRoute';
+import PrivateRoute from './routes/PrivateRoute';
 
 import Feed from '../pages/Feed';
 import Login from '../pages/Login';
@@ -14,29 +17,32 @@ import Notifications from '../pages/Notifications';
 const App = () => (
   <HashRouter basename={process.env.PUBLIC_URL}>
     <Switch>
-      <Route exact path="/" component={Login} />
-      <Route exact path="/login" component={Login} />
-      <Route exact path="/signup" component={Signup} />
+      <PublicRoute
+        path="/signup"
+        component={Signup}
+      />
+      <PublicRoute
+        path="/login"
+        component={Login}
+      />
+      <PublicRoute
+        path="/privacy-policy"
+        component={PrivacyPolicy}
+      />
       <Layout>
-        <Route exact path="/feed" component={Feed} />
-        <Route exact path="/profile" component={UserPerfil} />
-        <Route exact path="/notifications" component={Notifications} />
-        <Route exact path="/privacy-policy" component={PrivacyPolicy} />
+        <PrivateRoute
+          path="/feed"
+          component={Feed}
+        />
+        <PrivateRoute
+          path="/profile"
+          component={UserPerfil}
+        />
+        <PrivateRoute
+          path="/notifications"
+          component={Notifications}
+        />
       </Layout>
-        {/* {
-          ?
-          <Layout>
-            <Route exact path="/feed" component={Feed} />
-            <Route exact path="/profile" component={UserPerfil} />
-            <Route exact path="/notifications" component={Notifications} />
-            <Route exact path="/privacy-policy" component={PrivacyPolicy} />
-          </Layout>
-          : <Route>
-            <Route exact path="/feed" component={Login} />
-            <Route exact path="/profile" component={Login} />
-            <Route exact path="/notifications" component={Login} />
-          </Route>
-        } */}
     </Switch>
   </HashRouter>
 );

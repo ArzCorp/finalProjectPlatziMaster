@@ -1,12 +1,19 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import * as userActions from '../../actions/userActions';
 
 import Icon from '../atoms/Icon';
 import Logo from '../../../public/assets/logo/logo-negative.svg';
 
-const NavBar = () => {
+const NavBar = (props) => {
   const goToLogout = () => {
-    alert('logout');
+    localStorage.clear();
+    props.logout();
+    setTimeout(() => {
+      window.location.href = '/#/login';
+    }, 500);
   };
 
   return (
@@ -54,4 +61,6 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+const mapStateToProps = ({ userReducer }) => userReducer;
+
+export default connect(mapStateToProps, userActions)(NavBar);

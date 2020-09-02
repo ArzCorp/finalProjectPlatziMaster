@@ -11,8 +11,6 @@ import LoginModal from './LoginModal';
 
 const LoginForm = (props) => {
   const [fields, setFields] = useState(0);
-  console.log('PROPS', props);
-
 
   const handleChange = (ev) => {
     setFields({
@@ -27,8 +25,6 @@ const LoginForm = (props) => {
       const valid = await props.fetchLoginUser(fields);
 
       if (valid) {
-        // console.log('PROPS', props)
-        // props.activateAuth();
         props.turnModalState('LoginModal', true);
         setTimeout(() => {
           window.location.href = '/#/feed';
@@ -39,9 +35,7 @@ const LoginForm = (props) => {
   };
 
   const validateField = (field) => {
-    console.log(field);
     const errorsCout = props.userReducer.errorsFields;
-    console.log('errorsCout', errorsCout);
     if (errorsCout[`${field}`]) {
       return (
         <div className="loginForm__errorMsg">
