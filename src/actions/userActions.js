@@ -1,5 +1,7 @@
-const URL_API = 'https://fiscalsalinas.me/';
-// const URL_API_RESPALDO = 'http://68.183.108.146:8000/';
+import { setToken } from '../lib/http';
+import { URL_API } from '../config';
+
+const TOKEN = localStorage.getItem('token');
 
 export const logout = () => (dispatch) => {
   dispatch({
@@ -55,7 +57,8 @@ export const fetchLoginUser = (data) => async (dispatch) => {
     const statusResponse = await response.status;
     const status = (statusResponse === 201);
 
-    localStorage.setItem('token', logedUser.token);
+    console.log('RESULTS: ', logedUser);
+    setToken(logedUser.token);
     localStorage.setItem('user', JSON.stringify(logedUser));
 
     dispatch({
@@ -97,7 +100,7 @@ export const editProfile = (data, telephone, token) => async (dispatch, getState
       user: dataUser,
     };
 
-    localStorage.setItem('token', userDataEdit.token);
+    setToken(userDataEdit.token);
     localStorage.setItem('user', JSON.stringify(userDataEdit));
 
     dispatch({
@@ -344,3 +347,4 @@ export const fetchNotificationsUser = (token) => async (dispatch) => {
     });
   }
 };
+
