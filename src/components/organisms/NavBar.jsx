@@ -22,7 +22,7 @@ const NavBar = (props) => {
         <img src={Logo} alt="Logotipo Ourclothe" />
       </div>
       <div className="navbar__menu">
-        <NavLink to="/profile" activeClassName="active">
+        <NavLink to="/profile" activeClassName="active" id="profile">
           <Icon
             iconName="profile"
             size="25px"
