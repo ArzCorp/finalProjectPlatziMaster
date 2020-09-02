@@ -18,12 +18,17 @@ const App = () => (
   <HashRouter basename={process.env.PUBLIC_URL}>
     <Switch>
       <PublicRoute
-        path="/signup"
-        component={Signup}
+        exact
+        path="/"
+        component={Login}
       />
       <PublicRoute
         path="/login"
         component={Login}
+      />
+      <PublicRoute
+        path="/signup"
+        component={Signup}
       />
       <PublicRoute
         path="/privacy-policy"

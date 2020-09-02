@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import * as userActions from '../actions/userActions';
@@ -8,15 +8,10 @@ import Loader from '../components/atoms/Loader';
 import Prenda from '../../public/assets/images/image1.png';
 
 const Notifications = (props) => {
-  const [count, setCount] = useState(0);
-
   const validateNotifications = () => {
-    if (!(props.userReducer.userNotifications.length)) {
-      if (count === 0) {
-        setCount(count + 1);
-        props.fetchNotificationsUser(localStorage.getItem('token'));
-      }
-    }
+    useEffect(() => {
+      props.fetchNotificationsUser(localStorage.getItem('token'));
+    }, []);
 
     return (
       <div className="row">

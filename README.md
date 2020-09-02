@@ -47,10 +47,9 @@ In this display the user can create new clothes with the attributes clothe as *d
 This section permite to the user see notifications about of his matchs, an contacting information of other users match.
 
 > You can try Ourclothes App here:
-<br />
-[gh-pages](https://arzatecompany.github.io/finalProjectPlatziMaster/#/login "gh-pages")
-<br />
-[ourclothe.com](http://www.ourclothe.com/ "ourclothe.com")
+
+<br />[gh-pages](https://arzatecompany.github.io/finalProjectPlatziMaster/#/login "gh-pages")
+<br /> [ourclothe.com](http://www.ourclothe.com/ "ourclothe.com")
 
 <div align="center">
 <img src="https://raw.githubusercontent.com/ArzateCompany/finalProjectPlatziMaster/develop/public/assets/images/mobileApp.png" height="100" alt="mobileApp">
@@ -59,7 +58,11 @@ This section permite to the user see notifications about of his matchs, an conta
 
 ## 👨‍💻 3. Guide for Developer
 
-This web service is thinking an designedbased in Athomic design methodology, this is compouse by *atoms*, *molecules*, *organism*, *templates* and *pages* each one of this elements is related with the others, for example a molecule is made up for the serveral atoms and one organism is made up for the several molecules and so on. The deigng of the mockups is thinking in this metodology, mockups were buided based on these principles.
+### Design
+
+This web service is thinking an designed based in Athomic design methodology, this is compouse by *atoms*, *molecules*, *organism*, *templates* and *pages* each one of this elements is related with the others, for example a molecule is made up for the serveral atoms and one organism is made up for the several molecules and so on. The deigng of the mockups is thinking in this metodology, mockups were buided based on these principles.
+
+> You can see the mockups of this proyect, [just click here](https://xd.adobe.com/view/773365b7-9321-41ed-8daa-102c3ebe8248-2260/screen/1febd08a-a290-4c63-9f4e-f4ff5c5405fc?fullscreen "just click here")
 
 ### Technologies used
 

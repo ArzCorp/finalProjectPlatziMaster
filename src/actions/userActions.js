@@ -324,7 +324,7 @@ export const fetchNotificationsUser = (token) => async (dispatch) => {
   try {
     const response = await fetch(NOTIFICATIONS, OPTIONS);
     const notifications = await response.json();
-    const notificationsfake = [
+    const notificationss = [
       {
         clothe: 1,
         user: '6459783474',
@@ -338,7 +338,7 @@ export const fetchNotificationsUser = (token) => async (dispatch) => {
     console.log('notifications server response', notifications);
     dispatch({
       type: 'fetchNotificationsUser',
-      payload: notificationsfake,
+      payload: notificationss,
     });
   } catch (error) {
     dispatch({
