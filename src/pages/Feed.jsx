@@ -85,8 +85,6 @@ const Feed = () => {
 
   const clothes = (!clothesFeed) ? null : clothesFeed.results[positionClothe];
 
-  console.log('clothes', clothes);
-
   return (
     <section>
       <div className="feed">
