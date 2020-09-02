@@ -6,9 +6,11 @@ import * as userActions from '../../actions/userActions';
 import Input from '../atoms/Input';
 import Button from '../atoms/Button';
 
-const EditProfile = (props) => {
-  console.log(props);
-  const { editProfile, userReducer: { userLoged: { user: { last_name, username, first_name }, token } } } = props;
+const EditProfile = ({ editProfile }) => {
+  const data = localStorage.getItem('user');
+  const jsonData = JSON.parse(data);
+  const { token, user: { last_name, username, first_name } } = jsonData;
+
   const [fields, setField] = useState(0);
   const handleChange = (ev) => {
     setField({
@@ -19,9 +21,8 @@ const EditProfile = (props) => {
   const handleSubmit = async (ev) => {
     ev.preventDefault();
     await editProfile(fields, username, token);
-    console.log(props);
-    window.location.href = '/#/perfil';
   };
+
   return (
     <section className="useredit">
       <div className="column-6">

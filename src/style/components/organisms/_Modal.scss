@@ -18,11 +18,16 @@
     flex-direction:column;
     width: 90%;
     height: 90%;
-    // overflow: scroll;
     & .addImage__label {
       margin: $Spacing-Normal auto;
       width: 80%;
     }
+  }
+  &__scroll{
+    width: 90%;
+    height: 100vh;
+    overflow: scroll;
+    padding: $Spacing-Normal;
   }
   &__close{
     display: flex;

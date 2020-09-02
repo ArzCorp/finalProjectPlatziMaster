@@ -7,11 +7,20 @@ import * as usersActions from '../../actions/userActions';
 import Modal from './Modal';
 import AddImage from '../atoms/AddImage';
 import Button from '../atoms/Button';
+import Loader from '../atoms/Loader';
 
 const AddClotheModal = (props) => {
-  const { turnModalState, modalReducers: { AddImageModalState } } = props;
-  const { editProfileImage, userReducer: { userLoged: { user: { username }, token } } } = props;
+  const { turnModalState, editProfileImage, modalReducers: { AddImageModalState }, userReducer: { loading } } = props;
+  const data = localStorage.getItem('user');
+  const jsonData = JSON.parse(data);
+  const { token, user: { username } } = jsonData;
   const [fields, setField] = useState(0);
+  const image = document.getElementById('image');
+
+  if (loading) {
+    return <Loader />
+  }
+
   const handleChange = (ev) => {
     setField({
       ...fields,
@@ -20,23 +29,25 @@ const AddClotheModal = (props) => {
   };
   const handleSubmit = async (ev) => {
     ev.preventDefault();
-    console.log(props);
-    await editProfileImage(fields, username, token);
-    console.log(props);
-    window.location.href = '/#/perfil';
+    await editProfileImage(username, token, image);
+    await turnModalState('AddImageModal', false);
   };
+
   return (
     <Modal
       modalState={AddImageModalState}
       onCloseModal={() => { turnModalState('AddImageModal', false); }}
+      closeButton
     >
+      <h2>Edita tu foto de perfil</h2>
       <form
-        className="addImageForm"
+        className="modal__scroll"
         method="patch"
         name="addImageForm"
         onSubmit={handleSubmit}
       >
         <AddImage
+          id="image"
           onChange={handleChange}
           name="picture"
         />
