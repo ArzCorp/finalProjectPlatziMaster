@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AliceCarousel from 'react-alice-carousel';
 
 import image1 from '../../../public/assets/images/real_image.jpg';
@@ -14,22 +14,22 @@ const imagesObj = {
   image3: '../../../public/assets/images/image3.png',
 };
 
+let sw = false;
+
 const Slider = (props) => {
+  const [refesh, setRefresh] = useState(0);
   const { picture, picture2, picture3 } = props;
+  if (!sw) {
+    setTimeout(() => {
+      sw = true;
+      setRefresh(refesh  + 1)
+    }, 0)
+    return null;
+  }
 
-  // console.log('ALLIMAGES', allImages)
-
-  // const mapImages = (imagesObj) => (
-  //   imagesObj.map((item) => (
-  //     console.log('ITEM IMG', item),
-  //       <div className="slider__img-container">
-  //         <img src={item} className="slider__img" />
-  //       </div>
-  //   ))
-  // );
+  sw = false;
 
   return (
-
     <AliceCarousel>
 
       <div className="slider__img-container">
@@ -41,12 +41,7 @@ const Slider = (props) => {
       <div className="slider__img-container">
         <img src={picture3} className="slider__img" />
       </div>
-     
-
-      {/* {
-       allImages && mapImages()
-      } */}
-
+ 
     </AliceCarousel>
   );
 };
