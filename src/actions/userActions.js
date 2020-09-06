@@ -279,7 +279,7 @@ export const validateForm = (fields, form) => (dispatch) => {
     }
 
     if (typeof fields.first_name !== 'undefined') {
-      if (!fields.first_name.match(/^[a-zA-Z ]*$/)) {
+      if (!fields.first_name.match(/^[a-zA-ZÀ-ÿ-00f1 00d1]+$/)) {
         formIsValid = false;
         errors.first_name = '*Solo usa caracteres del alfabeto.';
       }
@@ -291,7 +291,7 @@ export const validateForm = (fields, form) => (dispatch) => {
     }
 
     if (typeof fields.last_name !== 'undefined') {
-      if (!fields.last_name.match(/^[a-zA-Z]*$/)) {
+      if (!fields.last_name.match(/^[a-zA-ZÀ-ÿ-00f1 00d1]+$/)) {
         formIsValid = false;
         errors.last_name = '*Solo usa caracteres del alfabeto.';
       }
