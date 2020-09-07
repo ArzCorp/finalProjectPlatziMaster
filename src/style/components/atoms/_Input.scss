@@ -1,12 +1,12 @@
 .form__input {
-  margin-top: $Spacing-ExtraSmall;
+  margin-top: $Spacing-Normal / 2;
   label {
-    margin-left: $Spacing-ExtraSmall;
-    font-size: $Font-Small;
+    font-size: $Font-Paragraph;
     color: var(--Color-PrimaryLight-1);
   }
 
   input {
+    margin-top: $Spacing-ExtraSmall / 2;
     width: 100%;
     padding: $Spacing-ExtraSmall;
     box-shadow: $Box-Shadow;
