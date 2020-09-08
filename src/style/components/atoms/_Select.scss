@@ -1,8 +1,6 @@
 .form__Select {
   margin-top: $Spacing-ExtraSmall;
   width: 100%;
- 
-
   & .container {
     position: relative;
     display: flex;
@@ -14,6 +12,7 @@
     color: var(--Color-PrimaryLight-1);
     background-color:var(--Color-Grayscale-1);
     outline: none;
+    
     &  label {
         flex:.5;
         color: var(--Color-PrimaryLight-1);
@@ -30,23 +29,24 @@
       color:var(--Color-Grayscale-4);
       background-image: none;
       font-size: 1rem;
+      cursor: pointer;
+      margin-top:initial;
+      &:hover{
+        opacity:0.8;
+      }
     }
     & .default-icon.our-icondown-arrow{
       position: absolute;
       right: 20px;
+      pointer-events: none;
 
     }
   }
   
   .select:hover::after {
     color: #f39c12;
+
   }
-
-
-
-
-
-
 
 
 
