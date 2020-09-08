@@ -6,6 +6,7 @@ import * as userActions from '../../actions/userActions';
 import * as modalActions from '../../actions/ModalActions';
 
 import Input from '../atoms/Input';
+import PasswordInput from '../atoms/PasswordInput';
 import Button from '../atoms/Button';
 import LoginModal from './LoginModal';
 
@@ -87,7 +88,7 @@ const LoginForm = (props) => {
         onChange={handleChange}
       />
       {validateField('phone_number')}
-      <Input
+      <PasswordInput
         type="password"
         label="Contraseña"
         placeholder="Contraseña"

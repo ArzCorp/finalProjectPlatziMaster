@@ -1,0 +1,32 @@
+import React, { useState } from 'react';
+import Input from './Input';
+import IconButton from './IconButton';
+
+const PasswordInput = (props) => {
+  const { onChange, label, placeholder, name } = props;
+  const [hide, setHide] = useState(true);
+  const showPassword = () => setHide(!hide);
+
+  return (
+    <div className="paswordInput">
+      <Input
+        type={hide ? 'password' : 'text'}
+        label={label}
+        placeholder={placeholder}
+        name={name}
+        onChange={onChange}
+      />
+      <div className="showPassword">
+        <IconButton
+          iconName="search"
+          colorIcon={hide ? '#838F8C' : '#19704E'}
+          bgColor="transparent"
+          size="15px"
+          handleClick={() => showPassword()}
+        />
+      </div>
+    </div>
+  );
+};
+
+export default PasswordInput;

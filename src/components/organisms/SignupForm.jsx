@@ -6,6 +6,7 @@ import * as userActions from '../../actions/userActions';
 import * as modalActions from '../../actions/ModalActions';
 
 import Input from '../atoms/Input';
+import PasswordInput from '../atoms/PasswordInput';
 import Button from '../atoms/Button';
 import SignupModal from './SignupModal';
 
@@ -88,7 +89,7 @@ const SignupForm = (props) => {
         onChange={handleChange}
       />
       {validateField('username')}
-      <Input
+      <PasswordInput
         type="password"
         label="Contraseña"
         placeholder="Contraseña"
@@ -96,7 +97,7 @@ const SignupForm = (props) => {
         onChange={handleChange}
       />
       {validateField('password')}
-      <Input
+      <PasswordInput
         type="password"
         label="Confirmar contraseña"
         placeholder="Confirmar contraseña"
