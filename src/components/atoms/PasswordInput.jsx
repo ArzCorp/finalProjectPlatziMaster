@@ -16,7 +16,7 @@ const PasswordInput = (props) => {
         name={name}
         onChange={onChange}
       />
-      <div className="showPassword">
+      <div className="paswordInput__showPassword">
         <IconButton
           iconName="search"
           colorIcon={hide ? '#838F8C' : '#19704E'}

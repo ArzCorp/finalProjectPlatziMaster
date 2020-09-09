@@ -6,6 +6,7 @@ import * as userActions from '../../actions/userActions';
 import * as modalActions from '../../actions/ModalActions';
 
 import Input from '../atoms/Input';
+import NumberInput from '../atoms/NumberInput';
 import PasswordInput from '../atoms/PasswordInput';
 import Button from '../atoms/Button';
 import SignupModal from './SignupModal';
@@ -81,8 +82,8 @@ const SignupForm = (props) => {
         onChange={handleChange}
       />
       {validateField('last_name')}
-      <Input
-        type="number"
+      <NumberInput
+        type="text"
         label="Teléfono"
         placeholder="Teléfono"
         name="username"

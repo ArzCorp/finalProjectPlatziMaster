@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import * as userActions from '../../actions/userActions';
 import * as modalActions from '../../actions/ModalActions';
 
-import Input from '../atoms/Input';
+import NumberInput from '../atoms/NumberInput';
 import PasswordInput from '../atoms/PasswordInput';
 import Button from '../atoms/Button';
 import LoginModal from './LoginModal';
@@ -80,8 +80,8 @@ const LoginForm = (props) => {
   return (
     <form className="loginForm" method="post" name="loginForm" onSubmit={(ev) => submitLoginForm(ev)}>
       {validateSignup()}
-      <Input
-        type="number"
+      <NumberInput
+        type="text"
         label="Teléfono"
         placeholder="Teléfono"
         name="phone_number"
