@@ -3,14 +3,7 @@ import IconButton from './IconButton';
 import Icon from './Icon';
 
 const Accordion = (props) => {
-  const { location, clothesName, NameOwner, clothesGenre, clothesState, clothesInfo, clothesSize } = props;
-
-  const collapseAccordion = () => {
-    const infoToggle = document.querySelector('.bottom-info');
-    const iconArrow = document.querySelector('.accordion__content .icon-button');
-    infoToggle.classList.toggle('bottom-info-collapse');
-    iconArrow.classList.toggle('icon-rotate');
-  };
+  const { location, clothesName, NameOwner, clothesGenre, clothesState, clothesInfo, clothesSize, collapseAccordion } = props;
 
   return (
     <div className="accordion">

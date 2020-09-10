@@ -4,10 +4,11 @@ import Icon from './Icon';
 
 const IconButton = (props) => {
   const {
-    iconName, size, colorIcon, handleClick, bgColor, space, type,
+    iconName, size, colorIcon, handleClick, bgColor, space, type, id,
   } = props;
   return (
     <button
+      id={id}
       type="button"
       onClick={handleClick}
       style={{
