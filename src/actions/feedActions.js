@@ -1,9 +1,7 @@
 import { httpRequest } from '../lib/http';
 
 export const fetchClothesFeed = (nextPage) => async (dispatch) => {
-  let endPoint = 'clothes/';
-
-  if (nextPage) endPoint += nextPage;
+  const endPoint = (!nextPage) ? 'clothes/' : nextPage;
 
   try {
     const response = await httpRequest({
@@ -12,6 +10,7 @@ export const fetchClothesFeed = (nextPage) => async (dispatch) => {
       options: {
         method: 'GET',
       },
+      urlWithoutConfig: nextPage,
     });
 
     if (response.status !== 200) return;
@@ -28,33 +27,25 @@ export const fetchClothesFeed = (nextPage) => async (dispatch) => {
   }
 };
 
-export const nextPositionClothe = () => ({
-  type: 'nextClothe',
-});
-
-export const userReaction = (clotheId, userReaction) => async (dispatch) => {
-  const USER_REACTION = `${URL_API}clothes/interactions/`;
-
-  const OPTIONS = {
-    method: 'POST',
-    body: JSON.stringify({
-      clothe: `${clotheId}`,
-      value: `${userReaction}`,
-    }),
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Token ${TOKEN}`,
-    },
-  };
-  dispatch({
-    type: 'LOADING',
-  });
+export const nextPositionClothe = (data) => async (dispatch) => {
+  const endPoint = 'clothes/interactions/';
 
   try {
-    const response = await fetch(USER_REACTION, OPTIONS);
-    console.log('SUCCESS REACTION', userReaction);
+    const response = await httpRequest({
+      dispatch,
+      endPoint,
+      options: {
+        method: 'POST',
+        body: JSON.stringify(data),
+      },
+    });
+
+    if (response.status !== 202) {
+      return;
+    }
+
     dispatch({
-      type: 'userReaction',
+      type: 'nextClothe',
     });
   } catch (error) {
     dispatch({

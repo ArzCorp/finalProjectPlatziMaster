@@ -12,17 +12,22 @@ import Loader from '../components/atoms/Loader';
 import Slider from '../components/organisms/Slider';
 import FilterModal from '../components/organisms/FilterModal';
 import MatchModal from '../components/organisms/MatchModal';
+import KeyboardExplanation from '../components/organisms/KeyboardExplanation';
 
 const totalActions = {
   ...modalActions,
   ...feedActions,
 };
 
-const RenderFeedComponents = ({ clothes }) => {
-  if (!clothes) {
-    return null;
-  }
+const collapseAccordion = () => {
+  const infoToggle = document.querySelector('.bottom-info');
+  const iconArrow = document.querySelector('.accordion__content .icon-button');
+  infoToggle.classList.toggle('bottom-info-collapse');
+  iconArrow.classList.toggle('icon-rotate');
+};
 
+const RenderFeedComponents = ({ clothes }) => {
+  if (!clothes) { return null; }
   return (
     <>
       <Slider
@@ -38,8 +43,8 @@ const RenderFeedComponents = ({ clothes }) => {
         clothesState={clothes.state}
         clothesInfo={clothes.description}
         clothesSize={clothes.size}
+        collapseAccordion={collapseAccordion}
       />
-
     </>
   );
 };
@@ -47,43 +52,70 @@ const RenderFeedComponents = ({ clothes }) => {
 const Feed = () => {
   const MatchModalState = useSelector((state) => state.modalReducers.MatchModalState);
   const FilterModalState = useSelector((state) => state.modalReducers.FilterModalState);
+  const KeyboardExplanationModal = useSelector((state) => state.modalReducers.KeyboardExplanationModal);
   const clothesFeed = useSelector((state) => state.userReducer.clothesFeed);
   const positionClothe = useSelector((state) => state.userReducer.positionClothe);
   const loading = useSelector((state) => state.userReducer.loading);
   const actions = useActions(totalActions);
 
   useEffect(() => {
+    actions.turnModalState('KeyboardExplanationModal', true);
     actions.fetchClothesFeed();
   }, []);
 
-  const nextClothe = () => {
-    if (positionClothe === 15) {
+  const nextClothe = (args) => {
+    if (positionClothe >= (clothesFeed.results.length - 1)) {
       actions.fetchClothesFeed(clothesFeed.next);
       return;
     }
-    actions.nextPositionClothe();
+    actions.nextPositionClothe(args);
   };
 
   const handleOpenModal = () => {
     actions.turnModalState('FilterModal', true);
   };
 
+  const clothes = (!clothesFeed) ? null : clothesFeed.results[positionClothe];
+
   const handlelike = () => {
-    actions.turnModalState('MatchModal', true);
-    nextClothe();
+    nextClothe({
+      clothe: clothes.id,
+      value: 'LIKE',
+    });
   };
 
   const handleDislike = () => {
-    // alert('dislike');
-    nextClothe();
+    nextClothe({
+      clothe: clothes.id,
+      value: 'DISLIKE',
+    });
   };
 
   const handleSuperlike = () => {
-    // alert('superlike');
-    nextClothe();
+    nextClothe({
+      clothe: clothes.id,
+      value: 'SUPERLIKE',
+    });
   };
 
-  const clothes = (!clothesFeed) ? null : clothesFeed.results[positionClothe];
+  const keyPress = () => {
+    const key = event.code;
+    if (key === 'ControlLeft') {
+      handleDislike();
+    } else if (key === 'AltLeft') {
+      handleSuperlike();
+    } else if (key === 'ControlRight') {
+      handlelike();
+    } else if (key === 'Escape') {
+      actions.turnModalState('MatchModal', false);
+    } else if (key === 'ArrowUp' || key === 'ArrowDown') {
+      collapseAccordion();
+    }
+  };
+
+  window.onkeydown = keyPress;
+
+  console.log('Estos son los datos', clothes);
 
   return (
     <section>
@@ -123,6 +155,10 @@ const Feed = () => {
       <FilterModal
         modalState={FilterModalState}
         onCloseModal={() => actions.turnModalState('FilterModal', false)}
+      />
+      <KeyboardExplanation
+        modalState={KeyboardExplanationModal}
+        onCloseModal={() => actions.turnModalState('KeyboardExplanationModal', false)}
       />
     </section>
   );

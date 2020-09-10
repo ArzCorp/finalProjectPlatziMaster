@@ -99,6 +99,7 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         positionClothe: state.positionClothe + 1,
+        loading: false,
       };
     case 'userReaction':
       return {

@@ -9,7 +9,7 @@ export const setToken = (_token) => {
   localStorage.setItem('token', _token);
 };
 
-export const httpRequest = async ({ endPoint, options, dispatch }) => {
+export const httpRequest = async ({ endPoint, options, dispatch, urlWithoutConfig = false }) => {
   dispatch({
     type: 'LOADING',
   });
@@ -23,12 +23,19 @@ export const httpRequest = async ({ endPoint, options, dispatch }) => {
 
   const opts = {
     ...defaultOptions,
-    options,
+    ...options,
   };
 
-  const url = `${URL_API}${endPoint}`;
+  const url = !urlWithoutConfig ? `${URL_API}${endPoint}` : endPoint;
   const response = await fetch(url, opts);
-  const data = await response.json();
+  let data;
+
+  try {
+    data = await response.json();
+  } catch (_) {
+    data = {};
+  }
+
   const { status } = response;
   return {
     data,

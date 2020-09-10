@@ -6,7 +6,7 @@ const INITIAL_STATE = {
   LoginModalState: false,
   FilterModalState: false,
   MatchModalState: false,
-  KeyboardExplanationModal: true,
+  KeyboardExplanationModal: false,
 };
 
 export default (state = INITIAL_STATE, action) => {
