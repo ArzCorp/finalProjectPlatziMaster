@@ -7,7 +7,7 @@ const Icon = (props) => {
   const { iconName, size, color, value } = config;
   return (
     <span
-      className={`default-icon our-icon${iconName}`}
+      className={`default-icon our-icon-${iconName}`}
       style={{ fontSize: `${size}`, color: `${color}` }}
       value={value}
     />

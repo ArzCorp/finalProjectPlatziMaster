@@ -18,10 +18,10 @@ const PasswordInput = (props) => {
       />
       <div className="paswordInput__showPassword">
         <IconButton
-          iconName="search"
+          iconName="eye"
           colorIcon={hide ? '#838F8C' : '#19704E'}
           bgColor="transparent"
-          size="15px"
+          size="20px"
           handleClick={() => showPassword()}
         />
       </div>

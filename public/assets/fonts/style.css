@@ -1,12 +1,9 @@
 @font-face {
   font-family: 'ourclothe';
-  src:url('./ourclothe.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: block;
+  src: url('./ourclothe.ttf?b16bbv') format('truetype');
 }
 
-[class^="our-icon"], [class*=" our-icon"] {
+[class^="our-icon-"], [class*=" our-icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'ourclothe' !important;
   speak: never;
@@ -21,56 +18,54 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
-.default-icon:before {
-  content: "\e902";
+.our-icon-eye:before {
+  content: "\e910";
 }
-
-.our-iconlocation:before {
+.our-icon-location:before {
   content: "\e900";
 }
-.our-iconstar:before {
+.our-icon-star:before {
   content: "\e901";
 }
-.our-iconheart:before {
+.our-icon-heart:before {
   content: "\e902";
 }
-.our-iconadmiration:before {
+.our-icon-admiration:before {
   content: "\e903";
 }
-.our-iconcamera:before {
+.our-icon-camera:before {
   content: "\e904";
 }
-.our-iconCross:before {
+.our-icon-Cross:before {
   content: "\e905";
 }
-.our-icondown-arrow:before {
+.our-icon-down-arrow:before {
   content: "\e906";
 }
-.our-iconhanger:before {
+.our-icon-hanger:before {
   content: "\e907";
 }
-.our-iconmessage:before {
+.our-icon-message:before {
   content: "\e908";
 }
-.our-iconparty:before {
+.our-icon-party:before {
   content: "\e909";
 }
-.our-iconplus:before {
+.our-icon-plus:before {
   content: "\e90a";
 }
-.our-iconprofile:before {
+.our-icon-profile:before {
   content: "\e90b";
 }
-.our-iconsearch:before {
+.our-icon-search:before {
   content: "\e90c";
 }
-.our-iconsettings:before {
+.our-icon-settings:before {
   content: "\e90d";
 }
-.our-icontshirt:before {
+.our-icon-tshirt:before {
   content: "\e90e";
 }
-.our-iconwhatsapp:before {
+.our-icon-whatsapp:before {
   content: "\e90f";
 }
