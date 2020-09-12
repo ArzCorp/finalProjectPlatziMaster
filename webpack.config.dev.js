@@ -55,7 +55,7 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Our Clothes',
+      title: 'OurClothe',
       template: path.resolve(__dirname, './public/index.html'),
     }),
   ],
