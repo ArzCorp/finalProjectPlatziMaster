@@ -114,14 +114,18 @@ const Feed = () => {
       collapseAccordion();
     }
   };
-
-  window.onkeydown = keyPress;
+  // document.getElementById("demo")
+  // window.onkeydown = keyPress;
 
   console.log('Estos son los datos', clothes);
 
   return (
     <section>
-      <div className="feed">
+      <div className="feed"
+           onKeyDown={keyPress}
+           tabIndex="0" 
+      >
+
         <div className="search-button">
           <IconButton
             iconName="search"
@@ -160,7 +164,10 @@ const Feed = () => {
       />
       <KeyboardExplanation
         modalState={KeyboardExplanationModal}
-        onCloseModal={() => actions.turnModalState('KeyboardExplanationModal', false)}
+        onCloseModal={() => {
+          actions.turnModalState('KeyboardExplanationModal', false)
+         document.querySelector('.feed').focus();
+          }}
       />
     </section>
   );
