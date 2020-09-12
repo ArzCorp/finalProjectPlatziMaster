@@ -31,7 +31,7 @@ export const nextPositionClothe = (data) => async (dispatch) => {
   const endPoint = 'clothes/interactions/';
 
   try {
-    const response = await httpRequest({
+    let response = await httpRequest({
       dispatch,
       endPoint,
       options: {
@@ -40,8 +40,17 @@ export const nextPositionClothe = (data) => async (dispatch) => {
       },
     });
 
-    if (response.status !== 202) {
+    if (response.status !== 202 && response.status !== 400) {
       return;
+    } if (response.status === 400) {
+      response = await httpRequest({
+        dispatch,
+        endPoint,
+        options: {
+          method: 'PUT',
+          body: JSON.stringify(data),
+        },
+      });
     }
 
     dispatch({

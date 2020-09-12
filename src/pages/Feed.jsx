@@ -77,6 +77,8 @@ const Feed = () => {
 
   const clothes = (!clothesFeed) ? null : clothesFeed.results[positionClothe];
 
+  console.log('DATA CLOTHE', clothes)
+
   const handlelike = () => {
     nextClothe({
       clothe: clothes.id,
@@ -102,7 +104,7 @@ const Feed = () => {
     const key = event.code;
     if (key === 'ControlLeft') {
       handleDislike();
-    } else if (key === 'AltLeft') {
+    } else if (key === 'Space') {
       handleSuperlike();
     } else if (key === 'ControlRight') {
       handlelike();

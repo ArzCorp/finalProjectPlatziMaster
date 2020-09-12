@@ -1,8 +1,9 @@
 .form__input {
   margin-top: $Spacing-Normal / 2;
   label {
-    font-size: $Font-Paragraph;
     color: var(--Color-PrimaryLight-1);
+    font-size: $Font-Paragraph;
+    font-weight: $Bold;
   }
 
   input {
