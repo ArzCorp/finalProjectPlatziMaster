@@ -178,21 +178,21 @@ const EditClotheModal = ({ getUserClothes, deleteClothe, getClotheData, turnModa
             <option>Regular</option>
             <option>Nuevo</option>
           </InputSelect>
+          <Button
+            type="normal"
+            name="Editar"
+          />
+          <Button
+            type="danger"
+            name="Borrar prenda"
+            onClick={async () => {
+              await turnModalState('EditClotheModal', false);
+              await deleteClothe(id, token);
+              await getUserClothes(token);
+            }}
+          />
         </div>
-        <Button
-          type="normal"
-          name="Editar"
-        />
       </form>
-      <Button
-        type="danger"
-        name="Borrar prenda"
-        onClick={async () => {
-          await turnModalState('EditClotheModal', false);
-          await deleteClothe(id, token);
-          await getUserClothes(token);
-        }}
-      />
     </Modal>
   );
 };

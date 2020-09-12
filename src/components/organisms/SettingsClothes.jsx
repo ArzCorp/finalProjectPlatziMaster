@@ -27,7 +27,7 @@ const SettingsClothes = (props) => {
     return userClothes;
   }
 
-  if (userClothes.results.length === 0) {
+  if (!jsonClothes) {
     if (isButtonActive) {
       return (
         <>

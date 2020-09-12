@@ -201,20 +201,20 @@ const AddClotheModal = ({ getUserClothes, turnModalState, addClothe, turnStatusR
             <option>Nuevo</option>
             <option>Malo</option>
           </InputSelect>
+          <Input
+            className="public"
+            id="public"
+            type="checkbox"
+            label="Publicar"
+            name="publicClothe"
+            placeholder="si"
+            onChange={handleChange}
+          />
+          <Button
+            type="normal"
+            name="Publicar"
+          />
         </div>
-        <Input
-          className="public"
-          id="public"
-          type="checkbox"
-          label="Publicar"
-          name="publicClothe"
-          placeholder="si"
-          onChange={handleChange}
-        />
-        <Button
-          type="normal"
-          name="Publicar"
-        />
       </form>
     </Modal>
   );
