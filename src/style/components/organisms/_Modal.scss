@@ -16,15 +16,16 @@
     display: flex;
     align-items: center;
     flex-direction:column;
-    width: 90%;
+    width: 100%;
     height: 90%;
     & .addImage__label {
       margin: $Spacing-Normal auto;
-      width: 80%;
+      width: 300px;
+      border-radius: 10px;
     }
   }
   &__scroll{
-    width: 90%;
+    width: 100%;
     height: 100vh;
     overflow: scroll;
     padding: $Spacing-Normal;
@@ -33,6 +34,7 @@
     display: flex;
     justify-content: flex-end;
     width:100%;
+    padding-right: $Spacing-Normal;
     & .btn__danger {
       display: flex;
       justify-content: center;
@@ -40,6 +42,14 @@
       border-radius: none;
       width: 5%;
       margin-top: 0px;
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .modal{
+    &__scroll{
+      overflow-x: hidden;
     }
   }
 }

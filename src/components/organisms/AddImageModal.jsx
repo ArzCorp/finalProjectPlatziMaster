@@ -9,8 +9,8 @@ import AddImage from '../atoms/AddImage';
 import Button from '../atoms/Button';
 import Loader from '../atoms/Loader';
 
-const AddClotheModal = (props) => {
-  const { turnModalState, editProfileImage, modalReducers: { AddImageModalState }, userReducer: { loading } } = props;
+const addPhotoProfile = (props) => {
+  const { turnModalState, uploadProfilePhoto, turnStatusResponse, modalReducers: { AddImageModalState }, userReducer: { loading, error, statusResponse, statusMessage } } = props;
   const data = localStorage.getItem('user');
   const jsonData = JSON.parse(data);
   const { token, user: { username } } = jsonData;
@@ -18,18 +18,61 @@ const AddClotheModal = (props) => {
   const image = document.getElementById('image');
 
   if (loading) {
-    return <Loader />
+    return <Loader />;
   }
+
+  if (error) {
+    return (
+      <div className="alert">
+        <h1>{statusMessage}</h1>
+        <button
+          className="btn__normal"
+          type="button"
+          onClick={() => { turnStatusResponse(false); }}
+        >
+          OK
+        </button>
+      </div>
+    );
+  }
+
+  if (statusResponse) {
+    return (
+      <div className="alert">
+        <h1>{statusMessage}</h1>
+        <button
+          className="btn__normal"
+          type="button"
+          onClick={() => { turnStatusResponse(false); }}
+        >
+          OK
+        </button>
+      </div>
+    );
+  }
+
+  const previewFile = () => {
+    const fileInput = document.getElementById('image');
+    if (fileInput.files && fileInput.files[0]) {
+      const view = new FileReader();
+      view.onload = (e) => {
+        document.getElementById('imageLabel').innerHTML = `<img src=${e.target.result} alt=${'Sin vista previa'} width="100%" />`;
+      };
+      view.readAsDataURL(fileInput.files[0]);
+    }
+  };
 
   const handleChange = (ev) => {
     setField({
       ...fields,
       [ev.target.name]: ev.target.value,
     });
+    previewFile();
   };
+
   const handleSubmit = async (ev) => {
     ev.preventDefault();
-    await editProfileImage(username, token, image);
+    await uploadProfilePhoto(username, token, image);
     await turnModalState('AddImageModal', false);
   };
 
@@ -70,4 +113,4 @@ const mapDipatchToProps = {
   ...modalActions,
 };
 
-export default connect(mapStateToProps, mapDipatchToProps)(AddClotheModal);
+export default connect(mapStateToProps, mapDipatchToProps)(addPhotoProfile);

@@ -11,6 +11,8 @@
   padding-right: 0px;
   padding-left: 0px;
   margin-right: 5px;
+  background-color: $Color-Primary;
+  box-shadow: $Box-ShadowActive;
 }
 
 .settings__navbar .btn__normal:nth-of-type(2) {
@@ -19,6 +21,8 @@
   border-bottom-left-radius: 0px;
   padding-left: 0px;
   padding-right: 0px;
+  background-color: $Color-Grayscale-1;
+  box-shadow: $Box-ShadowActive;
 }
 
 .white {

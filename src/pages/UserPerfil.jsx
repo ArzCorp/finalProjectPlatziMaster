@@ -9,17 +9,19 @@ import ImageProfile from '../components/atoms/ImageProfile';
 import SettingsClothes from '../components/organisms/SettingsClothes';
 import SettingsNav from '../components/organisms/SettingsNav';
 
-const UserPerfil = ({ userReducer, getUserClothes, buttonsReducers: { isButtonActive }, userReducer: { userClothes } }) => {
+const UserPerfil = ({ userReducer, buttonsReducers: { isButtonActive } }) => {
   const data = localStorage.getItem('user');
   const jsonData = JSON.parse(data);
   const { user: { profile: { picture } } } = jsonData;
 
   return (
-    <section className="userprofile__entry">
-      <ImageProfile
-        src={picture}
-      />
-      <SettingsNav />
+    <section className="userprofile">
+      <div className="userprofile__settings">
+        <ImageProfile
+          src={picture}
+        />
+        <SettingsNav />
+      </div>
       <SettingsClothes
         userReducer={userReducer}
         isButtonActive={isButtonActive}

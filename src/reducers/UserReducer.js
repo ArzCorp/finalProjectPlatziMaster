@@ -4,15 +4,19 @@ const INITIAL_STATE = {
   userClothes: [],
   errorsFields: [],
   userNotifications: [],
+  statusMessage: '',
   isAuthenticated: localStorage.getItem('token'),
   formIsValid: false,
   stateLoginResponse: false,
   stateSignupResponse: false,
-  clothesObtained: false,
   loading: false,
   error: null,
-  clothesFeed: null,
+  statusResponse: false,
   positionClothe: 0,
+  clothesObtained: false,
+  clothesFeed: null,
+  clotheId: undefined,
+  clotheData: {},
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -33,7 +37,7 @@ export default (state = INITIAL_STATE, action) => {
         errorsFields: [],
         formIsValid: false,
         isAuthenticated: false,
-      }
+      };
     case 'fetchSignupUser':
       return {
         ...state,
@@ -49,11 +53,18 @@ export default (state = INITIAL_STATE, action) => {
         stateLoginResponse: action.payload.status,
         loading: false,
       };
+    case 'statusResponse':
+      return {
+        ...state,
+        statusResponse: false,
+      };
     case 'EditProfile':
       return {
         ...state,
         userLoged: action.payload.userDataEdit,
         loading: false,
+        statusResponse: action.payload.status,
+        statusMessage: action.payload.statusMessage,
       };
     case 'EditImageProfile':
       return {
@@ -67,6 +78,8 @@ export default (state = INITIAL_STATE, action) => {
         userClothes: action.payload,
         errorsFields: action.payload.errors,
         loading: false,
+        statusResponse: action.payload.status,
+        statusMessage: action.payload.statusMessage,
       };
     case 'getClotheData':
       return {
@@ -75,6 +88,24 @@ export default (state = INITIAL_STATE, action) => {
         errorsFields: action.payload.errors,
         loading: false,
         clothesObtained: true,
+      };
+    case 'changeId':
+      return {
+        ...state,
+        clotheId: action.payload,
+      };
+    case 'addClothe':
+      return {
+        ...state,
+        clotheData: action.payload,
+        clotheId: undefined,
+      };
+    case 'deleteClothe':
+      return {
+        ...state,
+        loading: false,
+        statusResponse: action.payload.statusResponse,
+        statusMessage: action.payload.statusMessage,
       };
     case 'validateForm':
       return {

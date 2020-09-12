@@ -1,12 +1,13 @@
 import React from 'react';
 
-const Input = ({ value, type, label, placeholder, name, id, onChange, onKeyPress, maxLength }) => (
+const Input = ({ className, value, type, label, placeholder, name, id, onChange, onKeyPress, maxLength, checked }) => (
   <div className="form__input">
     <label>
       *
       {label || 'Label'}
     </label>
     <input
+      className={className || ''}
       placeholder={placeholder || label || 'Placeholder'}
       type={type || 'text'}
       name={name || label || null}
@@ -15,6 +16,7 @@ const Input = ({ value, type, label, placeholder, name, id, onChange, onKeyPress
       onKeyPress={onKeyPress}
       defaultValue={value || ''}
       maxLength={maxLength || null}
+      checked={checked || null}
     />
   </div>
 );

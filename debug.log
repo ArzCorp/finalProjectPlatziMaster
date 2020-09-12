@@ -1,0 +1,10 @@
+[0907/003205.996:ERROR:process_reader_win.cc(127)] NtOpenThread: {Acceso denegado} Un proceso ha solicitado acceso a un objeto, pero no se le han concedido esos derechos de acceso. (0xc0000022)
+[0907/003205.996:ERROR:process_reader_win.cc(127)] NtOpenThread: {Acceso denegado} Un proceso ha solicitado acceso a un objeto, pero no se le han concedido esos derechos de acceso. (0xc0000022)
+[0907/003207.665:ERROR:exception_snapshot_win.cc(100)] thread ID 6456 not found in process
+[0907/003207.665:ERROR:exception_snapshot_win.cc(100)] thread ID 5656 not found in process
+[0907/003207.666:ERROR:process_memory_win.cc(73)] ReadMemory at 0xb7b61fec80 of 16 bytes failed: Solo se completó una parte de una solicitud ReadProcessMemory o WriteProcessMemory. (0x12B)
+[0907/003207.666:ERROR:process_memory_win.cc(73)] ReadMemory at 0x3583bfe780 of 16 bytes failed: Solo se completó una parte de una solicitud ReadProcessMemory o WriteProcessMemory. (0x12B)
+[0907/003207.681:ERROR:exception_snapshot_win.cc(211)] EXCEPTION_POINTERS read failed
+[0907/003207.681:ERROR:exception_snapshot_win.cc(211)] EXCEPTION_POINTERS read failed
+[0907/003207.681:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: Se intentó obtener acceso a un proceso que está cerrándose. (0xc000010a)
+[0907/003207.681:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: Se intentó obtener acceso a un proceso que está cerrándose. (0xc000010a)

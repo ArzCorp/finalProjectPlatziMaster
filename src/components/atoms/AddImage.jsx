@@ -2,15 +2,16 @@ import React from 'react';
 
 import Icon from './Icon';
 
-const AddImage = ({ id, onChange, name }) => (
+const AddImage = ({ idLabel, id, onChange, name }) => (
   <>
     <label
       htmlFor={id || 'addImage'}
       className="addImage__label"
+      id={idLabel || 'imageLabel'}
     >
       <Icon
         iconName="plus"
-        color="#838F8C"
+        color="#19704E"
       />
       Agregar imagen
     </label>
