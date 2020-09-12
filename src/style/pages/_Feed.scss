@@ -1,6 +1,6 @@
 .feed{
     position:relative;
-    height: calc(100vh - 79px);
+    height: calc(100vh - 87px);
     overflow:hidden;
     display: flex;
     flex-direction: column;
@@ -21,3 +21,11 @@
         margin-bottom: 66px;
     }
 }
+
+@media screen and(max-width: 767px) {
+    .feed{
+        height: calc(100vh - 50px);
+    }
+  }
+
+
