@@ -18,6 +18,7 @@ import KeyboardExplanation from '../components/organisms/KeyboardExplanation';
 const totalActions = {
   ...modalActions,
   ...feedActions,
+  ...userActions,
 };
 
 const collapseAccordion = () => {
@@ -57,12 +58,15 @@ const Feed = () => {
   const clothesFeed = useSelector((state) => state.userReducer.clothesFeed);
   const positionClothe = useSelector((state) => state.userReducer.positionClothe);
   const loading = useSelector((state) => state.userReducer.loading);
+  const likeReceived = useSelector((state) => state.userReducer.likeReceived);
   const actions = useActions(totalActions);
+  console.log('likeReceived feed', likeReceived);
 
   const [isActive, setIsActive] = useState(0); 
 
   useEffect(() => {
-    actions.turnModalState('KeyboardExplanationModal', true); 
+    actions.turnModalState('KeyboardExplanationModal', true);
+    actions.fetchNotificationsUser(localStorage.getItem('token'));
     actions.fetchClothesFeed();
   }, []);
 

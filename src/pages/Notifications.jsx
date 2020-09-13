@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import * as userActions from '../actions/userActions';
 
 import Notification from '../components/molecules/Notification';
 import Loader from '../components/atoms/Loader';
-import Prenda from '../../public/assets/images/image1.png';
 
 const Notifications = (props) => {
   const validateNotifications = () => {
@@ -18,11 +17,12 @@ const Notifications = (props) => {
         <div className="notifications__list column-6">
           {props.userReducer.userNotifications.map((item) => (
             <Notification
-              key={item.clothe}
-              id={item.clothe}
+              key={item.clothe.id}
+              id={item.clothe.id}
               title={item.value}
               user={item.user}
-              picture={Prenda}
+              picture={item.clothe.picture}
+              article={item.clothe.category}
               iconType="whatsapp"
               body="Tienes un match pendiente, da click para contactar a la otra persona"
             />
@@ -56,6 +56,6 @@ const Notifications = (props) => {
   );
 };
 
-const mapStateToProps = (redicers) => redicers;
+const mapStateToProps = (reducers) => reducers;
 
 export default connect(mapStateToProps, userActions)(Notifications);

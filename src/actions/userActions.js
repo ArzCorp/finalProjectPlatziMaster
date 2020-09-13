@@ -483,6 +483,12 @@ export const fetchNotificationsUser = (token) => async (dispatch) => {
       type: 'fetchNotificationsUser',
       payload: notifications,
     });
+
+    const filterUserNotifications = notifications.map((item) => item.user);
+    dispatch({
+      type: 'likeReceived',
+      payload: filterUserNotifications,
+    });
   } catch (error) {
     dispatch({
       type: 'ERROR',

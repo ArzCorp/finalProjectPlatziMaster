@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   userClothes: [],
   errorsFields: [],
   userNotifications: [],
+  likeReceived: [],
   statusMessage: '',
   isAuthenticated: localStorage.getItem('token'),
   formIsValid: false,
@@ -136,6 +137,11 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         loading: false,
+      };
+    case 'likeReceived':
+      return {
+        ...state,
+        likeReceived: action.payload,
       };
     default: return state;
   }

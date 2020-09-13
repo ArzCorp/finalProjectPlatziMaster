@@ -2,7 +2,7 @@ import React from 'react';
 import Icon from '../atoms/Icon';
 import IconButton from '../atoms/IconButton';
 
-const Notification = ({ user, picture, title, body, iconType, id }) => {
+const Notification = ({ user, picture, title, body, article, iconType, id }) => {
   const closeNotification = ($id) => {
     const notification = document.getElementById($id);
     notification.style.display = 'none';
@@ -25,7 +25,9 @@ const Notification = ({ user, picture, title, body, iconType, id }) => {
           </div>
         )}
         <div className="notification__body">
-          <h2>{title}</h2>
+          <h2>
+            {title} <small>¡Alguien se interesa en tu(s) {article}!</small>
+          </h2>
           <p>{body}</p>
         </div>
         <div className="notification__iconType">

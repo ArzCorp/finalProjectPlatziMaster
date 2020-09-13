@@ -30,7 +30,7 @@ const SignupForm = (props) => {
         props.turnModalState('SignupModal', true);
         setTimeout(() => {
           props.turnModalState('SignupModal', false);
-          window.location.href = '/#/login';
+          window.location.href = '/login';
         }, 2000);
       }
     }
