@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 
 import Logo from '../../public/assets/logo/logo.svg';
 import SignupForm from '../components/organisms/SignupForm';
@@ -6,6 +7,14 @@ import PrivacyPolicy from '../components/atoms/PrivacyPolicy';
 
 const Signup = () => (
   <section className="signup-container">
+    <Helmet>
+      <title>Ourclothe - Crear Cuenta</title>
+      <meta
+        name="description"
+        content="Únete a la la comunidad de Ourclothe. Intercambia la ropa que ya no usas,
+        encuentra un nuevo outfit y entre todos salvemos al planeta"
+      />
+    </Helmet>
     <div className="signup">
       <div className="row signup__title">
         <h1>Crear cuenta</h1>

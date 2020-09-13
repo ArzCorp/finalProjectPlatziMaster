@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { Helmet } from 'react-helmet';
 
 import { useActions } from '../hooks/useActions';
 import * as modalActions from '../actions/ModalActions';
@@ -87,7 +88,7 @@ const Feed = () => {
   console.log('DATA CLOTHE', clothes)
 
   const handlelike = () => {
-    actions.turnModalState('MatchModal', true)
+    actions.turnModalState('MatchModal', true);
     nextClothe({
       clothe: clothes.id,
       value: 'LIKE',
@@ -132,9 +133,18 @@ const Feed = () => {
 
   return (
     <section>
-      <div className="feed"
-           onKeyDown={keyPress}
-           tabIndex="0" 
+      <Helmet>
+        <title>Ourclothe - Encuentra el outfit que necesitas</title>
+        <meta
+          name="description"
+          content="Recorre el catalogo de la ropa publicada,
+            utiliza las reacciones para pasar a la siguiente y consigue esa prenda que estabas buscando."
+        />
+      </Helmet>
+      <div
+        className="feed"
+        onKeyDown={keyPress}
+        tabIndex="0"
       >
 
         <div className="search-button">
@@ -177,9 +187,9 @@ const Feed = () => {
       <KeyboardExplanation
         modalState={KeyboardExplanationModal}
         onCloseModal={() => {
-          actions.turnModalState('KeyboardExplanationModal', false)
-         document.querySelector('.feed').focus();
-          }}
+          actions.turnModalState('KeyboardExplanationModal', false);
+          document.querySelector('.feed').focus();
+        }}
       />
     </section>
   );

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet';
 
 import * as userActions from '../actions/userActions';
 import * as buttonsActions from '../actions/ButtonsActions';
@@ -16,6 +17,15 @@ const UserPerfil = ({ userReducer, buttonsReducers: { isButtonActive } }) => {
 
   return (
     <section className="userprofile">
+      <Helmet>
+        <title>Ourclothe - Publica ropa y actualiza tu perfil</title>
+        <meta
+          name="description"
+          content="Actualiza tu perfil cuando lo necesites.
+            Publica la ropa que quieras intercambiar.
+            calcetines, camisas, playeras, vestidos, abrigos, pantalones, sombreros."
+        />
+      </Helmet>
       <div className="userprofile__settings">
         <ImageProfile
           src={picture}
