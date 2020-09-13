@@ -22,12 +22,7 @@ const totalActions = {
   ...userActions,
 };
 
-const collapseAccordion = () => {
-  const infoToggle = document.querySelector('.bottom-info');
-  const iconArrow = document.querySelector('.accordion__content .icon-button');
-  infoToggle.classList.toggle('bottom-info-collapse');
-  iconArrow.classList.toggle('icon-rotate');
-};
+
 
 const RenderFeedComponents = ({ clothes }) => {
   if (!clothes) { return null; }
@@ -46,7 +41,6 @@ const RenderFeedComponents = ({ clothes }) => {
         clothesState={clothes.state}
         clothesInfo={clothes.description}
         clothesSize={clothes.size}
-        collapseAccordion={collapseAccordion}
       />
     </>
   );
