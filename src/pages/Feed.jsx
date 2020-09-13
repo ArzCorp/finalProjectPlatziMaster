@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { useActions } from '../hooks/useActions';
 import * as modalActions from '../actions/ModalActions';
 import * as feedActions from '../actions/feedActions';
+import * as userActions from '../actions/userActions';
 
 import ButtonsBar from '../components/atoms/ButtonsBar';
 import IconButton from '../components/atoms/IconButton';
@@ -58,8 +59,10 @@ const Feed = () => {
   const loading = useSelector((state) => state.userReducer.loading);
   const actions = useActions(totalActions);
 
+  const [isActive, setIsActive] = useState(0); 
+
   useEffect(() => {
-    actions.turnModalState('KeyboardExplanationModal', true);
+    actions.turnModalState('KeyboardExplanationModal', true); 
     actions.fetchClothesFeed();
   }, []);
 
@@ -80,10 +83,12 @@ const Feed = () => {
   console.log('DATA CLOTHE', clothes)
 
   const handlelike = () => {
+    actions.turnModalState('MatchModal', true)
     nextClothe({
       clothe: clothes.id,
       value: 'LIKE',
     });
+    // console.log('USER NAME ',clothes.owner_is.username )
   };
 
   const handleDislike = () => {
@@ -98,6 +103,8 @@ const Feed = () => {
       clothe: clothes.id,
       value: 'SUPERLIKE',
     });
+    setIsActive(1);
+    setTimeout(() => setIsActive(0), 60000);
   };
 
   const keyPress = () => {
@@ -114,10 +121,10 @@ const Feed = () => {
       collapseAccordion();
     }
   };
-  // document.getElementById("demo")
-  // window.onkeydown = keyPress;
 
   console.log('Estos son los datos', clothes);
+
+
 
   return (
     <section>
@@ -147,6 +154,7 @@ const Feed = () => {
           <ButtonsBar
             handleDislike={handleDislike}
             handleSuperlike={handleSuperlike}
+            disabledSuperLike={isActive}
             handlelike={handlelike}
           />
         )}
