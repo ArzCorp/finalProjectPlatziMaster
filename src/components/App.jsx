@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter, Switch } from 'react-router-dom';
+import { BrowserRouter, Switch } from 'react-router-dom';
 
 import '../style/styles.scss';
 
@@ -15,7 +15,7 @@ import PrivacyPolicy from '../pages/PrivacyPolicy';
 import Notifications from '../pages/Notifications';
 
 const App = () => (
-  <HashRouter basename={process.env.PUBLIC_URL}>
+  <BrowserRouter basename={process.env.PUBLIC_URL}>
     <Switch>
       <PublicRoute
         exact
@@ -49,7 +49,7 @@ const App = () => (
         />
       </Layout>
     </Switch>
-  </HashRouter>
+  </BrowserRouter>
 );
 
 export default App;
