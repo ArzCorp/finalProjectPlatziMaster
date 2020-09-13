@@ -9,9 +9,12 @@
   padding: $Spacing-ExtraSmall;
   width: 200px;
   height: 250px;
+  border: initial;
+  overflow: hidden;
+  border-radius: $Border-Radius;
 }
 
 .clothe__image {
-  width: 100%;
-  height:auto;
+  width: auto;
+  max-height: 192px
 }
