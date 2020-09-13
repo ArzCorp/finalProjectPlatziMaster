@@ -15,7 +15,7 @@ const Signup = () => (
         encuentra un nuevo outfit y entre todos salvemos al planeta"
       />
     </Helmet>
-    <div className="signup">
+    <div className="signup" id="signup">
       <div className="row signup__title">
         <h1>Crear cuenta</h1>
       </div>

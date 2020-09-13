@@ -15,7 +15,7 @@ const Login = () => (
         te permitirá encontrar un nuevo estilo para tí entre toda la ropa publicada por nuestros usuarios"
       />
     </Helmet>
-    <div className="row login">
+    <div className="row login" id="login">
       <div className="column-6">
         <div className="login__logo">
           <img src={Logo} alt="Logotipo" />
