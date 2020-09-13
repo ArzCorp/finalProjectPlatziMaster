@@ -15,15 +15,10 @@ const SettingsClothes = (props) => {
   const { token } = jsonData;
   const clothes = localStorage.getItem('clothes');
   const jsonClothes = JSON.parse(clothes);
-
   const { getUserClothes, buttonsReducers: { isButtonActive }, userReducer: { clothesObtained, userClothes, clotheId } } = props;
 
-  const bringClothes = async () => {
-    await getUserClothes(token);
-  };
-
   if (!clothesObtained) {
-    bringClothes();
+    getUserClothes(token);
     return userClothes;
   }
 

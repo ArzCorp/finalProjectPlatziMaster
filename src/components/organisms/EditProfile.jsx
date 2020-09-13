@@ -9,7 +9,7 @@ import Button from '../atoms/Button';
 const EditProfile = ({ editProfile }) => {
   const data = localStorage.getItem('user');
   const jsonData = JSON.parse(data);
-  const { token, user: { last_name, username, first_name } } = jsonData;
+  const { token, user: { last_name, username, first_name, city, state } } = jsonData;
 
   const [fields, setField] = useState(0);
   const handleChange = (ev) => {
@@ -20,7 +20,7 @@ const EditProfile = ({ editProfile }) => {
   };
   const handleSubmit = async (ev) => {
     ev.preventDefault();
-    await editProfile(fields, username, token);
+    await editProfile(fields, username, token, jsonData);
   };
 
   return (
@@ -36,8 +36,8 @@ const EditProfile = ({ editProfile }) => {
           <small>Informacion pérsonal</small>
           <Input
             name="first_name"
-            label="nombre"
-            placeholder="nombre"
+            label="Nombre"
+            placeholder="Nombre"
             value={first_name}
             onChange={handleChange}
           />
@@ -50,9 +50,23 @@ const EditProfile = ({ editProfile }) => {
           />
           <Input
             name="phone_number"
-            label="telefono"
-            placeholder="telefono"
+            label="Telefono"
+            placeholder="Telefono"
             value={username}
+            onChange={handleChange}
+          />
+          <Input
+            name="city"
+            label="Ciudad"
+            placeholder="Ciudad"
+            value={city || ''}
+            onChange={handleChange}
+          />
+          <Input
+            name="state"
+            label="Estado"
+            placeholder="Estado"
+            value={state || ''}
             onChange={handleChange}
           />
           <Button

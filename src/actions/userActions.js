@@ -79,7 +79,8 @@ export const turnStatusResponse = (state) => (dispatch) => {
   });
 };
 
-export const editProfile = (data, telephone, token) => async (dispatch, getState) => {
+export const editProfile = (data, telephone, token, userData) => async (dispatch, getState) => {
+  console.log(userData);
   const { user } = getState().userReducer;
   const URL_API_UPDATE = `${URL_API}users/${telephone}/`;
   const OPTIONS = {
@@ -106,6 +107,7 @@ export const editProfile = (data, telephone, token) => async (dispatch, getState
       user: dataUser,
     };
 
+    console.log(userDataEdit);
     setToken(userDataEdit.token);
     localStorage.setItem('user', JSON.stringify(userDataEdit));
 
