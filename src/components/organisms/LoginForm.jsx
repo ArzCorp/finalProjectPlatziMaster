@@ -28,7 +28,7 @@ const LoginForm = (props) => {
       if (valid) {
         props.turnModalState('LoginModal', true);
         setTimeout(() => {
-          window.location.href = '/feed';
+          window.location.href = '/#/feed';
           props.turnModalState('LoginModal', false);
         }, 2500);
       }

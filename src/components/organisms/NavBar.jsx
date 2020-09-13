@@ -12,7 +12,7 @@ const NavBar = (props) => {
     localStorage.clear();
     props.logout();
     setTimeout(() => {
-      window.location.href = '/login';
+      window.location.href = '/#/login';
     }, 500);
   };
 
