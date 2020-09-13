@@ -3,16 +3,17 @@
   background-image: url('https://res.cloudinary.com/martindev/image/upload/v1599889586/ourclothe/image_t1h96s.jpg');
   background-repeat: no-repeat;
   background-position: top;
+  background-attachment: fixed;
   transform: scaleX(-1);
   background-size: cover;
   .login {
     transform: scaleX(-1);
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     padding: $Spacing-Small;
-    background-color: rgba(255,255,255, .2);
+    background-color: rgba(255,255,255, .5);
     backdrop-filter: blur(10px);
     &__logo {
       text-align: center;
@@ -29,25 +30,31 @@
   }
 }
 
+@media screen and(min-height: 700px) {
+  .loginPage .login {
+    height: 100vh;
+  }
+}
+
 @media screen and(min-width: 600px) {
   .loginPage {
-    display: flex;
-    align-items: center;
+    height: 100vh;
+    padding: $Spacing-Normal 0;
+    overflow: auto;
     .login {
       width: 70%;
       height: fit-content;
       margin: 0 auto;
       border-radius: $Border-Radius;
       box-shadow: $Box-ShadowActive;
-      background-color: rgba(255,255,255, .5);
     }
   }
 }
 
 @media screen and(min-width: 768px) {
   .loginPage {
-    display: flex;
-    align-items: center;
+    // display: flex;
+    // align-items: center;
     .login {
       width: 50%;
     }
