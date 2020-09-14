@@ -2,7 +2,7 @@ import React from "react";
 
 const PrivacyPolicy = () => (
   <div className="privacyPolicy_page">
-    <h1>Politica de privacidad</h1>
+    <h1 tabIndex="0">Politica de privacidad</h1>
     <p>
       Ourclothe te informa sobre su Política de Privacidad respecto del
       tratamiento y protección de los datos de carácter personal de los usuarios
@@ -19,7 +19,7 @@ const PrivacyPolicy = () => (
     </p>
     <br />
     <br />
-    <h2>Principios aplicados en el tratamiento de datos</h2>
+    <h2 tabIndex="0">Principios aplicados en el tratamiento de datos</h2>
     <br />
 
     <p>
@@ -58,7 +58,7 @@ const PrivacyPolicy = () => (
     </ul>
     <br />
     <br />
-    <h2>Obtención de datos personales</h2>
+    <h2 tabIndex="0">Obtención de datos personales</h2>
     <br />
     <p>
       Para navegar por Ourclothe no es necesario que facilites ningún dato
@@ -71,7 +71,7 @@ const PrivacyPolicy = () => (
     </ul>
     <br />
     <br />
-    <h2>Tus derechos</h2>
+    <h2 tabIndex="0">Tus derechos</h2>
     <br />
     <p>
       Ourclothe te informa que sobre tus datos personales tienes derecho a:
@@ -109,7 +109,7 @@ const PrivacyPolicy = () => (
     </p>
     <br />
     <br />
-    <h2>Finalidad del tratamiento de datos personales</h2>
+    <h2 tabIndex="0">Finalidad del tratamiento de datos personales</h2>
     <br />
     <p>
       Cuando te conectas al sitio Web para mandar un correo al Titular, te
@@ -144,7 +144,7 @@ const PrivacyPolicy = () => (
     </ul>
     <br />
     <br />
-    <h2>Seguridad de los datos personales</h2>
+    <h2 tabIndex="0">Seguridad de los datos personales</h2>
     <br />
     <p>
       Para proteger tus datos personales, Ourclothe toma todas las precauciones
@@ -157,7 +157,7 @@ const PrivacyPolicy = () => (
     </p>
     <br />
     <br />
-    <h2>Contenido de otros sitios web</h2>
+    <h2 tabIndex="0">Contenido de otros sitios web</h2>
     <br />
     <p>
       Las páginas de este sitio Web pueden incluir contenido incrustado (por
@@ -169,7 +169,7 @@ const PrivacyPolicy = () => (
     </p>
     <br />
     <br />
-    <h2>Legitimación para el tratamiento de datos</h2>
+    <h2 tabIndex="0">Legitimación para el tratamiento de datos</h2>
     <br />
 
     <p>La base legal para el tratamiento de tus datos es: el consentimiento.</p>
@@ -180,7 +180,7 @@ const PrivacyPolicy = () => (
     </p>
     <br />
     <br />
-    <h2>Categorías de datos personales</h2>
+    <h2 tabIndex="0">Categorías de datos personales</h2>
     <br />
     <p>Las categorías de datos personales que trata Ourclothe son:</p>
     <br />
@@ -189,7 +189,7 @@ const PrivacyPolicy = () => (
     </ul>
     <br />
     <br />
-    <h2>Conservación de datos personales</h2>
+    <h2 tabIndex="0">Conservación de datos personales</h2>
     <br />
     <p>
       Los datos personales que proporciones al Titular se conservarán hasta que
@@ -197,7 +197,7 @@ const PrivacyPolicy = () => (
     </p>
     <br />
     <br />
-    <h2>Exactitud y veracidad de los datos personales</h2>
+    <h2 tabIndex="0">Exactitud y veracidad de los datos personales</h2>
     <br />
     <p>
       Te comprometes a que los datos facilitados al Titular sean correctos,
@@ -212,7 +212,7 @@ const PrivacyPolicy = () => (
 
     <br />
     <br />
-    <h2>Aceptación y consentimiento</h2>
+    <h2 tabIndex="0">Aceptación y consentimiento</h2>
     <br />
     <p>
       Como Usuario del sitio Web declaras haber sido informado de las
@@ -223,7 +223,7 @@ const PrivacyPolicy = () => (
 
     <br />
     <br />
-    <h2>Revocabilidad</h2>
+    <h2 tabIndex="0">Revocabilidad</h2>
     <br />
     <p>
       Para ejercitar tus derechos de acceso, rectificación, cancelación,
@@ -238,7 +238,7 @@ const PrivacyPolicy = () => (
 
     <br />
     <br />
-    <h2>Cambios en la Política de Privacidad</h2>
+    <h2 tabIndex="0">Cambios en la Política de Privacidad</h2>
     <br />
     <p>
       Ourclothe se reserva el derecho a modificar la presente Política de

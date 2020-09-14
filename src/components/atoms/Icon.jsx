@@ -4,9 +4,10 @@ import '../../../public/assets/fonts/icon.css';
 
 const Icon = (props) => {
   const config = props;
-  const { idIcon, iconName, size, color, value } = config;
+  const { idIcon, iconName, size, color, value, tabIndexName } = config;
   return (
     <span
+      title={tabIndexName || null}
       id={idIcon}
       className={`default-icon our-icon-${iconName}`}
       style={{ fontSize: `${size}`, color: `${color}` }}

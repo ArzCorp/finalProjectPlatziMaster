@@ -20,7 +20,7 @@ const Login = () => (
         <div className="login__logo">
           <img src={Logo} alt="Logotipo" />
         </div>
-        <h1>Iniciar Sesión</h1>
+        <h1 tabIndex="0">Iniciar Sesión</h1>
         <LoginForm />
       </div>
       <div className="row login__privacyPolicy">

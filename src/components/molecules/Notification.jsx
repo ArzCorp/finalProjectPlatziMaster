@@ -13,6 +13,8 @@ const Notification = ({ user, picture, title, body, article, iconType, id }) => 
   return (
     <div className="notification-container" id={`${id}-${user}`}>
       <div
+        tabIndex="0"
+        title="ir y contactar al usuario"
         className="notification"
         onClick={iconType == 'whatsapp'
           ? () => goToWhatsapp()
@@ -44,6 +46,7 @@ const Notification = ({ user, picture, title, body, article, iconType, id }) => 
       </div>
       <div className="notification__deletNotification">
         <IconButton
+          tabIndexName="ocultar notificación"
           iconName="Cross"
           colorIcon="#fff"
           bgColor="gray"

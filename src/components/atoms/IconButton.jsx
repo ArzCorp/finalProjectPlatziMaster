@@ -4,7 +4,7 @@ import Icon from './Icon';
 
 const IconButton = (props) => {
   const {
-    iconName, size, colorIcon, handleClick, bgColor, space, type, id, disabled,
+    iconName, size, colorIcon, handleClick, bgColor, space, type, id, disabled, tabIndexName,
   } = props;
 
   const disabledBgColor = () => disabled ? 'grey' : bgColor;
@@ -23,7 +23,7 @@ const IconButton = (props) => {
       }}
       className={`icon-button icon-button--${type}`}
     >
-      <Icon iconName={iconName} size={size} color={colorIcon} />
+      <Icon iconName={iconName} size={size} color={colorIcon} tabIndexName={tabIndexName} />
     </button>
   );
 };

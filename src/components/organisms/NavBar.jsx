@@ -19,11 +19,12 @@ const NavBar = (props) => {
   return (
     <nav className="navbar">
       <div className="navbar__logo">
-        <img src={Logo} alt="Logotipo Ourclothe" />
+        <img src={Logo} tabIndex="0" alt="Logotipo Ourclothe" />
       </div>
       <div className="navbar__menu">
         <NavLink to="/profile" activeClassName="active" id="profile">
           <Icon
+            tabIndexName="ir al perfil"
             iconName="profile"
             size="25px"
             color="#fff"
@@ -31,6 +32,7 @@ const NavBar = (props) => {
         </NavLink>
         <NavLink to="/feed" activeClassName="active">
           <Icon
+            tabIndexName="ir al feed"
             iconName="hanger"
             size="25px"
             color="#fff"
@@ -38,19 +40,23 @@ const NavBar = (props) => {
         </NavLink>
         <NavLink to="/notifications" activeClassName="active">
           <Icon
+            tabIndexName="ir a notificaciones"
             iconName="message"
             size="25px"
             color="#fff"
           />
         </NavLink>
-        <div className="navbar__menu-logout">
+        <div className="navbar__menu-logout" tabIndex="1" title="salir">
           <Icon
+            tabIndexName="salir"
             iconName="settings"
             size="25px"
             color="#F9FAFA"
           />
         </div>
         <span
+          tabIndex="1"
+          title="salir"
           className="navbar__menu-logout-button"
           onClick={() => goToLogout()}
         >

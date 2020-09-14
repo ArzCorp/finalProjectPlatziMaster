@@ -43,16 +43,22 @@ const Accordion = (props) => {
 
         </div>
 
-        <IconButton colorIcon="var(--Color-Primary)" iconName="down-arrow" size="8px" space="25px" bgColor="var(--Color-Grayscale-1) " handleClick={collapseAccordion} />
+        <IconButton
+          tabIndexName="ver u ocultar detalles"
+          colorIcon="var(--Color-Primary)"
+          iconName="down-arrow" size="8px"
+          space="25px" bgColor="var(--Color-Grayscale-1) "
+          handleClick={collapseAccordion}
+        />
 
         <div className="bottom-info">
           <div className="row">
             <div className="accordion-row">
-              <Icon color="var(--Color-Grayscale-3)" iconName="profile" />
+              <Icon color="var(--Color-Grayscale-3)" iconName="profile" tabIndexName="Nombre del Plropietario"/>
               <p>{NameOwner}</p>
             </div>
             <div className="accordion-row">
-              <Icon color="var(--Color-Grayscale-3)" iconName="location" />
+              <Icon color="var(--Color-Grayscale-3)" iconName="location" tabIndexName="Loacación del propietario" />
               <p>{location || 'Ubicacíon'}</p>
             </div>
 
@@ -61,7 +67,7 @@ const Accordion = (props) => {
           <hr />
 
           <div className="accordion-row accordion-row__description">
-            <Icon color="var(--Color-Grayscale-3)" iconName="description" />
+            <Icon color="var(--Color-Grayscale-3)" iconName="description" tabIndexName="descripción de la prenda" />
             <p>{clothesInfo || 'Descripción de la prenda'}</p>
           </div>
         </div>

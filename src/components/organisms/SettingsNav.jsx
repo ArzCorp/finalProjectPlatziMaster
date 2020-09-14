@@ -11,7 +11,7 @@ const Settings = ({ changeButtonState }) => (
     <div className="settings__navbar">
       <Button
         type="normal"
-        name={<Icon iconName="tshirt" color="#fff" size="35px" idIcon="tshirt" />}
+        name={<Icon iconName="tshirt" color="#fff" size="35px" idIcon="tshirt" tabIndexName="ver mi ropa publicada" />}
         id="button-tshirt"
         onClick={() => {
           changeButtonState('isActive', true);
@@ -23,7 +23,7 @@ const Settings = ({ changeButtonState }) => (
       />
       <Button
         type="normal"
-        name={<Icon iconName="settings" color="#19704E" size="35px" idIcon="settings" />}
+        name={<Icon iconName="settings" color="#19704E" size="35px" idIcon="settings" tabIndexName="actualizar mis datos" />}
         id="button-settings"
         onClick={() => {
           changeButtonState('isDisabled', false);

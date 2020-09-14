@@ -27,6 +27,9 @@ const UserPerfil = ({ userReducer, buttonsReducers: { isButtonActive } }) => {
         />
       </Helmet>
       <div className="userprofile__settings">
+        <div className="row">
+          <h1 tabIndex="0">Perfil</h1>
+        </div>
         <ImageProfile
           src={picture}
         />

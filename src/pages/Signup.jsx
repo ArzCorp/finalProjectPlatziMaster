@@ -17,7 +17,7 @@ const Signup = () => (
     </Helmet>
     <div className="signup" id="signup">
       <div className="row signup__title">
-        <h1>Crear cuenta</h1>
+        <h1 tabIndex="0">Crear cuenta</h1>
       </div>
 
       <div className="signup__body">

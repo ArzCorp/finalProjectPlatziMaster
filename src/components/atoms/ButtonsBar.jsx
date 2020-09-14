@@ -10,6 +10,7 @@ const buttonsBar = (props) => {
   return (
     <div className="buttons-bar">
       <IconButton 
+        tabIndexName="enviar dislike"
         id="buttonDislike" 
         iconName="Cross" 
         space="55px" 
@@ -19,6 +20,7 @@ const buttonsBar = (props) => {
       />
 
       <IconButton 
+        tabIndexName="enviar superlike"
         id="buttonSuperLike" 
         iconName="star" 
         size="20px" 
@@ -30,6 +32,7 @@ const buttonsBar = (props) => {
       />
 
       <IconButton 
+        tabIndexName="enviar like"
         id="buttonLike" 
         iconName="heart" 
         space="55px" 

@@ -46,7 +46,6 @@ const RenderFeedComponents = ({ clothes }) => {
 
 const Feed = () => {
   const MatchModalState = useSelector((state) => state.modalReducers.MatchModalState);
-  const FilterModalState = useSelector((state) => state.modalReducers.FilterModalState);
   const KeyboardExplanationModal = useSelector((state) => state.modalReducers.KeyboardExplanationModal);
   const clothesFeed = useSelector((state) => state.userReducer.clothesFeed);
   const positionClothe = useSelector((state) => state.userReducer.positionClothe);
@@ -156,19 +155,8 @@ const Feed = () => {
           </div>
         )}
 
-        {!loading && (
-          <>
-            <div className="search-button">
-              <IconButton
-                iconName="search"
-                space="40px"
-                type="disabled"
-                handleClick={() => actions.turnModalState('FilterModal', true)}
-              />
-            </div>
-            <RenderFeedComponents clothes={clothes} />
-          </>
-        )}
+        {!loading && <RenderFeedComponents clothes={clothes} />}
+
         {clothes && (
           <ButtonsBar
             handleDislike={handleDislike}
@@ -185,12 +173,6 @@ const Feed = () => {
           onCloseModal={() => actions.turnModalState('MatchModal', false)}
           userName={currentUser}
           nameUserMatch={matchUser}
-        />
-      )}
-      {FilterModalState && (
-        <FilterModal
-          modalState={FilterModalState}
-          onCloseModal={() => actions.turnModalState('FilterModal', false)}
         />
       )}
       {!localStorage.getItem('firstVisualisation') && (

@@ -3,7 +3,7 @@ import Input from './Input';
 import IconButton from './IconButton';
 
 const PasswordInput = (props) => {
-  const { onChange, label, placeholder, name } = props;
+  const { onChange, label, placeholder, name, tabIndex } = props;
   const [hide, setHide] = useState(true);
   const showPassword = () => setHide(!hide);
 
@@ -18,6 +18,7 @@ const PasswordInput = (props) => {
       />
       <div className="paswordInput__showPassword">
         <IconButton
+          tabIndexName="Ver contraseña"
           iconName="eye"
           colorIcon={hide ? '#838F8C' : '#19704E'}
           bgColor="transparent"

@@ -20,7 +20,7 @@ const ImageProfile = ({ src, turnModalState }) => (
       }}
       type="outline"
       name={
-        <Icon color="$Color-Primary" iconName="camera" />
+        <Icon color="$Color-Primary" iconName="camera" tabIndexName="cargar imagen de perfil" />
       }
     />
     <AddImageModal />
