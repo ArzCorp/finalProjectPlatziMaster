@@ -25,7 +25,7 @@ const Notifications = (props) => {
               picture={item.clothe.picture}
               article={item.clothe.category}
               iconType="whatsapp"
-              body="Tienes un match pendiente, da click para contactar a la otra persona"
+              // body="Tienes un match pendiente, da click para contactar a la otra persona"
             />
           ))}
         </div>

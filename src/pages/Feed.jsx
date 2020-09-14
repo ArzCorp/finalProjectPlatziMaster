@@ -22,8 +22,6 @@ const totalActions = {
   ...userActions,
 };
 
-
-
 const RenderFeedComponents = ({ clothes }) => {
   if (!clothes) { return null; }
   return (
@@ -54,10 +52,11 @@ const Feed = () => {
   const positionClothe = useSelector((state) => state.userReducer.positionClothe);
   const loading = useSelector((state) => state.userReducer.loading);
   const likeReceived = useSelector((state) => state.userReducer.likeReceived);
+  const currentUser = useSelector((state) => state.userReducer.userLoged.user.first_name);
   const actions = useActions(totalActions);
-  console.log('likeReceived feed', likeReceived);
+  console.log('likeReceived', likeReceived);
 
-  const [isActive, setIsActive] = useState(0); 
+  const [isActive, setIsActive] = useState(0);
 
   useEffect(() => {
     actions.turnModalState('KeyboardExplanationModal', true);
@@ -73,21 +72,49 @@ const Feed = () => {
     actions.nextPositionClothe(args);
   };
 
-  const handleOpenModal = () => {
-    actions.turnModalState('FilterModal', true);
-  };
-
   const clothes = (!clothesFeed) ? null : clothesFeed.results[positionClothe];
+  const matchUser = clothes ? `${clothes.owner_is.first_name} ${clothes.owner_is.last_name}` : 'Usuario';
 
-  console.log('DATA CLOTHE', clothes)
+  const validateLikeReceived = (user) => likeReceived.includes(user);
 
-  const handlelike = () => {
-    actions.turnModalState('MatchModal', true);
+  const handlelike = async () => {
+    const isLikeReceived = await validateLikeReceived(clothes.owner_is.username);
+    if (isLikeReceived) {
+      actions.turnModalState('MatchModal', true);
+      setTimeout(() => {
+        actions.turnModalState('MatchModal', false);
+        nextClothe({
+          clothe: clothes.id,
+          value: 'LIKE',
+        });
+      }, 5100);
+      return;
+    }
     nextClothe({
       clothe: clothes.id,
       value: 'LIKE',
     });
-    // console.log('USER NAME ',clothes.owner_is.username )
+  };
+
+  const handleSuperlike = async () => {
+    const isLikeReceived = await validateLikeReceived(clothes.owner_is.username);
+    if (isLikeReceived) {
+      actions.turnModalState('MatchModal', true);
+      setTimeout(() => {
+        actions.turnModalState('MatchModal', false);
+        nextClothe({
+          clothe: clothes.id,
+          value: 'SUPERLIKE',
+        });
+      }, 5100);
+      return;
+    }
+    nextClothe({
+      clothe: clothes.id,
+      value: 'SUPERLIKE',
+    });
+    setIsActive(1);
+    setTimeout(() => setIsActive(0), 60000);
   };
 
   const handleDislike = () => {
@@ -95,15 +122,6 @@ const Feed = () => {
       clothe: clothes.id,
       value: 'DISLIKE',
     });
-  };
-
-  const handleSuperlike = () => {
-    nextClothe({
-      clothe: clothes.id,
-      value: 'SUPERLIKE',
-    });
-    setIsActive(1);
-    setTimeout(() => setIsActive(0), 60000);
   };
 
   const keyPress = () => {
@@ -120,10 +138,6 @@ const Feed = () => {
       collapseAccordion();
     }
   };
-
-  console.log('Estos son los datos', clothes);
-
-
 
   return (
     <section>
@@ -146,7 +160,7 @@ const Feed = () => {
             iconName="search"
             space="40px"
             type="disabled"
-            handleClick={() => handleOpenModal()}
+            handleClick={() => actions.turnModalState('FilterModal', true)}
           />
         </div>
 
@@ -171,20 +185,24 @@ const Feed = () => {
       <MatchModal
         modalState={MatchModalState}
         onCloseModal={() => actions.turnModalState('MatchModal', false)}
-        nameUserMatch="Vicente Fernández"
+        userName={currentUser}
+        nameUserMatch={matchUser}
       />
 
       <FilterModal
         modalState={FilterModalState}
         onCloseModal={() => actions.turnModalState('FilterModal', false)}
       />
-      <KeyboardExplanation
-        modalState={KeyboardExplanationModal}
-        onCloseModal={() => {
-          actions.turnModalState('KeyboardExplanationModal', false);
-          document.querySelector('.feed').focus();
-        }}
-      />
+      {!localStorage.getItem('firstVisualisation') && (
+        <KeyboardExplanation
+          modalState={KeyboardExplanationModal}
+          onCloseModal={() => {
+            actions.turnModalState('KeyboardExplanationModal', false);
+            localStorage.setItem('firstVisualisation', true);
+            document.querySelector('.feed').focus();
+          }}
+        />
+      )}
     </section>
   );
 };

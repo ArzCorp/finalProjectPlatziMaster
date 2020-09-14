@@ -26,9 +26,9 @@ const Notification = ({ user, picture, title, body, article, iconType, id }) => 
         )}
         <div className="notification__body">
           <h2>
-            {title} <small>¡Alguien se interesa en tu(s) {article}!</small>
+            {title}
           </h2>
-          <p>{body}</p>
+          <p>{body || `¡Alguien se interesa en tu(s) ${article}!`}</p>
         </div>
         <div className="notification__iconType">
           <Icon

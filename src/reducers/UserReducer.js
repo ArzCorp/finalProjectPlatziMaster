@@ -1,6 +1,6 @@
 const INITIAL_STATE = {
   userSignup: [],
-  userLoged: [],
+  userLoged: JSON.parse(localStorage.getItem('user')) || [],
   userClothes: [],
   errorsFields: [],
   userNotifications: [],

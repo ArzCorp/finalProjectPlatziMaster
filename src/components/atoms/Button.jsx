@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Button = ({ name, id, onClick, type }) => (
+const Button = ({ name, id, onClick, type, children }) => (
   <button
     type="submit"
     className={`btn__${type}`}
@@ -8,6 +8,7 @@ const Button = ({ name, id, onClick, type }) => (
     onClick={onClick}
   >
     {name || 'Aceptar'}
+    {children || null}
   </button>
 );
 
