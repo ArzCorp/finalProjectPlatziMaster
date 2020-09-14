@@ -41,8 +41,9 @@ export const nextPositionClothe = (data) => async (dispatch) => {
     });
 
     if (response.status !== 202 && response.status !== 400) {
+      console.error('error', response.status)
       return;
-    } if (response.status === 400) {
+    }else if (response.status === 400) {
       response = await httpRequest({
         dispatch,
         endPoint,
@@ -51,8 +52,12 @@ export const nextPositionClothe = (data) => async (dispatch) => {
           body: JSON.stringify(data),
         },
       });
+      if (response.status !== 202) {
+        console.error('error', response.status)
+        return;
+      }
     }
-
+   
     dispatch({
       type: 'nextClothe',
     });
