@@ -136,7 +136,7 @@ const EditClotheModal = ({ getUserClothes, deleteClothe, getClotheData, turnModa
             <option>Gafas</option>
             <option>Gorro</option>
             <option>Jeans</option>
-            <option>Pantalon</option>
+            <option>Pantalón</option>
             <option>Pijama</option>
             <option>Playera</option>
             <option>Sudadera</option>
@@ -145,7 +145,7 @@ const EditClotheModal = ({ getUserClothes, deleteClothe, getClotheData, turnModa
             <option>Tacones</option>
             <option>Vestido</option>
             <option>Zapatos</option>
-            <option>Otro</option>
+            <option>Otra</option>
           </InputSelect>
           <InputSelect
             label="Color:"

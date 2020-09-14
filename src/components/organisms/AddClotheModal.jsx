@@ -152,7 +152,7 @@ const AddClotheModal = ({ getUserClothes, turnModalState, addClothe, turnStatusR
             <option>Gafas</option>
             <option>Gorro</option>
             <option>Jeans</option>
-            <option>Pantalon</option>
+            <option>Pantalón</option>
             <option>Pijama</option>
             <option>Playera</option>
             <option>Sudadera</option>
@@ -161,7 +161,7 @@ const AddClotheModal = ({ getUserClothes, turnModalState, addClothe, turnStatusR
             <option>Tacones</option>
             <option>Vestido</option>
             <option>Zapatos</option>
-            <option>Otro</option>
+            <option>Otra</option>
           </InputSelect>
           <InputSelect
             label="Color:"
