@@ -19,13 +19,13 @@ const Slider = (props) => {
   return (
     <AliceCarousel>
       <div className="slider__img-container">
-        <img src={picture} className="slider__img" />
+        <img src={picture3} className="slider__img" />
       </div>
       <div className="slider__img-container">
         <img src={picture2} className="slider__img" />
       </div>
       <div className="slider__img-container">
-        <img src={picture3} className="slider__img" />
+        <img src={picture} className="slider__img" />
       </div>
  
     </AliceCarousel>

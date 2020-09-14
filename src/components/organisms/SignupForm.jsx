@@ -30,7 +30,7 @@ const SignupForm = (props) => {
         document.querySelector('#signup').style.display = 'none';
         props.turnModalState('SignupModal', true);
         setTimeout(() => {
-          window.location.href = '/#/login';
+          window.location.hash = '#/login';
           props.turnModalState('SignupModal', false);
         }, 2000);
       }

@@ -69,7 +69,6 @@ module.exports = {
       filename: 'css/[name].[hash].css',
       chunkFilename: 'css/[id].[hash].css',
     }),
-    new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       title: 'OurClothe',
       template: path.resolve(__dirname, './public/index.html'),

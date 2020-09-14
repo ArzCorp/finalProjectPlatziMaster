@@ -10,7 +10,7 @@ const KeyboardExplanationModal = ({ modalState, onCloseModal }) => (
       <img src={KeyboardImage} alt="Keyboard explanation" />
       <p>
         Si estás en una PC, usa las teclas seleccionadas para una navegación más
-        facil y cómoda.
+        fácil y cómoda.
       </p>
       <br />
     </div>

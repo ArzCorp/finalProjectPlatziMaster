@@ -94,10 +94,12 @@ const addPhotoProfile = (props) => {
           onChange={handleChange}
           name="picture"
         />
-        <Button
-          type="normal"
-          name="Guardar"
-        />
+        <div className="btn__container">
+          <Button
+            type="normal"
+            name="Guardar"
+          />
+        </div>
       </form>
     </Modal>
   );

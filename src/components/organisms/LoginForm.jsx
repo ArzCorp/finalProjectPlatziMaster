@@ -29,7 +29,7 @@ const LoginForm = (props) => {
         document.querySelector('#login').style.display = 'none';
         props.turnModalState('LoginModal', true);
         setTimeout(() => {
-          window.location.href = '/#/feed';
+          window.location.hash = '#/feed';
           props.turnModalState('LoginModal', false);
         }, 2500);
       }
