@@ -27,14 +27,14 @@ const EditProfile = ({ editProfile }) => {
   return (
     <section className="useredit">
       <div className="column-6">
-        <h2>Configracion del perfil</h2>
+        <h2>Configración del perfil</h2>
         <form
           className="useredit__form"
           method="patch"
           name="usereditform"
           onSubmit={handleSubmit}
         >
-          <small>Informacion pérsonal</small>
+          <h3>Información personal</h3>
           <Input
             name="first_name"
             label="Nombre"

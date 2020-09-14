@@ -10,6 +10,7 @@
 #public {
   width: auto;
   margin: $Spacing-ExtraSmall;
+  cursor: pointer;
 }
 
 .clothe__description {
@@ -54,6 +55,11 @@
 
 .clothe__details {
   margin-top: $Spacing-Normal;
+  & .form__input label{
+    color: var(--Color-Grayscale-1);
+    cursor: pointer;
+    font-weight: initial;
+  }
 }
 
 .select {

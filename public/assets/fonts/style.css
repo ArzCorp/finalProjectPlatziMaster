@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'ourclothe';
-  src: url('./ourclothe.ttf?b16bbv') format('truetype');
+  src: url('./ourclothe.ttf') format('truetype');
 }
 
 [class^="our-icon-"], [class*=" our-icon-"] {
@@ -18,6 +18,21 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.our-icon-size:before {
+  content: "\e911";
+}
+.our-icon-state:before {
+  content: "\e912";
+}
+.our-icon-label:before {
+  content: "\e913";
+}
+.our-icon-gender:before {
+  content: "\e914";
+}
+.our-icon-description:before {
+  content: "\e915";
+}
 .our-icon-eye:before {
   content: "\e910";
 }

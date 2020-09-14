@@ -87,17 +87,17 @@ const EditClotheModal = ({ getUserClothes, deleteClothe, getClotheData, turnModa
       closeButton
     >
       <form className="clothe modal__scroll" onSubmit={handleSubmit}>
-        <h2>Editar prenda</h2>
+        <center><h2>Editar prenda</h2></center>
         <div className="clothe__description">
-          <h4>Descripcion:</h4>
+          <h4>Descripción:</h4>
           <textarea
             className="description__clothe"
             name="description"
-            placeholder="Descripcion"
+            placeholder="Descripción"
             defaultValue={description}
           />
         </div>
-        <h4>Imagen principal</h4>
+        <h4>Imágenes</h4>
         <div className="clothe__images">
           <AddImage
             id="inputChange01"
@@ -125,28 +125,45 @@ const EditClotheModal = ({ getUserClothes, deleteClothe, getClotheData, turnModa
             name="category"
           >
             <option select="true" defaultValue={category}>{category}</option>
-            <option>calcetines</option>
-            <option>Zapatos</option>
-            <option>Pantalon</option>
-            <option>Camisa</option>
-            <option>Playera</option>
             <option>Abrigo</option>
+            <option>Blusa</option>
+            <option>Botas</option>
+            <option>Bufanda</option>
+            <option>Calcetines</option>
+            <option>Camisa</option>
             <option>Chamarra</option>
+            <option>Falda</option>
+            <option>Gafas</option>
+            <option>Gorro</option>
+            <option>Jeans</option>
+            <option>Pantalón</option>
+            <option>Pijama</option>
+            <option>Playera</option>
+            <option>Sudadera</option>
             <option>Sueter</option>
             <option>Sombrero</option>
+            <option>Tacones</option>
+            <option>Vestido</option>
+            <option>Zapatos</option>
+            <option>Otra</option>
           </InputSelect>
           <InputSelect
             label="Color:"
             name="color"
           >
             <option select="true" defaultValue={color}>{color}</option>
+            <option>Amarillo</option>
+            <option>Azul</option>
+            <option>Blanco</option>
+            <option>Gris</option>
+            <option>Marrón</option>
+            <option>Naranja</option>
             <option>Negro</option>
             <option>Rojo</option>
-            <option>Azul</option>
-            <option>Gris</option>
-            <option>Blanco</option>
-            <option>Amarillo</option>
-            <option>Naranja</option>
+            <option>Rosa</option>
+            <option>Verde</option>
+            <option>Violeta</option>
+            <option>Variado</option>
           </InputSelect>
           <InputSelect
             label="Talla:"
@@ -167,6 +184,7 @@ const EditClotheModal = ({ getUserClothes, deleteClothe, getClotheData, turnModa
             <option select="true" defaultValue={gender}>{gender}</option>
             <option>Masculino</option>
             <option>Femenino</option>
+            <option>Unisex</option>
             <option>Otro</option>
           </InputSelect>
           <InputSelect
