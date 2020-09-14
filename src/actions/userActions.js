@@ -250,17 +250,47 @@ export const addClothe = (fields, token, image01, image02, image03) => async (di
     headers,
   };
 
+  if (image01.files[0]) {
+    clotheData.append('picture', image01.files[0], image01.files[0].name);
+  }
+
+  if (image02.files[0]) {
+    clotheData.append('picture2', image02.files[0], image02.files[0].name);
+  }
+
+  if (image03.files[0]) {
+    clotheData.append('picture3', image03.files[0], image03.files[0].name);
+  }
+
+  if (description) {
+    clotheData.append('description', description);
+  }
+
+  if (category) {
+    clotheData.append('category', category);
+  }
+
+  if (publicClothe) {
+    clotheData.append('public', publicClothe);
+  }
+
+  if (color) {
+    clotheData.append('color', color);
+  }
+
+  if (size) {
+    clotheData.append('size', size);
+  }
+
+  if (gender) {
+    clotheData.append('gender', gender);
+  }
+
+  if (state) {
+    clotheData.append('state', state);
+  }
+
   headers.append('Authorization', `Token ${token}`);
-  clotheData.append('picture', image01.files[0], image01.files[0].name);
-  clotheData.append('picture2', image02.files[0], image02.files[0].name);
-  clotheData.append('picture3', image03.files[0], image03.files[0].name);
-  clotheData.append('category', category);
-  clotheData.append('public', publicClothe);
-  clotheData.append('color', color);
-  clotheData.append('size', size);
-  clotheData.append('gender', gender);
-  clotheData.append('state', state);
-  clotheData.append('description', description);
 
   dispatch({
     type: 'LOADING',
@@ -268,6 +298,7 @@ export const addClothe = (fields, token, image01, image02, image03) => async (di
 
   const response = await fetch(URL_API_UPDATE, OPTIONS);
   const addClotheData = await response.json();
+  console.log(addClotheData);
   const statusResponse = await response.status;
   let statusMessage;
   let status;
@@ -289,7 +320,7 @@ export const addClothe = (fields, token, image01, image02, image03) => async (di
 export const editClothe = (fields, clotheId, token, image01, image02, image03) => async (dispatch) => {
   const headers = new Headers();
   const clotheData = new FormData();
-  const { publicClothe, category, color, size, gender, state } = fields;
+  const { publicClothe, category, color, size, gender, state, description } = fields;
   const URL_API_UPDATE = `${URL_API}clothes/myclothes/${clotheId}`;
   const OPTIONS = {
     method: 'PATCH',
@@ -297,16 +328,47 @@ export const editClothe = (fields, clotheId, token, image01, image02, image03) =
     headers,
   };
 
+  if (image01.files[0]) {
+    clotheData.append('picture', image01.files[0], image01.files[0].name);
+  }
+
+  if (image02.files[0]) {
+    clotheData.append('picture2', image02.files[0], image02.files[0].name);
+  }
+
+  if (image03.files[0]) {
+    clotheData.append('picture3', image03.files[0], image03.files[0].name);
+  }
+
+  if (description) {
+    clotheData.append('description', description);
+  }
+
+  if (category) {
+    clotheData.append('category', category);
+  }
+
+  if (publicClothe) {
+    clotheData.append('public', publicClothe);
+  }
+
+  if (color) {
+    clotheData.append('color', color);
+  }
+
+  if (size) {
+    clotheData.append('size', size);
+  }
+
+  if (gender) {
+    clotheData.append('gender', gender);
+  }
+
+  if (state) {
+    clotheData.append('state', state);
+  }
+
   headers.append('Authorization', `Token ${token}`);
-  clotheData.append('picture', image01.files[0], image01.files[0].name);
-  clotheData.append('picture2', image02.files[0], image02.files[0].name);
-  clotheData.append('picture3', image03.files[0], image03.files[0].name);
-  clotheData.append('category', category);
-  clotheData.append('public', publicClothe);
-  clotheData.append('color', color);
-  clotheData.append('size', size);
-  clotheData.append('gender', gender);
-  clotheData.append('state', state);
 
   dispatch({
     type: 'LOADING',
@@ -319,10 +381,10 @@ export const editClothe = (fields, clotheId, token, image01, image02, image03) =
   let status;
 
   if (statusResponse === 400) {
-    statusMessage = 'Solo puedes publicar 10 prendas';
+    statusMessage = 'Ocurrio un error intenta mas tarde';
     status = true;
   } else {
-    statusMessage = 'Prenda agregada';
+    statusMessage = 'Prenda editada';
     status = true;
   }
 

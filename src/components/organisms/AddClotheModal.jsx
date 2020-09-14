@@ -102,7 +102,11 @@ const AddClotheModal = ({ getUserClothes, turnModalState, addClothe, turnStatusR
         name="addClothe"
         onSubmit={handleSubmit}
       >
-       <center> <h2>Agrega prenda</h2> </center>
+        <center>
+          {' '}
+          <h2>Agrega prenda</h2>
+          {' '}
+        </center>
         <div className="clothe__description">
           <h4>Descripción:</h4>
           <textarea

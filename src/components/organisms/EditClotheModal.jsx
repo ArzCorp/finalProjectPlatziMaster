@@ -93,8 +93,9 @@ const EditClotheModal = ({ getUserClothes, deleteClothe, getClotheData, turnModa
           <textarea
             className="description__clothe"
             name="description"
-            placeholder="Descripción"
+            placeholder="descripcion"
             defaultValue={description}
+            onChange={handleChange}
           />
         </div>
         <h4>Imágenes</h4>
@@ -123,6 +124,7 @@ const EditClotheModal = ({ getUserClothes, deleteClothe, getClotheData, turnModa
           <InputSelect
             label="Categoria"
             name="category"
+            onChange={handleChange}
           >
             <option select="true" defaultValue={category}>{category}</option>
             <option>Abrigo</option>
@@ -150,6 +152,7 @@ const EditClotheModal = ({ getUserClothes, deleteClothe, getClotheData, turnModa
           <InputSelect
             label="Color:"
             name="color"
+            onChange={handleChange}
           >
             <option select="true" defaultValue={color}>{color}</option>
             <option>Amarillo</option>
@@ -168,6 +171,7 @@ const EditClotheModal = ({ getUserClothes, deleteClothe, getClotheData, turnModa
           <InputSelect
             label="Talla:"
             name="size"
+            onChange={handleChange}
           >
             <option select="true" defaultValue={size}>{size}</option>
             <option>XS</option>
@@ -180,6 +184,7 @@ const EditClotheModal = ({ getUserClothes, deleteClothe, getClotheData, turnModa
           <InputSelect
             label="Genero:"
             name="gener"
+            onChange={handleChange}
           >
             <option select="true" defaultValue={gender}>{gender}</option>
             <option>Masculino</option>
@@ -190,6 +195,7 @@ const EditClotheModal = ({ getUserClothes, deleteClothe, getClotheData, turnModa
           <InputSelect
             label="Estado:"
             name="state"
+            onChange={handleChange}
           >
             <option select="true" defaultValue={state}>{state}</option>
             <option>Bueno</option>
