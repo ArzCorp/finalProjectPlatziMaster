@@ -89,15 +89,15 @@ const EditClotheModal = ({ getUserClothes, deleteClothe, getClotheData, turnModa
       <form className="clothe modal__scroll" onSubmit={handleSubmit}>
         <center><h2>Editar prenda</h2></center>
         <div className="clothe__description">
-          <h4>Descripcion:</h4>
+          <h4>Descripción:</h4>
           <textarea
             className="description__clothe"
             name="description"
-            placeholder="Descripcion"
+            placeholder="Descripción"
             defaultValue={description}
           />
         </div>
-        <h4>Imagen principal</h4>
+        <h4>Imágenes</h4>
         <div className="clothe__images">
           <AddImage
             id="inputChange01"

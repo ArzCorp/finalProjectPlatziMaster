@@ -104,15 +104,15 @@ const AddClotheModal = ({ getUserClothes, turnModalState, addClothe, turnStatusR
       >
        <center> <h2>Agrega prenda</h2> </center>
         <div className="clothe__description">
-          <h4>Descripcion:</h4>
+          <h4>Descripción:</h4>
           <textarea
             className="description__clothe"
             name="description"
-            placeholder="Descripcion"
+            placeholder="Descripción"
             onChange={handleChange}
           />
         </div>
-        <h4>Imagen principal</h4>
+        <h4>Imágenes</h4>
         <div className="clothe__images">
           <AddImage
             id="image01"
