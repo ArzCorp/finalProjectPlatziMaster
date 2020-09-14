@@ -9,3 +9,5 @@
 [0907/003207.681:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: Se intentó obtener acceso a un proceso que está cerrándose. (0xc000010a)
 [0907/003207.681:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: Se intentó obtener acceso a un proceso que está cerrándose. (0xc000010a)
 [0913/140131.392:ERROR:crash_report_database_win.cc(430)] unexpected header
+[0913/180759.956:ERROR:crash_report_database_win.cc(430)] unexpected header
+[0913/185434.513:ERROR:crash_report_database_win.cc(430)] unexpected header

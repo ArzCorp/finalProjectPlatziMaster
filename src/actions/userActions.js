@@ -79,24 +79,44 @@ export const turnStatusResponse = (state) => (dispatch) => {
   });
 };
 
-export const editProfile = (data, telephone, token, userData) => async (dispatch, getState) => {
-  console.log(userData);
+export const editProfile = (fields, telephone, token) => async (dispatch, getState) => {
+  console.log(fields);
+  const { state, city } = fields;
   const { user } = getState().userReducer;
   const URL_API_UPDATE = `${URL_API}users/${telephone}/`;
   const OPTIONS = {
     method: 'PATCH',
-    body: JSON.stringify(data),
+    body: JSON.stringify(fields),
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Token ${token}`,
     },
   };
+
+  const headers = new Headers();
+  const formLocation = new FormData();
+  const URL_API_LOCATION = `${URL_API}users/${telephone}/profile/`;
+  const OPTIONS_LOCATION = {
+    method: 'PATCH',
+    body: formLocation,
+    headers,
+    redirect: 'follow',
+  };
+
+  formLocation.append('city', city);
+  formLocation.append('state', state);
+  headers.append('Authorization', `Token ${token}`);
+
   dispatch({
     type: 'LOADING',
   });
   try {
     const response = await fetch(URL_API_UPDATE, OPTIONS);
     const dataUser = await response.json();
+
+    const responseProfile = await fetch(URL_API_LOCATION, OPTIONS_LOCATION);
+    const locationData = await responseProfile.json();
+
     const statusResponse = await response.status;
     const status = (statusResponse === 200);
     const statusMessage = 'Datos actalizados';
@@ -107,9 +127,15 @@ export const editProfile = (data, telephone, token, userData) => async (dispatch
       user: dataUser,
     };
 
-    console.log(userDataEdit);
+    const locationUser = {
+      ...user,
+      token,
+      user: locationData,
+    };
+
     setToken(userDataEdit.token);
     localStorage.setItem('user', JSON.stringify(userDataEdit));
+    localStorage.setItem('user', JSON.stringify(locationUser));
 
     dispatch({
       type: 'EditProfile',
@@ -247,7 +273,7 @@ export const addClothe = (fields, token, image01, image02, image03) => async (di
   let status;
 
   if (statusResponse === 400) {
-    statusMessage = 'Solo puedes publicar 10 prendas';
+    statusMessage = 'Ocurrio un error intenta mas tarde';
     status = true;
   } else {
     statusMessage = 'Prenda agregada';

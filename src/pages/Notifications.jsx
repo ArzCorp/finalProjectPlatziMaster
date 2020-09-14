@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet';
 
 import * as userActions from '../actions/userActions';
 
@@ -34,6 +35,14 @@ const Notifications = (props) => {
 
   return (
     <section className="notifications">
+      <Helmet>
+        <title>Ourclothe - Notificaciones</title>
+        <meta
+          name="description"
+          content="Recibirás una notificación cuando hagas match con otro usuario.
+            Podrán ponerse en contacto a travez de WhatsApp para acordar el intercambio"
+        />
+      </Helmet>
       <div className="wrapper">
         <div className="row">
           <div className="column-6">

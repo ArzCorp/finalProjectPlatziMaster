@@ -27,10 +27,11 @@ const SignupForm = (props) => {
       const valid = await props.fetchSignupUser(fields);
 
       if (valid) {
+        document.querySelector('#signup').style.display = 'none';
         props.turnModalState('SignupModal', true);
         setTimeout(() => {
+          window.location.hash = '#/login';
           props.turnModalState('SignupModal', false);
-          window.location.href = '/login';
         }, 2000);
       }
     }

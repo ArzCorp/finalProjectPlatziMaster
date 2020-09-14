@@ -26,9 +26,10 @@ const LoginForm = (props) => {
       const valid = await props.fetchLoginUser(fields);
 
       if (valid) {
+        document.querySelector('#login').style.display = 'none';
         props.turnModalState('LoginModal', true);
         setTimeout(() => {
-          window.location.href = '/#/feed';
+          window.location.hash = '#/feed';
           props.turnModalState('LoginModal', false);
         }, 2500);
       }
