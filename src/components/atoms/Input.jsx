@@ -2,7 +2,7 @@ import React from 'react';
 
 const Input = ({ className, value, type, label, placeholder, name, id, onChange, onKeyPress, maxLength, checked }) => (
   <div className="form__input">
-    <label>
+    <label htmlFor={id}>
       *
       {label || 'Label'}
     </label>
