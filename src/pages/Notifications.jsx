@@ -18,7 +18,7 @@ const Notifications = (props) => {
         <div className="notifications__list column-6">
           {props.userReducer.userNotifications.map((item) => (
             <Notification
-              key={item.clothe.id}
+              key={`${item.clothe.id}-${item.user}`}
               id={item.clothe.id}
               title={item.value}
               user={item.user}

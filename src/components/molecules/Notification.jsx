@@ -11,7 +11,7 @@ const Notification = ({ user, picture, title, body, article, iconType, id }) => 
   const goToWhatsapp = () => window.open(`https://api.whatsapp.com/send?phone=52${user}`, '_blank');
 
   return (
-    <div className="notification-container" id={id}>
+    <div className="notification-container" id={`${id}-${user}`}>
       <div
         className="notification"
         onClick={iconType == 'whatsapp'
@@ -28,7 +28,11 @@ const Notification = ({ user, picture, title, body, article, iconType, id }) => 
           <h2>
             {title}
           </h2>
-          <p>{body || `¡Alguien se interesa en tu(s) ${article}!`}</p>
+          <p>
+            {body || `¡Alguien se interesa en tu(s) ${article}!`}
+            <br />
+            Puedes ponerte en contacto para un intercambio
+          </p>
         </div>
         <div className="notification__iconType">
           <Icon
