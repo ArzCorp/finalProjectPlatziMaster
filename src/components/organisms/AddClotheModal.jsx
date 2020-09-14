@@ -102,7 +102,7 @@ const AddClotheModal = ({ getUserClothes, turnModalState, addClothe, turnStatusR
         name="addClothe"
         onSubmit={handleSubmit}
       >
-        <h2>Agrega prenda</h2>
+       <center> <h2>Agrega prenda</h2> </center>
         <div className="clothe__description">
           <h4>Descripcion:</h4>
           <textarea
@@ -136,20 +136,32 @@ const AddClotheModal = ({ getUserClothes, turnModalState, addClothe, turnStatusR
         <div className="clothe__details">
           <h4>Detalles</h4>
           <InputSelect
-            label="Categoria"
+            label="Categoría"
             name="category"
             onChange={handleChange}
           >
             <option select="true">Seleccione una opción</option>
-            <option>Calcetines</option>
-            <option>Zapatos</option>
-            <option>Pantalon</option>
-            <option>Camisa</option>
-            <option>Playera</option>
             <option>Abrigo</option>
+            <option>Blusa</option>
+            <option>Botas</option>
+            <option>Bufanda</option>
+            <option>Calcetines</option>
+            <option>Camisa</option>
             <option>Chamarra</option>
+            <option>Falda</option>
+            <option>Gafas</option>
+            <option>Gorro</option>
+            <option>Jeans</option>
+            <option>Pantalon</option>
+            <option>Pijama</option>
+            <option>Playera</option>
+            <option>Sudadera</option>
             <option>Sueter</option>
             <option>Sombrero</option>
+            <option>Tacones</option>
+            <option>Vestido</option>
+            <option>Zapatos</option>
+            <option>Otro</option>
           </InputSelect>
           <InputSelect
             label="Color:"
@@ -157,13 +169,18 @@ const AddClotheModal = ({ getUserClothes, turnModalState, addClothe, turnStatusR
             onChange={handleChange}
           >
             <option select="true">Seleccione una opción</option>
+            <option>Amarillo</option>
+            <option>Azul</option>
+            <option>Blanco</option>
+            <option>Gris</option>
+            <option>Marrón</option>
+            <option>Naranja</option>
             <option>Negro</option>
             <option>Rojo</option>
-            <option>Azul</option>
-            <option>Gris</option>
-            <option>Blanco</option>
-            <option>Amarillo</option>
-            <option>Naranja</option>
+            <option>Rosa</option>
+            <option>Verde</option>
+            <option>Violeta</option>
+            <option>Variado</option>
           </InputSelect>
           <InputSelect
             label="Talla:"
