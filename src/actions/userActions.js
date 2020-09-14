@@ -20,6 +20,7 @@ export const fetchSignupUser = (data) => async (dispatch) => {
   try {
     const response = await fetch(SIGNUP, OPTIONS);
     const newUser = await response.json();
+    localStorage.setItem('usersignup', newUser.first_name);
 
     const statusResponse = await response.status;
     const status = (statusResponse === 201);
@@ -585,4 +586,11 @@ export const fetchNotificationsUser = (token) => async (dispatch) => {
       dispatch: error.message,
     });
   }
+};
+
+export const clearFeedbackBackend = () => async (dispatch) => {
+    dispatch({
+      type: 'clearFeedbackBackend',
+      payload: [],
+    });
 };

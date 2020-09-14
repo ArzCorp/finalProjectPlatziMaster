@@ -143,6 +143,12 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         likeReceived: action.payload,
       };
+    case 'clearFeedbackBackend':
+      return {
+        ...state,
+        userLoged: action.payload,
+        userSignup: action.payload,
+      };
     default: return state;
   }
 };

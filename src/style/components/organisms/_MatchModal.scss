@@ -1,4 +1,4 @@
-.match-modal{
+.match-modal {
   position: relative;
   height:100%;
   display: flex;
@@ -7,15 +7,12 @@
   justify-content:space-between;
   text-align:center;
   text-shadow:$Box-ShadowActive;
-  & .default-icon.our-icon-whatsapp{
+  & .default-icon.our-icon-whatsapp {
     position: absolute;
     right: 15px;
   }
-  & .match-modal__button{
+  & .match-modal__button {
     position:relative;
     width:100%
   }
 }
-
-
- 

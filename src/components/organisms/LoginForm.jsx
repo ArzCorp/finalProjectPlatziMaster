@@ -51,12 +51,12 @@ const LoginForm = (props) => {
   };
 
   const validateSignup = () => {
-    const userSignup = props.userReducer.userSignup;
+    const userSignup = localStorage.getItem('usersignup');
 
-    if (userSignup.first_name) {
+    if (userSignup) {
       return (
         <h2>
-          Hola {userSignup.first_name}
+          Hola {userSignup}
           <br />
           Tu cuenta ha sido creada con éxito! Por favor inicia sesión.
         </h2>
@@ -72,6 +72,9 @@ const LoginForm = (props) => {
       return (
         <div className="loginForm__feedback">
           <p>{feedbackBackend.non_field_errors}</p>
+          <div>
+            {setTimeout(() => props.clearFeedbackBackend(), 3000)}
+          </div>
         </div>
       );
     }

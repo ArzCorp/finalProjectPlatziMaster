@@ -15,6 +15,9 @@
     font-weight: $Bold;
     color: var(--Color-Negative);
     background-color: var(--Color-Alert);
+    & div {
+      display: none;
+    }
   }
 
   &__buttons {

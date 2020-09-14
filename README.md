@@ -52,8 +52,8 @@ This section permite to the user see notifications about of his matchs, an conta
 <br /> [ourclothe.com](http://www.ourclothe.com/ "ourclothe.com")
 
 <div align="center">
-<img src="https://raw.githubusercontent.com/ArzateCompany/finalProjectPlatziMaster/develop/public/assets/images/mobileApp.png" height="100" alt="mobileApp">
-<img src="https://raw.githubusercontent.com/ArzateCompany/finalProjectPlatziMaster/develop/public/assets/images/webApp.png" height="100" alt="webApp">
+<img src="https://res.cloudinary.com/martindev/image/upload/v1600105788/ourclothe/mobileApp_kphvsz.png" height="100" alt="mobileApp">
+<img src="https://res.cloudinary.com/martindev/image/upload/v1600105789/ourclothe/webApp_crjsjo.png" height="100" alt="webApp">
 </div>
 
 ## 👨‍💻 3. Guide for Developer

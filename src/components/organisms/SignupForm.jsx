@@ -59,6 +59,9 @@ const SignupForm = (props) => {
         <div className="SignupForm__feedback">
           <p>{feedbackBackend.username}</p>
           <p>{feedbackBackend.non_field_errors}</p>
+          <div>
+            {setTimeout(() => props.clearFeedbackBackend(), 3000)}
+          </div>
         </div>
       );
     }
