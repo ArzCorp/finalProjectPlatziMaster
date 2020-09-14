@@ -54,8 +54,9 @@ const Feed = () => {
   const likeReceived = useSelector((state) => state.userReducer.likeReceived);
   const currentUser = useSelector((state) => state.userReducer.userLoged.user.first_name);
   const actions = useActions(totalActions);
-  console.log('likeReceived', likeReceived);
-
+  const clothes = (!clothesFeed) ? null : clothesFeed.results[positionClothe];
+  const matchUser = clothes ? `${clothes.owner_is.first_name} ${clothes.owner_is.last_name}` : 'Usuario';
+  const validateLikeReceived = (user) => likeReceived.includes(user);
   const [isActive, setIsActive] = useState(0);
 
   useEffect(() => {
@@ -71,11 +72,6 @@ const Feed = () => {
     }
     actions.nextPositionClothe(args);
   };
-
-  const clothes = (!clothesFeed) ? null : clothesFeed.results[positionClothe];
-  const matchUser = clothes ? `${clothes.owner_is.first_name} ${clothes.owner_is.last_name}` : 'Usuario';
-
-  const validateLikeReceived = (user) => likeReceived.includes(user);
 
   const handlelike = async () => {
     const isLikeReceived = await validateLikeReceived(clothes.owner_is.username);
@@ -154,24 +150,25 @@ const Feed = () => {
         onKeyDown={keyPress}
         tabIndex="0"
       >
-
-        <div className="search-button">
-          <IconButton
-            iconName="search"
-            space="40px"
-            type="disabled"
-            handleClick={() => actions.turnModalState('FilterModal', true)}
-          />
-        </div>
-
         {loading && (
           <div className="row">
             <Loader />
           </div>
         )}
 
-        <RenderFeedComponents clothes={clothes} />
-
+        {!loading && (
+          <>
+            <div className="search-button">
+              <IconButton
+                iconName="search"
+                space="40px"
+                type="disabled"
+                handleClick={() => actions.turnModalState('FilterModal', true)}
+              />
+            </div>
+            <RenderFeedComponents clothes={clothes} />
+          </>
+        )}
         {clothes && (
           <ButtonsBar
             handleDislike={handleDislike}
@@ -182,17 +179,20 @@ const Feed = () => {
         )}
       </div>
 
-      <MatchModal
-        modalState={MatchModalState}
-        onCloseModal={() => actions.turnModalState('MatchModal', false)}
-        userName={currentUser}
-        nameUserMatch={matchUser}
-      />
-
-      <FilterModal
-        modalState={FilterModalState}
-        onCloseModal={() => actions.turnModalState('FilterModal', false)}
-      />
+      {MatchModalState && (
+        <MatchModal
+          modalState={MatchModalState}
+          onCloseModal={() => actions.turnModalState('MatchModal', false)}
+          userName={currentUser}
+          nameUserMatch={matchUser}
+        />
+      )}
+      {FilterModalState && (
+        <FilterModal
+          modalState={FilterModalState}
+          onCloseModal={() => actions.turnModalState('FilterModal', false)}
+        />
+      )}
       {!localStorage.getItem('firstVisualisation') && (
         <KeyboardExplanation
           modalState={KeyboardExplanationModal}
