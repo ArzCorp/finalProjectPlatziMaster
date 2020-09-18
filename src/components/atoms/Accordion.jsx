@@ -13,7 +13,10 @@ const Accordion = (props) => {
   };
 
   return (
-    <div className="accordion">
+    <div className="accordion"
+    onClick={collapseAccordion} 
+    
+    >
 
       <div className="accordion__content">
 
@@ -48,7 +51,7 @@ const Accordion = (props) => {
           colorIcon="var(--Color-Primary)"
           iconName="down-arrow" size="8px"
           space="25px" bgColor="var(--Color-Grayscale-1) "
-          handleClick={collapseAccordion}
+          // handleClick={collapseAccordion}
         />
 
         <div className="bottom-info">

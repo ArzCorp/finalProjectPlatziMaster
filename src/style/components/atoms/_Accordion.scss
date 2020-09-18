@@ -7,6 +7,7 @@
   bottom: 0px;
   background: linear-gradient(180deg, var(--Color-transparent) 0%, var(--Color-Primary) 80%);
   text-shadow:$Box-Shadow;
+  cursor:pointer;
   &__content{
     display: flex;
     flex-direction: column;
@@ -35,7 +36,7 @@
    
   }
   & .bottom-info{
-    height:50px;
+    height:0;
     width:400px;
     overflow:hidden;
     transition: all .3s;
@@ -61,6 +62,7 @@
     padding:15px;
     overflow:auto;
     transition: all .3s;
+    margin-bottom: -34px;;
     & hr{
       height: 2px;
       margin-bottom: 10px;
