@@ -49,7 +49,7 @@ const NavBar = (props) => {
         <div className="navbar__menu-logout" tabIndex="1" title="salir">
           <Icon
             tabIndexName="salir"
-            iconName="settings"
+            iconName="logout"
             size="25px"
             color="#F9FAFA"
           />
