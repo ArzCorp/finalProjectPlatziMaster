@@ -15,7 +15,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: '[name].[hash].js',
-    publicPath: 'https://Gaybre.github.io/ourclothe/',
+    publicPath: 'https://arzatecompany.github.io/finalProjectPlatziMaster/',
   },
   mode: 'production',
   devtool: 'eval-source-map',
@@ -78,7 +78,7 @@ module.exports = {
     }),
     new AddAssetHtmlWebpack({
       filepath: path.resolve(__dirname, './dist/*.dll.js'),
-      publicPath: 'https://Gaybre.github.io/ourclothe/',
+      publicPath: 'https://arzatecompany.github.io/finalProjectPlatziMaster/',
     }),
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: ['**/app.*'],
