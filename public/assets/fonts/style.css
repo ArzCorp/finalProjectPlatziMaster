@@ -18,6 +18,24 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.our-icon-tshirt2:before {
+  content: "\e91b";
+}
+.our-icon-success:before {
+  content: "\e916";
+}
+.our-icon-info:before {
+  content: "\e917";
+}
+.our-icon-error:before {
+  content: "\e918";
+}
+.our-icon-warning:before {
+  content: "\e919";
+}
+.our-icon-logout:before {
+  content: "\e91a";
+}
 .our-icon-size:before {
   content: "\e911";
 }
