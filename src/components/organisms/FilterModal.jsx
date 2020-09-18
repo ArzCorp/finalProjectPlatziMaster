@@ -31,7 +31,7 @@ const FilterModal = ({ modalState, onCloseModal }) => (
 
       <Button
         type="normal"
-        name="filtrar"
+        name="Filtrar"
       />
 
     </div>

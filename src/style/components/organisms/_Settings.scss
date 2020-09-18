@@ -10,7 +10,23 @@
 
 .clotheList {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
   padding: $Spacing-Normal 0px;
+  overflow: auto;
+  justify-content: center;
+}
+
+.btn-active {
+  background-color: $Color-Primary;
+}
+
+.icon-active {
+  color: $Color-Primary;
+}
+
+@media screen and (min-width: 1024px) {
+  .clotheList {
+    width: 100%;
+    justify-content: flex-start;
+  }
 }

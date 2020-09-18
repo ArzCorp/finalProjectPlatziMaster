@@ -1,9 +1,9 @@
 .privacyPolicy {
-  padding: $Spacing-Small 0;
-  color: var(--Color-Grayscale-4);
-  text-decoration: none;
+  padding-top: $Spacing-Small;
+  color: var(--Color-Primary);
+  letter-spacing: .13rem;
   &:hover {
-    color: var(--Color-Primary);
-    text-decoration: underline;
+    font-weight: $Bold;
+    letter-spacing: .1rem;
   }
 }

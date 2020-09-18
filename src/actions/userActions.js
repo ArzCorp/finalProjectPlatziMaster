@@ -20,6 +20,7 @@ export const fetchSignupUser = (data) => async (dispatch) => {
   try {
     const response = await fetch(SIGNUP, OPTIONS);
     const newUser = await response.json();
+    localStorage.setItem('usersignup', newUser.first_name);
 
     const statusResponse = await response.status;
     const status = (statusResponse === 201);
@@ -72,25 +73,54 @@ export const fetchLoginUser = (data) => async (dispatch) => {
   }
 };
 
-export const editProfile = (data, telephone, token) => async (dispatch, getState) => {
+export const turnStatusResponse = (state) => (dispatch) => {
+  dispatch({
+    type: 'statusResponse',
+    payload: state,
+  });
+};
+
+export const editProfile = (fields, telephone, token) => async (dispatch, getState) => {
+  console.log(fields);
+  const { state, city } = fields;
   const { user } = getState().userReducer;
   const URL_API_UPDATE = `${URL_API}users/${telephone}/`;
   const OPTIONS = {
     method: 'PATCH',
-    body: JSON.stringify(data),
+    body: JSON.stringify(fields),
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Token ${token}`,
     },
   };
+
+  const headers = new Headers();
+  const formLocation = new FormData();
+  const URL_API_LOCATION = `${URL_API}users/${telephone}/profile/`;
+  const OPTIONS_LOCATION = {
+    method: 'PATCH',
+    body: formLocation,
+    headers,
+    redirect: 'follow',
+  };
+
+  formLocation.append('city', city);
+  formLocation.append('state', state);
+  headers.append('Authorization', `Token ${token}`);
+
   dispatch({
     type: 'LOADING',
   });
   try {
     const response = await fetch(URL_API_UPDATE, OPTIONS);
     const dataUser = await response.json();
+
+    const responseProfile = await fetch(URL_API_LOCATION, OPTIONS_LOCATION);
+    const locationData = await responseProfile.json();
+
     const statusResponse = await response.status;
-    const status = (statusResponse === 201);
+    const status = (statusResponse === 200);
+    const statusMessage = 'Datos actalizados';
 
     const userDataEdit = {
       ...user,
@@ -98,12 +128,19 @@ export const editProfile = (data, telephone, token) => async (dispatch, getState
       user: dataUser,
     };
 
+    const locationUser = {
+      ...user,
+      token,
+      user: locationData,
+    };
+
     setToken(userDataEdit.token);
     localStorage.setItem('user', JSON.stringify(userDataEdit));
+    localStorage.setItem('user', JSON.stringify(locationUser));
 
     dispatch({
       type: 'EditProfile',
-      payload: { userDataEdit, status },
+      payload: { userDataEdit, status, statusMessage },
     });
   } catch (error) {
     dispatch({
@@ -135,7 +172,7 @@ export const getDataUser = (telephone, token) => async (dispatch) => {
   });
 };
 
-export const editProfileImage = (username, token, image) => async (dispatch, getState) => {
+export const uploadProfilePhoto = (username, token, image) => async (dispatch, getState) => {
   const { user } = getState().userReducer;
   const headers = new Headers();
   const formImage = new FormData();
@@ -148,17 +185,15 @@ export const editProfileImage = (username, token, image) => async (dispatch, get
   };
 
   formImage.append('picture', image.files[0], image.files[0].name);
-  console.log(image.files[0].name);
   headers.append('Authorization', `Token ${token}`);
 
   dispatch({
     type: 'LOADING',
-  })
+  });
 
   try {
     const response = await fetch(URL_API_ADDIMAGE, OPTIONS);
     const imageUser = await response.json();
-    console.log(imageUser.profile.picture);
     const updateUserImage = {
       ...user,
       token,
@@ -179,7 +214,7 @@ export const editProfileImage = (username, token, image) => async (dispatch, get
     dispatch({
       type: 'ERROR',
       payload: error.message,
-    })
+    });
   }
 };
 
@@ -193,8 +228,6 @@ export const getUserClothes = (token) => async (dispatch) => {
       Authorization: `Token ${token}`,
     },
   };
-
-
 
   const response = await fetch(URL_API_UPDATE, OPTIONS);
   const getClothesData = await response.json();
@@ -210,7 +243,7 @@ export const getUserClothes = (token) => async (dispatch) => {
 export const addClothe = (fields, token, image01, image02, image03) => async (dispatch) => {
   const headers = new Headers();
   const clotheData = new FormData();
-  const { publicClothe, category, color, size, gender, state } = fields;
+  const { publicClothe, category, color, size, gender, state, description } = fields;
   const URL_API_UPDATE = `${URL_API}clothes/myclothes/`;
   const OPTIONS = {
     method: 'POST',
@@ -218,27 +251,207 @@ export const addClothe = (fields, token, image01, image02, image03) => async (di
     headers,
   };
 
+  if (image01.files[0]) {
+    clotheData.append('picture', image01.files[0], image01.files[0].name);
+  }
+
+  if (image02.files[0]) {
+    clotheData.append('picture2', image02.files[0], image02.files[0].name);
+  }
+
+  if (image03.files[0]) {
+    clotheData.append('picture3', image03.files[0], image03.files[0].name);
+  }
+
+  if (description) {
+    clotheData.append('description', description);
+  }
+
+  if (category) {
+    clotheData.append('category', category);
+  }
+
+  if (publicClothe) {
+    clotheData.append('public', publicClothe);
+  }
+
+  if (color) {
+    clotheData.append('color', color);
+  }
+
+  if (size) {
+    clotheData.append('size', size);
+  }
+
+  if (gender) {
+    clotheData.append('gender', gender);
+  }
+
+  if (state) {
+    clotheData.append('state', state);
+  }
+
   headers.append('Authorization', `Token ${token}`);
-  clotheData.append('picture', image01.files[0], image01.files[0].name);
-  clotheData.append('picture2', image02.files[0], image02.files[0].name);
-  clotheData.append('picture3', image03.files[0], image03.files[0].name);
-  clotheData.append('category', category);
-  clotheData.append('public', publicClothe);
-  clotheData.append('color', color);
-  clotheData.append('size', size);
-  clotheData.append('gender', gender);
-  clotheData.append('state', state);
 
   dispatch({
     type: 'LOADING',
-  })
+  });
 
   const response = await fetch(URL_API_UPDATE, OPTIONS);
   const addClotheData = await response.json();
-  console.log(addClotheData)
+  console.log(addClotheData);
+  const statusResponse = await response.status;
+  let statusMessage;
+  let status;
+
+  if (statusResponse === 400) {
+    statusMessage = 'Ocurrio un error intenta mas tarde';
+    status = true;
+  } else {
+    statusMessage = 'Prenda agregada';
+    status = true;
+  }
+
   dispatch({
     type: 'addClotheData',
-    payload: addClotheData,
+    payload: { addClotheData, status, statusMessage },
+  });
+};
+
+export const editClothe = (fields, clotheId, token, image01, image02, image03) => async (dispatch) => {
+  const headers = new Headers();
+  const clotheData = new FormData();
+  const { publicClothe, category, color, size, gender, state, description } = fields;
+  const URL_API_UPDATE = `${URL_API}clothes/myclothes/${clotheId}`;
+  const OPTIONS = {
+    method: 'PATCH',
+    body: clotheData,
+    headers,
+  };
+
+  if (image01.files[0]) {
+    clotheData.append('picture', image01.files[0], image01.files[0].name);
+  }
+
+  if (image02.files[0]) {
+    clotheData.append('picture2', image02.files[0], image02.files[0].name);
+  }
+
+  if (image03.files[0]) {
+    clotheData.append('picture3', image03.files[0], image03.files[0].name);
+  }
+
+  if (description) {
+    clotheData.append('description', description);
+  }
+
+  if (category) {
+    clotheData.append('category', category);
+  }
+
+  if (publicClothe) {
+    clotheData.append('public', publicClothe);
+  }
+
+  if (color) {
+    clotheData.append('color', color);
+  }
+
+  if (size) {
+    clotheData.append('size', size);
+  }
+
+  if (gender) {
+    clotheData.append('gender', gender);
+  }
+
+  if (state) {
+    clotheData.append('state', state);
+  }
+
+  headers.append('Authorization', `Token ${token}`);
+
+  dispatch({
+    type: 'LOADING',
+  });
+
+  const response = await fetch(URL_API_UPDATE, OPTIONS);
+  const addClotheData = await response.json();
+  const statusResponse = await response.status;
+  let statusMessage;
+  let status;
+
+  if (statusResponse === 400) {
+    statusMessage = 'Ocurrio un error intenta mas tarde';
+    status = true;
+  } else {
+    statusMessage = 'Prenda editada';
+    status = true;
+  }
+
+  dispatch({
+    type: 'addClotheData',
+    payload: { addClotheData, status, statusMessage },
+  });
+};
+
+export const changeId = (id) => (dispatch) => {
+  dispatch({
+    type: 'changeId',
+    payload: id,
+  });
+};
+
+export const deleteClothe = (idClothe, token) => async (dispatch) => {
+  const URL_API_UPDATE = `${URL_API}clothes/myclothes/${idClothe}`;
+  const OPTIONS = {
+    method: 'DELETE',
+    body: JSON.stringify(),
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Token ${token}`,
+    },
+  };
+
+  dispatch({
+    type: 'LOADING',
+  });
+
+  const response = await fetch(URL_API_UPDATE, OPTIONS);
+  const { status } = response;
+  let statusMessage;
+  let statusResponse;
+
+  if (status === 204) {
+    statusMessage = 'Prenda eliminada';
+    statusResponse = true;
+  } else {
+    statusMessage = 'Ocurrio un error intente nuevamente';
+    statusResponse = true;
+  }
+
+  dispatch({
+    type: 'deleteClothe',
+    payload: { statusMessage, statusResponse },
+  });
+};
+
+export const getClotheData = (clotheId, token) => async (dispatch) => {
+  const URL_API_UPDATE = `${URL_API}clothes/myclothes/${clotheId}`;
+  const OPTIONS = {
+    method: 'GET',
+    body: JSON.stringify(),
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Token ${token}`,
+    },
+  };
+
+  const response = await fetch(URL_API_UPDATE, OPTIONS);
+  const clotheData = await response.json();
+  dispatch({
+    type: 'addClothe',
+    payload: clotheData,
   });
 };
 
@@ -279,7 +492,7 @@ export const validateForm = (fields, form) => (dispatch) => {
     }
 
     if (typeof fields.first_name !== 'undefined') {
-      if (!fields.first_name.match(/^[a-zA-Z ]*$/)) {
+      if (!fields.first_name.match(/^[a-zA-ZÀ-ÿ-00f1 00d1]+$/)) {
         formIsValid = false;
         errors.first_name = '*Solo usa caracteres del alfabeto.';
       }
@@ -291,7 +504,7 @@ export const validateForm = (fields, form) => (dispatch) => {
     }
 
     if (typeof fields.last_name !== 'undefined') {
-      if (!fields.last_name.match(/^[a-zA-Z]*$/)) {
+      if (!fields.last_name.match(/^[a-zA-ZÀ-ÿ-00f1 00d1]+$/)) {
         formIsValid = false;
         errors.last_name = '*Solo usa caracteres del alfabeto.';
       }
@@ -361,10 +574,23 @@ export const fetchNotificationsUser = (token) => async (dispatch) => {
       type: 'fetchNotificationsUser',
       payload: notifications,
     });
+
+    const filterUserNotifications = notifications.map((item) => item.user);
+    dispatch({
+      type: 'likeReceived',
+      payload: filterUserNotifications,
+    });
   } catch (error) {
     dispatch({
       type: 'ERROR',
       dispatch: error.message,
     });
   }
+};
+
+export const clearFeedbackBackend = () => async (dispatch) => {
+    dispatch({
+      type: 'clearFeedbackBackend',
+      payload: [],
+    });
 };

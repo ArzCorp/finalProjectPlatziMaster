@@ -1,23 +1,31 @@
-.feed{
+.feed {
     position:relative;
-    height: calc(100vh - 79px);
+    height: calc(100vh - 87px);
     overflow:hidden;
     display: flex;
     flex-direction: column;
     align-items:center;
-    & .buttons-bar{
+    & .buttons-bar {
     position: fixed;
     bottom: 10px;
     z-index: $z-index-ButtonsBar;
     transform: scale(0.7);
     }
-    & .search-button{
+    & .search-button {
     position:absolute;
     right: 20px;
     top: 20px;
     z-index: $z-index-FilterButton;
     }
-    & .accordion__content{
-        margin-bottom: 66px;
+    & .accordion__content {
+        margin-bottom: 11px;
     }
 }
+
+@media screen and(max-width: 767px) {
+    .feed{
+        height: calc(100vh - 50px);
+    }
+  }
+
+

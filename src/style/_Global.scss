@@ -1,7 +1,7 @@
 $Border-Radius: 10px;
 $Border-Radius-circle: 50%;
 $Box-Shadow: 0 1px 3px var(--Color-Primary);
-$Box-ShadowActive: 0 1px 8px var(--Color-Primary);
+$Box-ShadowActive: 0 1px 10px var(--Color-Primary);
 
 $z-index-Modal: 8;
 $z-index-Navbar: 7;
@@ -23,6 +23,10 @@ html {
   color: var(--Color-Grayscale-3);
 }
 
+#app {
+  height: 100vh;
+}
+
 h1 {
   font-size: $Font-H1;
 }
@@ -41,4 +45,8 @@ small {
 
 figure {
   margin: 0;
+}
+
+input {
+  outline: none;
 }

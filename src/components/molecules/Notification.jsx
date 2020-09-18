@@ -2,7 +2,7 @@ import React from 'react';
 import Icon from '../atoms/Icon';
 import IconButton from '../atoms/IconButton';
 
-const Notification = ({ user, picture, title, body, iconType, id }) => {
+const Notification = ({ user, picture, title, body, article, iconType, id }) => {
   const closeNotification = ($id) => {
     const notification = document.getElementById($id);
     notification.style.display = 'none';
@@ -11,8 +11,10 @@ const Notification = ({ user, picture, title, body, iconType, id }) => {
   const goToWhatsapp = () => window.open(`https://api.whatsapp.com/send?phone=52${user}`, '_blank');
 
   return (
-    <div className="notification-container" id={id}>
+    <div className="notification-container" id={`${id}-${user}`}>
       <div
+        tabIndex="0"
+        title="ir y contactar al usuario"
         className="notification"
         onClick={iconType == 'whatsapp'
           ? () => goToWhatsapp()
@@ -25,8 +27,14 @@ const Notification = ({ user, picture, title, body, iconType, id }) => {
           </div>
         )}
         <div className="notification__body">
-          <h2>{title}</h2>
-          <p>{body}</p>
+          <h2>
+            {title}
+          </h2>
+          <p>
+            {body || `¡Alguien se interesa en tu(s) ${article}!`}
+            <br />
+            Puedes ponerte en contacto para un intercambio
+          </p>
         </div>
         <div className="notification__iconType">
           <Icon
@@ -38,6 +46,7 @@ const Notification = ({ user, picture, title, body, iconType, id }) => {
       </div>
       <div className="notification__deletNotification">
         <IconButton
+          tabIndexName="ocultar notificación"
           iconName="Cross"
           colorIcon="#fff"
           bgColor="gray"

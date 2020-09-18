@@ -1,10 +1,35 @@
 .userprofile {
-  &__entry {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     border-radius: $Border-Radius;
     box-shadow: $Box-ShadowActive;
+    &__settings {
+      margin-top: $Spacing-Large;
+    }
+}
+
+.alert {
+  text-align: center;
+  padding: 0px 20px;
+}
+
+@media screen and (min-width: 1024px) {
+  .userprofile{
+      flex-direction: initial;
+      justify-content: end;
+      padding-left: $Spacing-Large;
+      margin: 0 auto;
+      box-shadow: none;
+      align-items: initial;
+      overflow: hidden;
+      height: calc(100vh - 87px);
+    &__settings {
+      min-width: 300px;
+    }
+    .useredit {
+      padding-top: $Spacing-Large;
+    }
   }
 }

@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import * as userActions from '../../actions/userActions';
 import * as modalActions from '../../actions/ModalActions';
-import EditClotheModal from '../organisms/EditClotheModal';
 import Button from './Button';
 
-const EditClothe = ({ category, src, turnModalState, }) => (
+const EditClothe = ({ category, src, turnModalState, clotheId, changeId }) => (
   <>
     <Button
       id="btn-editclothe"
@@ -24,9 +24,9 @@ const EditClothe = ({ category, src, turnModalState, }) => (
       )}
       onClick={() => {
         turnModalState('EditClotheModal', true);
+        changeId(clotheId);
       }}
     />
-    <EditClotheModal />
   </>
 );
 
@@ -34,4 +34,9 @@ const mapStateToProps = ({ modalReducers }) => ({
   modalReducers,
 });
 
-export default connect(mapStateToProps, modalActions)(EditClothe);
+const mapDipatchToProps = {
+  ...userActions,
+  ...modalActions,
+};
+
+export default connect(mapStateToProps, mapDipatchToProps)(EditClothe);

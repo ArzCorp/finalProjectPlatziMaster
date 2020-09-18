@@ -7,6 +7,7 @@ import * as buttonsActions from '../../actions/ButtonsActions';
 import EditProfile from './EditProfile';
 import AddClothe from '../atoms/AddClothe';
 import EditClothe from '../atoms/EditClothe';
+import EditClotheModal from './EditClotheModal';
 
 const SettingsClothes = (props) => {
   const data = localStorage.getItem('user');
@@ -14,11 +15,23 @@ const SettingsClothes = (props) => {
   const { token } = jsonData;
   const clothes = localStorage.getItem('clothes');
   const jsonClothes = JSON.parse(clothes);
-
-  const { getUserClothes, buttonsReducers: { isButtonActive }, userReducer: { clothesObtained, userClothes } } = props
+  const { getUserClothes, buttonsReducers: { isButtonActive }, userReducer: { clothesObtained, userClothes, clotheId } } = props;
+  console.log(jsonData);
   if (!clothesObtained) {
     getUserClothes(token);
     return userClothes;
+  }
+
+  if (!jsonClothes) {
+    if (isButtonActive) {
+      return (
+        <>
+          <div className="clotheList">
+            <AddClothe />
+          </div>
+        </>
+      );
+    }
   }
 
   const printClothe = () => (
@@ -33,21 +46,20 @@ const SettingsClothes = (props) => {
   );
 
   if (isButtonActive) {
-
     return (
       <>
         <div className="clotheList">
           <AddClothe />
           {printClothe()}
         </div>
+        <EditClotheModal clotheId={clotheId} />
       </>
     );
   }
   return (
     <EditProfile />
   );
-}
-
+};
 
 const mapStateToProps = ({ userReducer, buttonsReducers }) => ({
   userReducer,

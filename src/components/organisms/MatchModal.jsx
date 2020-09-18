@@ -2,43 +2,47 @@ import React from 'react';
 import Modal from './Modal';
 
 import Button from '../atoms/Button';
-import Select from '../atoms/Select';
 import Icon from '../atoms/Icon';
+import Loader from '../atoms/Loader';
 
-const MatchModal = ({ modalState, onCloseModal, nameUserMatch }) => (
+const MatchModal = ({ modalState, onCloseModal, userName, nameUserMatch }) => (
   <Modal
     modalState={modalState}
     onCloseModal={onCloseModal}
     closeButton
   >
-
     <div className="match-modal">
-
-      <h1>¡Felicidades!</h1>
-
-      <h2>
-        Haz hecho match
-        <br />
+      <h1>
+        ¡
+        {userName}
+        , haz hecho match
         <br />
         con
         {' '}
         {nameUserMatch}
-      </h2>
-
+        !
+      </h1>
       <Icon iconName="party" size="120px" color="var(--Color-Grayscale-1)" />
-
-      <p>Ahora puedes contactarl@ a través de Whatsapp para intercambiar las prendas</p>
-
+      <h2>
+        Ahora puedes contactarl@ a
+        {` ${nameUserMatch}`}
+        <br />
+        a través de Whatsapp para intercambiar las prendas.
+      </h2>
       <div className="match-modal__button">
-        <Icon iconName="whatsapp" size="25px" color="var(--Color-Grayscale-1)" />
         <Button
           type="normal"
           name="Contactar"
-        />
+        >
+          <Icon iconName="whatsapp" size="25px" color="var(--Color-Grayscale-1)" />
+        </Button>
       </div>
-
+      <h1 id="countdown"></h1>
+      <Loader />
+      <div className="match-modal__count">
+        <h2>Aparecerá en tu bandeja de notificaciones</h2>
+      </div>
     </div>
-
   </Modal>
 );
 

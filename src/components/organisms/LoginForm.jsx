@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import * as userActions from '../../actions/userActions';
 import * as modalActions from '../../actions/ModalActions';
 
-import Input from '../atoms/Input';
+import NumberInput from '../atoms/NumberInput';
+import PasswordInput from '../atoms/PasswordInput';
 import Button from '../atoms/Button';
 import LoginModal from './LoginModal';
 
@@ -25,9 +26,10 @@ const LoginForm = (props) => {
       const valid = await props.fetchLoginUser(fields);
 
       if (valid) {
+        document.querySelector('#login').style.display = 'none';
         props.turnModalState('LoginModal', true);
         setTimeout(() => {
-          window.location.href = '/#/feed';
+          window.location.hash = '#/feed';
           props.turnModalState('LoginModal', false);
         }, 2500);
       }
@@ -49,12 +51,12 @@ const LoginForm = (props) => {
   };
 
   const validateSignup = () => {
-    const userSignup = props.userReducer.userSignup;
+    const userSignup = localStorage.getItem('usersignup');
 
-    if (userSignup.first_name) {
+    if (userSignup) {
       return (
         <h2>
-          Hola {userSignup.first_name}
+          Hola {userSignup}
           <br />
           Tu cuenta ha sido creada con éxito! Por favor inicia sesión.
         </h2>
@@ -70,6 +72,9 @@ const LoginForm = (props) => {
       return (
         <div className="loginForm__feedback">
           <p>{feedbackBackend.non_field_errors}</p>
+          <div>
+            {setTimeout(() => props.clearFeedbackBackend(), 3000)}
+          </div>
         </div>
       );
     }
@@ -79,15 +84,15 @@ const LoginForm = (props) => {
   return (
     <form className="loginForm" method="post" name="loginForm" onSubmit={(ev) => submitLoginForm(ev)}>
       {validateSignup()}
-      <Input
-        type="number"
+      <NumberInput
+        type="text"
         label="Teléfono"
         placeholder="Teléfono"
         name="phone_number"
         onChange={handleChange}
       />
       {validateField('phone_number')}
-      <Input
+      <PasswordInput
         type="password"
         label="Contraseña"
         placeholder="Contraseña"

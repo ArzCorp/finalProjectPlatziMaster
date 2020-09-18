@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Input = ({ value, type, label, placeholder, name, id, onChange, onKeyPress }) => (
+const Input = ({ value, type, label, placeholder, name, id, onChange, onKeyPress, maxLength, checked }) => (
   <div className="form__input">
-    <label>
+    <label htmlFor={id || name}>
       *
       {label || 'Label'}
     </label>
@@ -10,10 +10,12 @@ const Input = ({ value, type, label, placeholder, name, id, onChange, onKeyPress
       placeholder={placeholder || label || 'Placeholder'}
       type={type || 'text'}
       name={name || label || null}
-      id={id || null}
+      id={id || name || null}
       onChange={onChange}
       onKeyPress={onKeyPress}
       defaultValue={value || ''}
+      maxLength={maxLength || null}
+      checked={checked || null}
     />
   </div>
 );

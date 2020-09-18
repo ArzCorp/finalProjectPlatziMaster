@@ -6,6 +6,8 @@ import * as userActions from '../../actions/userActions';
 import * as modalActions from '../../actions/ModalActions';
 
 import Input from '../atoms/Input';
+import NumberInput from '../atoms/NumberInput';
+import PasswordInput from '../atoms/PasswordInput';
 import Button from '../atoms/Button';
 import SignupModal from './SignupModal';
 
@@ -25,10 +27,11 @@ const SignupForm = (props) => {
       const valid = await props.fetchSignupUser(fields);
 
       if (valid) {
+        document.querySelector('#signup').style.display = 'none';
         props.turnModalState('SignupModal', true);
         setTimeout(() => {
+          window.location.hash = '#/login';
           props.turnModalState('SignupModal', false);
-          window.location.href = '/#/login';
         }, 2000);
       }
     }
@@ -56,6 +59,9 @@ const SignupForm = (props) => {
         <div className="SignupForm__feedback">
           <p>{feedbackBackend.username}</p>
           <p>{feedbackBackend.non_field_errors}</p>
+          <div>
+            {setTimeout(() => props.clearFeedbackBackend(), 3000)}
+          </div>
         </div>
       );
     }
@@ -80,15 +86,15 @@ const SignupForm = (props) => {
         onChange={handleChange}
       />
       {validateField('last_name')}
-      <Input
-        type="number"
+      <NumberInput
+        type="text"
         label="Teléfono"
         placeholder="Teléfono"
         name="username"
         onChange={handleChange}
       />
       {validateField('username')}
-      <Input
+      <PasswordInput
         type="password"
         label="Contraseña"
         placeholder="Contraseña"
@@ -96,7 +102,7 @@ const SignupForm = (props) => {
         onChange={handleChange}
       />
       {validateField('password')}
-      <Input
+      <PasswordInput
         type="password"
         label="Confirmar contraseña"
         placeholder="Confirmar contraseña"

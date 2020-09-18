@@ -1,45 +1,98 @@
-.signupPage {
-  padding-top: $Spacing-Normal;
-
-  &__entry-brand {
-    font-size: $Font-ParagraphLarge;
-    text-align: center;
-    color: var(--Color-Primary);
+.signup-container {
+  background-image: url('https://res.cloudinary.com/martindev/image/upload/v1599889586/ourclothe/image_t1h96s.jpg');
+  background-repeat: no-repeat;
+  background-position: top;
+  background-attachment: fixed;
+  background-size: cover;
+  transform: scaleX(-1);
+  .signup {
+    transform: scaleX(-1);
+    // width: 100vw;
+    padding: $Spacing-Small;
+    background-color: rgba(255,255,255, .5);
+    backdrop-filter: blur(10px);
+    &__title {
+      display: none;
+      width: 100%;
+      padding: $Spacing-Small 0;
+      border-bottom: 1px solid var(--Color-Primary);
+      text-align: center;
+      color: var(--Color-Primary);
+    }
+    &__body-entry {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: $Spacing-Small;
+      font-size: $Font-ParagraphLarge;
+      text-align: center;
+      color: var(--Color-Primary);
+    }
+    &__body-entry > p {
+      display: none;
+    }
+    &__body-entry img {
+      width: 8rem;
+      margin: $Spacing-Small 0;
+    }
+    &__body-form {
+      display: flex;
+      flex-direction: column;
+    }
+    &__body-form h1 {
+      @extend .signup__title;
+      display: block;
+      padding-top: 0;
+    }
   }
+}
 
-  &__entry-brand img {
-    width: 15rem;
-    // filter: drop-shadow(-20px 10px 4px $Color-Primary);
+@media screen and(min-width: 600px) {
+  .signup-container {
+    .signup__body-form {
+      width: 60%;
+      margin: 0 auto;
+    }
   }
 }
 
 @media screen and(min-width: 768px) {
-  .signupPage {
-    width: 70%;
-    margin: 0 auto;
+  .signup-container {
+    height: 100%;
+    padding: $Spacing-Normal 0;
+    overflow: auto;
+    .signup {
+      width: 90%;
+      margin: 0 auto;
+      border-radius: $Border-Radius;
+      box-shadow: $Box-ShadowActive;
+      &__title {
+        display: block;
+      }
+      &__body-entry > p {
+        display: block;
+      }
+      &__body {
+        display: flex;
+        column-gap: $Spacing-Normal;
+        &-entry {
+          flex: 1;
+        }
+        &-form {
+          flex: 1;
+        }
+        &-form h1 {
+          display: none;
+        }
+      }
+    }
   }
 }
 
 @media screen and(min-width: 1024px) {
-  .signupPage {
-    padding-top: $Spacing-Large;
-    height: 100%;
-    width: 85%;
-
-    &__entry {
-      display: flex;
-      align-items: center;
-      padding: $Spacing-Normal $Spacing-Large;
-      border-radius: $Border-Radius;
-      box-shadow: $Box-ShadowActive;
-    }
-
-    &__entry-brand {
-      flex: 3;
-    }
-
-    &__entry-signupForm {
-      flex: 2;
+  .signup-container {
+    .signup {
+      width: 70%;
     }
   }
 }

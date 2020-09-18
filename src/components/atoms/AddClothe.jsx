@@ -16,7 +16,6 @@ const AddClothe = ({ turnModalState }) => (
             iconName="plus"
             color="#838F8C"
           />
-          ,
           Agregar ropa
         </p>
       )}

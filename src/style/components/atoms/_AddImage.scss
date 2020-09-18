@@ -6,15 +6,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: $Color-Grayscale-1;
     box-shadow: $Box-ShadowActive;
-    color: $Color-Grayscale-3;
-    width: 40%;
-    height: 48%;
-    padding: $Spacing-ExtraLarge $Spacing-ExtraSmall;
-    background-color: white;
+    color: $Color-Primary;
+    height: 250px;
   }
 }
 
 .addImage__label span {
   margin-bottom: $Spacing-ExtraSmall;
+  color: $Color-Grayscale-1;
 }

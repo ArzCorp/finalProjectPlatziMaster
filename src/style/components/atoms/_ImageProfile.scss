@@ -28,3 +28,12 @@
   box-shadow: 0 1px 8px var(--Color-Primary);
   background-color: $Color-Grayscale-1;
 }
+
+@media screen and (min-width: 1024px){
+  .profile{
+    &__image {
+      width: 200px;
+      height: 200px;
+    }
+  }
+}

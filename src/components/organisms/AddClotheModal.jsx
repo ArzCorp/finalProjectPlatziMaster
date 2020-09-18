@@ -9,8 +9,9 @@ import Input from '../atoms/Input';
 import AddImage from '../atoms/AddImage';
 import Button from '../atoms/Button';
 import InputSelect from '../atoms/InputSelect';
+import Loader from '../atoms/Loader';
 
-const AddClotheModal = ({ getUserClothes, turnModalState, addClothe, modalReducers: { AddClotheModalState } }) => {
+const AddClotheModal = ({ getUserClothes, turnModalState, addClothe, turnStatusResponse, modalReducers: { AddClotheModalState }, userReducer: { loading, error, statusMessage } }) => {
   const data = localStorage.getItem('user');
   const jsonData = JSON.parse(data);
   const { token } = jsonData;
@@ -19,16 +20,71 @@ const AddClotheModal = ({ getUserClothes, turnModalState, addClothe, modalReduce
   const image02 = document.getElementById('image02');
   const image03 = document.getElementById('image03');
 
+  if (loading) {
+    return <Loader />;
+  }
+
+  if (error) {
+    return (
+      <div className="alert">
+        <h1>{statusMessage}</h1>
+        <button
+          className="btn__normal"
+          type="button"
+          onClick={() => { turnStatusResponse(false); }}
+        >
+          OK
+        </button>
+      </div>
+    );
+  }
+
+  const previewFile01 = () => {
+    const fileInput01 = document.getElementById('image01');
+    if (fileInput01.files && fileInput01.files[0]) {
+      const view = new FileReader();
+      view.onload = (e) => {
+        document.getElementById('imageLabel01').innerHTML = `<img src=${e.target.result} alt=${'Sin vista previa'} width="100%" height="100%" />`;
+      };
+      view.readAsDataURL(fileInput01.files[0]);
+    }
+  };
+
+  const previewFile02 = () => {
+    const fileInput02 = document.getElementById('image02');
+    if (fileInput02.files && fileInput02.files[0]) {
+      const view = new FileReader();
+      view.onload = (e) => {
+        document.getElementById('imageLabel02').innerHTML = `<img src=${e.target.result} alt=${'Sin vista previa'} width="100%" height="100%" />`;
+      };
+      view.readAsDataURL(fileInput02.files[0]);
+    }
+  };
+
+  const previewFile03 = () => {
+    const fileInput03 = document.getElementById('image03');
+    if (fileInput03.files && fileInput03.files[0]) {
+      const view = new FileReader();
+      view.onload = (e) => {
+        document.getElementById('imageLabel03').innerHTML = `<img src=${e.target.result} alt=${'Sin vista previa'} width="100%" height="100%" />`;
+      };
+      view.readAsDataURL(fileInput03.files[0]);
+    }
+  };
+
   const [fields, setField] = useState(0);
   const handleChange = (ev) => {
     setField({
       ...fields,
       [ev.target.name]: ev.target.value,
     });
+    previewFile01();
+    previewFile02();
+    previewFile03();
   };
+
   const handleSubmit = async (ev) => {
     ev.preventDefault();
-    console.log(fields)
     await addClothe(fields, token, image01, image02, image03);
     await turnModalState('AddClotheModal', false);
     await getUserClothes(token);
@@ -46,74 +102,96 @@ const AddClotheModal = ({ getUserClothes, turnModalState, addClothe, modalReduce
         name="addClothe"
         onSubmit={handleSubmit}
       >
-        <h2>Agrega prenda</h2>
+        <center>
+          {' '}
+          <h2>Agrega prenda</h2>
+          {' '}
+        </center>
         <div className="clothe__description">
-          <h4>Descripcion:</h4>
+          <h4>Descripción:</h4>
           <textarea
             className="description__clothe"
             name="description"
-            placeholder="Descripcion"
+            placeholder="Descripción"
             onChange={handleChange}
           />
         </div>
+        <h4>Imágenes</h4>
         <div className="clothe__images">
-          <h4>Imagen principal</h4>
           <AddImage
             id="image01"
             onChange={handleChange}
             name="clotheImage"
+            idLabel="imageLabel01"
           />
-          <div>
-            <AddImage
-              id="image02"
-              onChange={handleChange}
-              name="clotheImage"
-            />
-            <AddImage
-              id="image03"
-              onChange={handleChange}
-              name="clotheImage"
-            />
-          </div>
+          <AddImage
+            id="image02"
+            onChange={handleChange}
+            name="clotheImage"
+            idLabel="imageLabel02"
+          />
+          <AddImage
+            id="image03"
+            onChange={handleChange}
+            name="clotheImage"
+            idLabel="imageLabel03"
+          />
         </div>
         <div className="clothe__details">
           <h4>Detalles</h4>
           <InputSelect
-            label="Categoria"
+            label="Categoría"
             name="category"
             onChange={handleChange}
           >
-            <option selected defalutValue="Seleccione una opción">Seleccione una opción</option>
-            <option>Calcetines</option>
-            <option>Zapatos</option>
-            <option>Pantalon</option>
-            <option>Camisa</option>
-            <option>Playera</option>
+            <option select="true">Seleccione una opción</option>
             <option>Abrigo</option>
+            <option>Blusa</option>
+            <option>Botas</option>
+            <option>Bufanda</option>
+            <option>Calcetines</option>
+            <option>Camisa</option>
             <option>Chamarra</option>
+            <option>Falda</option>
+            <option>Gafas</option>
+            <option>Gorro</option>
+            <option>Jeans</option>
+            <option>Pantalón</option>
+            <option>Pijama</option>
+            <option>Playera</option>
+            <option>Sudadera</option>
             <option>Sueter</option>
             <option>Sombrero</option>
+            <option>Tacones</option>
+            <option>Vestido</option>
+            <option>Zapatos</option>
+            <option>Otra</option>
           </InputSelect>
           <InputSelect
             label="Color:"
             name="color"
             onChange={handleChange}
           >
-            <option selected defalutValue="Seleccione una opción">Seleccione una opción</option>
+            <option select="true">Seleccione una opción</option>
+            <option>Amarillo</option>
+            <option>Azul</option>
+            <option>Blanco</option>
+            <option>Gris</option>
+            <option>Marrón</option>
+            <option>Naranja</option>
             <option>Negro</option>
             <option>Rojo</option>
-            <option>Azul</option>
-            <option>Gris</option>
-            <option>Blanco</option>
-            <option>Amarillo</option>
-            <option>Naranja</option>
+            <option>Rosa</option>
+            <option>Verde</option>
+            <option>Violeta</option>
+            <option>Variado</option>
           </InputSelect>
           <InputSelect
             label="Talla:"
             name="size"
             onChange={handleChange}
           >
-            <option selected defalutValue="Seleccione una opción">Seleccione una opción</option>
+            <option select="true">Seleccione una opción</option>
             <option>XS</option>
             <option>S</option>
             <option>M</option>
@@ -126,9 +204,9 @@ const AddClotheModal = ({ getUserClothes, turnModalState, addClothe, modalReduce
             label="Genero:"
             name="gender"
             onChange={handleChange}
-            defalutValue={true}
+            defalutValue
           >
-            <option selected defalutValue="Seleccione una opción">Seleccione una opción</option>
+            <option select="true">Seleccione una opción</option>
             <option>Masculino</option>
             <option>Femenino</option>
             <option>Otro</option>
@@ -138,27 +216,26 @@ const AddClotheModal = ({ getUserClothes, turnModalState, addClothe, modalReduce
             name="state"
             onChange={handleChange}
           >
-            <option selected defalutValue="Seleccione una opción">Seleccione una opción</option>
+            <option select="true">Seleccione una opción</option>
             <option>Bueno</option>
             <option>Regular</option>
             <option>Nuevo</option>
             <option>Malo</option>
           </InputSelect>
+          <Input
+            className="public"
+            id="public"
+            type="checkbox"
+            label="Publicar"
+            name="publicClothe"
+            placeholder="si"
+            onChange={handleChange}
+          />
+          <Button
+            type="normal"
+            name="Publicar"
+          />
         </div>
-        <Input
-          className="public"
-          id="public"
-          type="checkbox"
-          label="Publicar"
-          name="publicClothe"
-          placeholder="si"
-          onChange={handleChange}
-          value="true"
-        />
-        <Button
-          type="normal"
-          name="Publicar"
-        />
       </form>
     </Modal>
   );

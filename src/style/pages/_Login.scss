@@ -1,40 +1,70 @@
 .loginPage {
-  padding-top: $Spacing-Normal;
-  &__brand-entry {
-    text-align: center;
+  height: 100vh;
+  background-image: url('https://res.cloudinary.com/martindev/image/upload/v1599889586/ourclothe/image_t1h96s.jpg');
+  background-repeat: no-repeat;
+  background-position: top;
+  background-attachment: fixed;
+  transform: scaleX(-1);
+  background-size: cover;
+  .login {
+    transform: scaleX(-1);
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    padding: $Spacing-Small;
+    background-color: rgba(255,255,255, .5);
+    backdrop-filter: blur(10px);
+    &__logo {
+      text-align: center;
+    }
+    &__logo img {
+      width: 8rem;
+    }
+    & h1 {
+      text-align: center;
+      padding: $Spacing-Small 0;
+      border-bottom: 1px solid var(--Color-Primary);
+      color: var(--Color-Primary);
+    }
   }
-  &__brand img {
-    width: 15rem;
+}
+
+@media screen and(min-height: 700px) {
+  .loginPage .login {
+    height: 100vh;
+  }
+}
+
+@media screen and(min-width: 600px) {
+  .loginPage {
+    height: 100vh;
+    padding: $Spacing-Normal 0;
+    overflow: auto;
+    .login {
+      width: 70%;
+      height: fit-content;
+      margin: 0 auto;
+      border-radius: $Border-Radius;
+      box-shadow: $Box-ShadowActive;
+    }
   }
 }
 
 @media screen and(min-width: 768px) {
   .loginPage {
-    width: 70%;
-    margin: 0 auto;
+    // display: flex;
+    // align-items: center;
+    .login {
+      width: 50%;
+    }
   }
 }
 
 @media screen and(min-width: 1024px) {
   .loginPage {
-    padding-top: $Spacing-Large;
-    height: 100%;
-    width: 85%;
-
-    &__brand {
-      display: flex;
-      align-items: center;
-      // padding: $Spacing-Normal $Spacing-Large;
-      border-radius: $Border-Radius;
-      box-shadow: $Box-ShadowActive;
-    }
-
-    &__brand-entry {
-      flex: 3;
-    }
-
-    &__loginForm {
-      flex: 2;
+    .login {
+      width: 40%;
     }
   }
 }

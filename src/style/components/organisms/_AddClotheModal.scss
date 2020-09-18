@@ -1,9 +1,5 @@
 .clothe {
   padding: $Spacing-ExtraSmall;
-  & label {
-    color: $Color-Grayscale-1;
-    border: none;
-  }
 }
 
 .clothe h2, h4 {
@@ -11,18 +7,32 @@
   margin-bottom: $Spacing-ExtraSmall;
 }
 
+#public {
+  width: auto;
+  margin: $Spacing-ExtraSmall;
+  cursor: pointer;
+}
+
 .clothe__description {
   margin: $Spacing-Normal 0px;
   & .description__clothe {
     width: 100%;
     padding: $Spacing-ExtraSmall;
+    border-radius: 10px;
     border: none;
     box-shadow: $Box-ShadowActive;
     height: 150px;
     outline: none;
+    color: $Color-Primary;
+    font-weight: bold;
     margin-top: $Spacing-ExtraSmall;
     resize: none;
     overflow: auto;
+  }
+  & .description__clothe::placeholder{
+    color: $Color-Primary;
+    font-weight: bold;
+    text-align: center;
   }
 }
 
@@ -30,8 +40,10 @@
   margin-top: $Spacing-Normal;
   & .addImage__label {
     margin: $Spacing-ExtraSmall auto;
+    border-radius: 10px;
     width: 200px;
     height: 200px;
+    overflow: hidden;
   }
   & div {
     & .addImage__label {
@@ -43,12 +55,54 @@
 
 .clothe__details {
   margin-top: $Spacing-Normal;
+  & .form__input label{
+    color: var(--Color-Grayscale-1);
+    cursor: pointer;
+    font-weight: initial;
+  }
 }
 
 .select {
   background-color: white;
   & label {
-    color: $Color-Grayscale-4
+    color: $Color-Primary;
+    font-weight: bold;
   }
 }
 
+@media screen and (min-width: 1024px){
+
+  .clothe__description {
+    width: 700px;
+    margin: 0 auto;
+    padding-top: $Spacing-Normal;
+  }
+
+  .clothe__description .description__clothe{
+    width: 500px;
+    display: block;
+    margin: $Spacing-Normal auto;
+  }
+
+  .clothe__description .form__input {
+    width: 300px;
+    margin: $Spacing-Normal auto 0 auto;
+    font-weight: bold;
+  }
+
+  .clothe__images {
+    display: flex;
+    width: 700px;
+    margin: 0 auto;
+  }
+
+  .clothe h2, h4 {
+    width: 700px;
+    margin: 0 auto;
+  }
+
+  .clothe__details {
+    width: 400px;
+    margin: 0 auto;
+  }
+}

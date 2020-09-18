@@ -6,6 +6,7 @@ const INITIAL_STATE = {
   LoginModalState: false,
   FilterModalState: false,
   MatchModalState: false,
+  KeyboardExplanationModal: false,
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -44,6 +45,11 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         MatchModalState: action.payload,
+      };
+    case 'KeyboardExplanationModal':
+      return {
+        ...state,
+        KeyboardExplanationModal: action.payload,
       };
 
     default: return state;

@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet';
 
 import * as userActions from '../actions/userActions';
 
 import Notification from '../components/molecules/Notification';
 import Loader from '../components/atoms/Loader';
-import Prenda from '../../public/assets/images/image1.png';
 
 const Notifications = (props) => {
   const validateNotifications = () => {
@@ -18,13 +18,14 @@ const Notifications = (props) => {
         <div className="notifications__list column-6">
           {props.userReducer.userNotifications.map((item) => (
             <Notification
-              key={item.clothe}
-              id={item.clothe}
+              key={`${item.clothe.id}-${item.user}`}
+              id={item.clothe.id}
               title={item.value}
               user={item.user}
-              picture={Prenda}
+              picture={item.clothe.picture}
+              article={item.clothe.category}
               iconType="whatsapp"
-              body="Tienes un match pendiente, da click para contactar a la otra persona"
+              // body="Tienes un match pendiente, da click para contactar a la otra persona"
             />
           ))}
         </div>
@@ -34,6 +35,14 @@ const Notifications = (props) => {
 
   return (
     <section className="notifications">
+      <Helmet>
+        <title>Ourclothe - Notificaciones</title>
+        <meta
+          name="description"
+          content="Recibirás una notificación cuando hagas match con otro usuario.
+            Podrán ponerse en contacto a travez de WhatsApp para acordar el intercambio"
+        />
+      </Helmet>
       <div className="wrapper">
         <div className="row">
           <div className="column-6">
@@ -56,6 +65,6 @@ const Notifications = (props) => {
   );
 };
 
-const mapStateToProps = (redicers) => redicers;
+const mapStateToProps = (reducers) => reducers;
 
 export default connect(mapStateToProps, userActions)(Notifications);

@@ -5,11 +5,15 @@
   align-items: center;
   border: transparent;
   width: 200px;
+  height: 250px;
   margin: $Spacing-ExtraSmall;
   background-color: $Color-Grayscale-1;
   box-shadow: $Box-ShadowActive;
   color: $Color-Grayscale-3;
   padding: $Spacing-ExtraLarge $Spacing-ExtraSmall;
+  border: initial;
+  overflow: hidden;
+  border-radius: $Border-Radius;
 }
 
 #btn-addclothe p {
