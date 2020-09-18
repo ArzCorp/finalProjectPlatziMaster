@@ -14,7 +14,7 @@
     border-radius: $Border-Radius;
     border: none;
     font-size: $Font-ParagraphLarge;
-    color: var(--Color-PrimaryLight-1);
+    color: var(--Color-Primary);
     outline: none;
   }
 
@@ -23,6 +23,6 @@
   }
 
   ::placeholder {
-    color: var(--Color-PrimaryLight-2);
+    color: var(--Color-Grayscale-3);
   }
 }
