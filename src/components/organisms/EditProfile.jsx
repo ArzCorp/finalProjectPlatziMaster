@@ -26,7 +26,7 @@ const EditProfile = ({ editProfile }) => {
 
   return (
     <section className="useredit">
-      <div className="column-6">
+      <div className="useredit__content">
         <h2>Configración del perfil</h2>
         <form
           className="useredit__form"
