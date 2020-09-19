@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import * as userActions from '../../actions/userActions';
@@ -19,7 +19,7 @@ const NavBar = (props) => {
   return (
     <nav className="navbar">
       <div className="navbar__logo">
-        <img src={Logo} tabIndex="0" alt="Logotipo Ourclothe" />
+        <Link to="/feed"><img src={Logo} tabIndex="0" alt="Logotipo Ourclothe" /></Link>
       </div>
       <div className="navbar__menu">
         <NavLink to="/profile" activeClassName="active" id="profile">

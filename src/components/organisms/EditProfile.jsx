@@ -99,6 +99,7 @@ const EditProfile = ({ editProfile }) => {
             <option value="Zacatecas">Zacatecas</option>
           </Select>
           <Input
+            notRequired
             name="city"
             label="Ciudad"
             placeholder="Ciudad"

@@ -21,6 +21,9 @@
   }
   &__logo {
     display: none;
+    & a{
+      opacity:initial;
+    }
   }
   &__logo img {
     width: 3rem;
