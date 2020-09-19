@@ -15,7 +15,6 @@ const Accordion = (props) => {
   return (
     <div className="accordion"
     onClick={collapseAccordion} 
-    
     >
 
       <div className="accordion__content">
@@ -23,22 +22,26 @@ const Accordion = (props) => {
         <div className="top-info">
 
           <div>
-            <h2>{clothesName}</h2>
-            <div className="accordion-row">
-              <p><b>Estado:   </b></p>
+            <div className="accordion__text-icon">
+              <Icon color="var(--Color-Grayscale-1)" iconName="tshirt2" tabIndexName="Nombre de la prenda" />
+            
+              <p><b>{clothesName}</b></p>
+            </div>
+
+            <div className="accordion__text-icon">
+              <Icon color="var(--Color-Grayscale-1)" iconName="label" tabIndexName="Estado de la prenda" />
               <p>{` ${clothesState}`}</p>
             </div>
           </div>
 
           <div className="genre-state">
 
-            <div className="accordion-row">
-              <p><b>Talla:</b></p>
+            <div className="accordion__text-icon">
+              <Icon color="var(--Color-Grayscale-1)" iconName="size" tabIndexName="Estado de la prenda" />
               <p>{clothesSize}</p>
             </div>
-
-            <div className="accordion-row">
-              <p><b> Genero: </b></p>
+            <div className="accordion__text-icon">
+              <Icon color="var(--Color-Grayscale-1)" iconName="gender" tabIndexName="Estado de la prenda" />
               <p>{clothesGenre}</p>
             </div>
 
@@ -51,7 +54,6 @@ const Accordion = (props) => {
           colorIcon="var(--Color-Primary)"
           iconName="down-arrow" size="8px"
           space="25px" bgColor="var(--Color-Grayscale-1) "
-          // handleClick={collapseAccordion}
         />
 
         <div className="bottom-info">

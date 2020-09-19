@@ -33,6 +33,18 @@
     justify-items: center;
     margin-top: 10px;
     letter-spacing: 1px;
+    margin-bottom: -8px;
+    & .accordion__text-icon{
+      display:flex;
+      align-items:center;
+      margin-bottom:10px;
+      & .default-icon{
+        margin-right:$Spacing-ExtraSmall;
+      }
+      & p:first-of-type{
+        margin-right:10px;
+      }
+    }
    
   }
   & .bottom-info{
@@ -115,6 +127,10 @@
   .accordion .accordion__content{
     width:90%;
     border-radius: 40%;
+  }
+  .accordion .top-info{
+    grid-template-columns: 1fr 1fr;
+    width: 90%;
   }
 }
 @media screen and(max-width: 500px) {
