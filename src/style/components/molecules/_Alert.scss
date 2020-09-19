@@ -64,5 +64,7 @@
   20% {left: 20px;opacity:1;}
   89% {left: 20px;opacity:1}
   99% {left: 20px;opacity:0;}
-//   100% {display:none}
+  100% {display:none;
+           left:-1000px;
+        }
 }
