@@ -56,6 +56,7 @@ const EditProfile = ({ editProfile }) => {
             value={username}
             onChange={handleChange}
           />
+          <br />
           <Select
             name="state"
             label="Estado"

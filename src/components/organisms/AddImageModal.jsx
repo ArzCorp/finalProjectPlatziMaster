@@ -8,45 +8,35 @@ import Modal from './Modal';
 import AddImage from '../atoms/AddImage';
 import Button from '../atoms/Button';
 import Loader from '../atoms/Loader';
+import Alert from '../molecules/Alert';
 
 const addPhotoProfile = (props) => {
-  const { turnModalState, uploadProfilePhoto, turnStatusResponse, modalReducers: { AddImageModalState }, userReducer: { loading, error, statusResponse, statusMessage } } = props;
+  const { turnModalState, uploadProfilePhoto, turnStatusResponse, modalReducers: { AddImageModalState }, userReducer: { loading, error, statusResponse, statusMessage, typeStatus } } = props;
   const data = localStorage.getItem('user');
   const jsonData = JSON.parse(data);
   const { token, user: { username } } = jsonData;
   const [fields, setField] = useState(0);
   const image = document.getElementById('image');
 
-  if (loading) {
-    return <Loader />;
-  }
-
   if (error) {
     return (
       <div className="alert">
-        <h1>{statusMessage}</h1>
-        <button
-          className="btn__normal"
-          type="button"
-          onClick={() => { turnStatusResponse(false); }}
-        >
-          OK
-        </button>
+        <Alert type={typeStatus} text={statusMessage} />
+        <div className="hidde"> 
+          {setTimeout(() => turnStatusResponse(false),7000)}
+        </div>
       </div>
+     
     );
   }
 
   if (statusResponse) {
     return (
       <div className="alert">
-        <h1>{statusMessage}</h1>
-        <button
-          className="btn__normal"
-          type="button"
-          onClick={() => { turnStatusResponse(false); }}
-        >
-          OK
-        </button>
+        <Alert type={typeStatus} text={statusMessage} />
+        <div className="hidde"> 
+          {setTimeout(() => turnStatusResponse(false),7000)}
+        </div>
       </div>
     );
   }

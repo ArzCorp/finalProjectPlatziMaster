@@ -121,6 +121,7 @@ export const editProfile = (fields, telephone, token) => async (dispatch, getSta
     const statusResponse = await response.status;
     const status = (statusResponse === 200);
     const statusMessage = 'Datos actalizados';
+    const typeStatus = "success";
 
     const userDataEdit = {
       ...user,
@@ -140,7 +141,7 @@ export const editProfile = (fields, telephone, token) => async (dispatch, getSta
 
     dispatch({
       type: 'EditProfile',
-      payload: { userDataEdit, status, statusMessage },
+      payload: { userDataEdit, status, statusMessage, typeStatus },
     });
   } catch (error) {
     dispatch({
@@ -303,18 +304,21 @@ export const addClothe = (fields, token, image01, image02, image03) => async (di
   const statusResponse = await response.status;
   let statusMessage;
   let status;
+  let typeStatus;
 
   if (statusResponse === 400) {
-    statusMessage = 'Ocurrio un error intenta mas tarde';
+    statusMessage = 'Tu prenda no pudo ser agregada, intenta con otra imagen.';
+    typeStatus = 'error';
     status = true;
   } else {
     statusMessage = 'Prenda agregada';
+    typeStatus = 'success';
     status = true;
   }
 
   dispatch({
     type: 'addClotheData',
-    payload: { addClotheData, status, statusMessage },
+    payload: { addClotheData, status, statusMessage, typeStatus },
   });
 };
 
@@ -379,19 +383,22 @@ export const editClothe = (fields, clotheId, token, image01, image02, image03) =
   const addClotheData = await response.json();
   const statusResponse = await response.status;
   let statusMessage;
+  let typeStatus;
   let status;
 
   if (statusResponse === 400) {
     statusMessage = 'Ocurrio un error intenta mas tarde';
+    typeStatus= 'error';
     status = true;
   } else {
     statusMessage = 'Prenda editada';
+    typeStatus= 'success';
     status = true;
   }
 
   dispatch({
     type: 'addClotheData',
-    payload: { addClotheData, status, statusMessage },
+    payload: { addClotheData, status, statusMessage, typeStatus },
   });
 };
 
@@ -421,18 +428,21 @@ export const deleteClothe = (idClothe, token) => async (dispatch) => {
   const { status } = response;
   let statusMessage;
   let statusResponse;
+  let typeStatus;
 
   if (status === 204) {
     statusMessage = 'Prenda eliminada';
+    typeStatus= 'error';
     statusResponse = true;
   } else {
     statusMessage = 'Ocurrio un error intente nuevamente';
+    typeStatus= 'success';
     statusResponse = true;
   }
 
   dispatch({
     type: 'deleteClothe',
-    payload: { statusMessage, statusResponse },
+    payload: { statusMessage, statusResponse, typeStatus },
   });
 };
 

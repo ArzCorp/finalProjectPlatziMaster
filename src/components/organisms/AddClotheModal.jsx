@@ -10,8 +10,9 @@ import AddImage from '../atoms/AddImage';
 import Button from '../atoms/Button';
 import InputSelect from '../atoms/InputSelect';
 import Loader from '../atoms/Loader';
+import Alert from '../molecules/Alert';
 
-const AddClotheModal = ({ getUserClothes, turnModalState, addClothe, turnStatusResponse, modalReducers: { AddClotheModalState }, userReducer: { loading, error, statusMessage } }) => {
+const AddClotheModal = ({ getUserClothes, turnModalState, addClothe, turnStatusResponse, modalReducers: { AddClotheModalState }, userReducer: { loading, error, statusMessage, typeStatus } }) => {
   const data = localStorage.getItem('user');
   const jsonData = JSON.parse(data);
   const { token } = jsonData;
@@ -20,21 +21,13 @@ const AddClotheModal = ({ getUserClothes, turnModalState, addClothe, turnStatusR
   const image02 = document.getElementById('image02');
   const image03 = document.getElementById('image03');
 
-  if (loading) {
-    return <Loader />;
-  }
-
   if (error) {
     return (
       <div className="alert">
-        <h1>{statusMessage}</h1>
-        <button
-          className="btn__normal"
-          type="button"
-          onClick={() => { turnStatusResponse(false); }}
-        >
-          OK
-        </button>
+        <Alert type={typeStatus} text={statusMessage} />
+        <div className="hidde"> 
+          {setTimeout(() => turnStatusResponse(false),7000)}
+        </div>
       </div>
     );
   }

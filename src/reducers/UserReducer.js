@@ -6,6 +6,7 @@ const INITIAL_STATE = {
   userNotifications: [],
   likeReceived: [],
   statusMessage: '',
+  typeStatus: '',
   isAuthenticated: localStorage.getItem('token'),
   formIsValid: false,
   stateLoginResponse: false,
@@ -66,6 +67,7 @@ export default (state = INITIAL_STATE, action) => {
         loading: false,
         statusResponse: action.payload.status,
         statusMessage: action.payload.statusMessage,
+        typeStatus: action.payload.typeStatus,
       };
     case 'EditImageProfile':
       return {
@@ -81,6 +83,7 @@ export default (state = INITIAL_STATE, action) => {
         loading: false,
         statusResponse: action.payload.status,
         statusMessage: action.payload.statusMessage,
+        typeStatus: action.payload.typeStatus,
       };
     case 'getClotheData':
       return {
