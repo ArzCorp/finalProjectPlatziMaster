@@ -7,7 +7,7 @@ const IconButton = (props) => {
     iconName, size, colorIcon, handleClick, bgColor, space, type, id, disabled, tabIndexName,
   } = props;
 
-  const disabledBgColor = () => disabled ? 'grey' : bgColor;
+  const disabledBgColor = () => disabled ? 'var(--Color-PrimaryLight-2)' : bgColor;
 
   return (
     <button

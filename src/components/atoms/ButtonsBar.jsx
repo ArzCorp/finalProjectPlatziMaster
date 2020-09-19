@@ -24,7 +24,7 @@ const buttonsBar = (props) => {
         id="buttonSuperLike" 
         iconName="star" 
         size="20px" 
-        space="40px" 
+        space="55px" 
         colorIcon="var(--Color-Grayscale-1)" 
         bgColor="var(--Color-Secondary)" 
         handleClick={handleSuperlike}

@@ -56,7 +56,7 @@ export const fetchLoginUser = (data) => async (dispatch) => {
     const statusResponse = await response.status;
     const status = (statusResponse === 201);
 
-    console.log('RESULTS: ', logedUser);
+  
     setToken(logedUser.token);
     localStorage.setItem('user', JSON.stringify(logedUser));
 
@@ -81,7 +81,7 @@ export const turnStatusResponse = (state) => (dispatch) => {
 };
 
 export const editProfile = (fields, telephone, token) => async (dispatch, getState) => {
-  console.log(fields);
+
   const { state, city } = fields;
   const { user } = getState().userReducer;
   const URL_API_UPDATE = `${URL_API}users/${telephone}/`;
@@ -300,7 +300,6 @@ export const addClothe = (fields, token, image01, image02, image03) => async (di
 
   const response = await fetch(URL_API_UPDATE, OPTIONS);
   const addClotheData = await response.json();
-  console.log(addClotheData);
   const statusResponse = await response.status;
   let statusMessage;
   let status;

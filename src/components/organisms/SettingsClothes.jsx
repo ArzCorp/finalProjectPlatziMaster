@@ -16,7 +16,6 @@ const SettingsClothes = (props) => {
   const clothes = localStorage.getItem('clothes');
   const jsonClothes = JSON.parse(clothes);
   const { getUserClothes, buttonsReducers: { isButtonActive }, userReducer: { clothesObtained, userClothes, clotheId } } = props;
-  console.log(jsonData);
   if (!clothesObtained) {
     getUserClothes(token);
     return userClothes;

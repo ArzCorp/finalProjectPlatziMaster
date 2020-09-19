@@ -45,6 +45,7 @@ const RenderFeedComponents = ({ clothes }) => {
 };
 
 const Feed = () => {
+
   const MatchModalState = useSelector((state) => state.modalReducers.MatchModalState);
   const KeyboardExplanationModal = useSelector((state) => state.modalReducers.KeyboardExplanationModal);
   const clothesFeed = useSelector((state) => state.userReducer.clothesFeed);
@@ -54,6 +55,8 @@ const Feed = () => {
   const currentUser = useSelector((state) => state.userReducer.userLoged.user.first_name);
   const actions = useActions(totalActions);
   const clothes = (!clothesFeed) ? null : clothesFeed.results[positionClothe];
+
+
   const matchUser = clothes ? `${clothes.owner_is.first_name} ${clothes.owner_is.last_name}` : 'Usuario';
   const validateLikeReceived = (user) => likeReceived.includes(user);
   const [isActive, setIsActive] = useState(0);
@@ -63,6 +66,8 @@ const Feed = () => {
     actions.fetchNotificationsUser(localStorage.getItem('token'));
     actions.fetchClothesFeed();
   }, []);
+  
+  
 
   const nextClothe = (args) => {
     if (positionClothe >= (clothesFeed.results.length - 1)) {
@@ -104,6 +109,7 @@ const Feed = () => {
       }, 5100);
       return;
     }
+
     nextClothe({
       clothe: clothes.id,
       value: 'SUPERLIKE',
@@ -124,7 +130,7 @@ const Feed = () => {
     if (key === 'ControlLeft') {
       handleDislike();
     } else if (key === 'Space') {
-      handleSuperlike();
+     !isActive && handleSuperlike();
     } else if (key === 'ControlRight') {
       handlelike();
     } else if (key === 'Escape') {
@@ -133,7 +139,7 @@ const Feed = () => {
       collapseAccordion();
     }
   };
-
+  
   return (
     <section>
       <Helmet>
