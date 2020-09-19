@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Input = ({ value, type, label, placeholder, name, id, onChange, onKeyPress, maxLength, checked }) => (
+const Input = ({ value, type, label, placeholder, name, id, onChange, onKeyPress, maxLength, checked, notRequired }) => (
   <div className="form__input">
     <label htmlFor={id || name}>
-      *
+      {!notRequired && '*'} 
       {label || 'Label'}
     </label>
     <input
